@@ -105,7 +105,8 @@ Page({
             },
             success: function (res) {
               console.log(res);
-              pay.Unified(res.data.openId)
+              pay.Unified(res.data.openId);
+             /*
               wx.request({
                 url: URL + '/Order/pending_payment',
                 data: {
@@ -124,6 +125,11 @@ Page({
                   that.onShow();//重加载
                 }
               });
+              */
+            },
+            complete:function()
+            {
+              
             }
             
           }) 

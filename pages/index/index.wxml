@@ -1,9 +1,4 @@
-
-
- 
-
-
-    <view>
+  <view>
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:200px;'>
         <block wx:for="{{list}}" wx:key="key">
           <swiper-item>

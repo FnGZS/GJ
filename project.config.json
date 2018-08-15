@@ -16,258 +16,258 @@
 	"projectname": "G",
 	"isGameTourist": false,
 	"condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "plugin": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "miniprogram": {
-      "current": 38,
-      "list": [
-        {
-          "id": -1,
-          "name": "商城列表",
-          "pathName": "pages/mall/mall",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "我的",
-          "pathName": "pages/wode/wode",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "空白",
-          "pathName": "pages/gouwuche/gouwuche",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "购物车",
-          "pathName": "pages/shangcheng/shangcheng",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "商品详情页面",
-          "pathName": "pages/detail/detail",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Personaldetails",
-          "pathName": "pages/Personaldetails/Personaldetails",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "yuyue",
-          "pathName": "pages/yuyue/yuyue",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "yuyue",
-          "pathName": "pages/team/team",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "dizhiguanli",
-          "pathName": "pages/dizhiguanli/dizhiguanli",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "tianjiadizhi",
-          "pathName": "pages/tianjiadizhi/tianjiadizhi",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "tianjiadizhibj",
-          "pathName": "pages/tianjiadizhibj/tianjiadizhibj",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "搜索",
-          "pathName": "pages/search/search",
-          "query": ""
-        },
-        {
-          "id": 12,
-          "name": "wode",
-          "pathName": "pages/wode/wode",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "daifukuang",
-          "pathName": "pages/dai/daifukuang",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "搜索结果",
-          "pathName": "pages/searchResult/searchResult",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Order",
-          "pathName": "pages/Order/Order",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "logistics",
-          "pathName": "pages/logistics/logistics",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "pinglun",
-          "pathName": "pages/pinglun/pinglun",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "mycollection",
-          "pathName": "pages/mycollection/mycollection",
-          "query": ""
-        },
-        {
-          "id": 5,
-          "name": "pinglun",
-          "pathName": "pages/pinglun/pinglun",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "案例详情",
-          "pathName": "pages/jingdiananlie/jingdiananlie",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Corder",
-          "pathName": "pages/Corder/Corder",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Corderdetails",
-          "pathName": "pages/Corderdetails/Corderdetails",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "jysuccess",
-          "pathName": "pages/jysuccess/jysuccess",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Aftersale",
-          "pathName": "pages/Aftersale/Aftersale",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Tobuy",
-          "pathName": "pages/Tobuy/Tobuy",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Collectgoods",
-          "pathName": "pages/Collectgoods/Collectgoods",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "evaluate",
-          "pathName": "pages/evaluate/evaluate",
-          "query": ""
-        },
-        {
-          "id": 28,
-          "name": "案例结果",
-          "pathName": "pages/jingdiananlie/jingdiananlie",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "案例",
-          "pathName": "pages/zaixiangongdi/zaixiangongdi",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Corder_2",
-          "pathName": "pages/Corder_2/Corder_2",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "Collectgoods",
-          "pathName": "pages/Collectgoods/Collectgoods",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "案例",
-          "pathName": "pages/jingdiananlie/jingdiananlie",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "在线工地",
-          "pathName": "pages/zaixiangongdi/zaixiangongdi",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "搜索",
-          "pathName": "pages/search/search",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "工地分布",
-          "pathName": "pages/gongdifenbu/gongdifenbu",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "团队",
-          "pathName": "pages/team/team",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "团队详情",
-          "pathName": "pages/teamDetail/teamDetail",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "团队",
-          "pathName": "pages/team/team"
-        }
-      ]
-    }
-  }
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 38,
+			"list": [
+				{
+					"id": -1,
+					"name": "商城列表",
+					"pathName": "pages/mall/mall",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/wode/wode",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "空白",
+					"pathName": "pages/gouwuche/gouwuche",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/shangcheng/shangcheng",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "商品详情页面",
+					"pathName": "pages/detail/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Personaldetails",
+					"pathName": "pages/Personaldetails/Personaldetails",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "yuyue",
+					"pathName": "pages/yuyue/yuyue",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "yuyue",
+					"pathName": "pages/team/team",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "dizhiguanli",
+					"pathName": "pages/dizhiguanli/dizhiguanli",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "tianjiadizhi",
+					"pathName": "pages/tianjiadizhi/tianjiadizhi",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "tianjiadizhibj",
+					"pathName": "pages/tianjiadizhibj/tianjiadizhibj",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "wode",
+					"pathName": "pages/wode/wode",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "daifukuang",
+					"pathName": "pages/dai/daifukuang",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索结果",
+					"pathName": "pages/searchResult/searchResult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Order",
+					"pathName": "pages/Order/Order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "logistics",
+					"pathName": "pages/logistics/logistics",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pinglun",
+					"pathName": "pages/pinglun/pinglun",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mycollection",
+					"pathName": "pages/mycollection/mycollection",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "pinglun",
+					"pathName": "pages/pinglun/pinglun",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "案例详情",
+					"pathName": "pages/jingdiananlie/jingdiananlie",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Corder",
+					"pathName": "pages/Corder/Corder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Corderdetails",
+					"pathName": "pages/Corderdetails/Corderdetails",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "jysuccess",
+					"pathName": "pages/jysuccess/jysuccess",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Aftersale",
+					"pathName": "pages/Aftersale/Aftersale",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Tobuy",
+					"pathName": "pages/Tobuy/Tobuy",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Collectgoods",
+					"pathName": "pages/Collectgoods/Collectgoods",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "evaluate",
+					"pathName": "pages/evaluate/evaluate",
+					"query": ""
+				},
+				{
+					"id": 28,
+					"name": "案例结果",
+					"pathName": "pages/jingdiananlie/jingdiananlie",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "案例",
+					"pathName": "pages/zaixiangongdi/zaixiangongdi",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Corder_2",
+					"pathName": "pages/Corder_2/Corder_2",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Collectgoods",
+					"pathName": "pages/Collectgoods/Collectgoods",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "案例",
+					"pathName": "pages/jingdiananlie/jingdiananlie",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "在线工地",
+					"pathName": "pages/zaixiangongdi/zaixiangongdi",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "工地分布",
+					"pathName": "pages/gongdifenbu/gongdifenbu",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "团队",
+					"pathName": "pages/team/team",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "团队详情",
+					"pathName": "pages/teamDetail/teamDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "团队",
+					"pathName": "pages/team/team"
+				}
+			]
+		}
+	}
 }

@@ -96,17 +96,17 @@ Page({
                     [num]: that.data.arr_occupation[j]
                   })
 
-                }
+                } 
               }
             }
+            console.log(that.data.arr);
+            console.log(that.data.arr_arr_occupation);
             that.setData({
               teamMes: teamMes,
               teamMes_backups:teamMes
             })
             console.log(that.data.teamMes)
           },
-
-
         })
       },
 
@@ -152,10 +152,8 @@ Page({
       }
     }
     else if (that.data.price) {
-
       var classiyLT = that.data.teamMes
       for (var i = 0; i < classiyLT.length; i++) {
- 
         for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
           for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++)// j开始等于0，  
           {

@@ -18,8 +18,7 @@
         <view class="flex2 {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
           <text>价格</text>
         </view> 
-     
-      </view>
+    </view>
 
        <!--将左侧导航传到后台的值 再取出来 从数据中提取出相应的信息  -->
       <scroll-view class="mall-list" bindscrolltolower="bindDownLoad"	 scroll-y="true" >
