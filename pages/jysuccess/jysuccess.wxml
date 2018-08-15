@@ -1,0 +1,13 @@
+<view class='pass'>
+      <view class="success">
+          <view class='cen'><image src='/images/success.png'></image></view>
+          <view>支付成功</view>
+      </view>
+
+      <view class="return">
+            
+            <view class='button' bindtap='returnn'>返回首页</view>
+            <view class='button' bindtap='see'>查看订单</view>
+            
+      </view>
+</view>

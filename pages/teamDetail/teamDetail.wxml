@@ -1,0 +1,76 @@
+<view class='teamDetail' >
+  <view class='headimg'>
+    <image src='{{URLimg}}/team/{{detail.img}}'></image>
+  </view>
+  <view class='name-work'>
+    <view class='name-work-main'>
+      <view class='name'>{{detail.name}}</view>
+      <view class='work'>{{detail.occupation}}</view>
+    </view>
+  </view>
+  <view class='goal'>
+    <view class='score'>
+      <view class='score-num'>{{detail.price}}</view>
+      <view class='score-text'>价格</view>
+    </view>
+    <view class='coumLine'></view>
+    <view class='yuyueNum'>
+      <view class='yuyueNum-num'>{{detail.inventory}}</view>
+      <view class='yuyueNum-text'>可预约数</view>
+    </view>
+    <view class='coumLine'></view>
+    <view class='caseNum'>
+      <view class='caseNum-num'>{{detail.case.length}}</view>
+      <view class='caseNum-text'>案例数</view>
+    </view>
+  </view>
+  <view class='intro'>
+    <view class='intro-title'>
+      <view class='intro-title-line '></view>
+      <view class='intro-title-text '>个人简介</view>
+    </view>
+    <view class='time'>
+      <view class='time-title mes-title'>从业时间：</view>
+      <view class='time-text mes-text'>{{detail.year}}年</view>
+    </view>
+    <view class='graduation'>
+      <view class='graduation-title mes-title'>毕业院校：</view>
+      <view class='graduation-text mes-text'>{{detail.from}}</view>
+    </view>
+    <view class='goodat'>
+      <view class='goodat-title mes-title'>擅长风格：</view>
+      <view class='goodat-text mes-text'>{{detail.style}}</view>
+    </view>
+    <view class='idea'>
+      <view class='idea-title mes-title'>设计理念：</view>
+      <view class='idea-text mes-text'>{{detail.idea}}</view>
+    </view>
+  </view>
+  <view class='choice'>
+    <view class='choice-title'>
+      <view class='intro-title-line '></view>
+      <view class='choice-title-text '>精选案例</view>
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <view>
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color="#FE7700" class='lunbotu'>
+      <block wx:for="{{detail.case}}" wx:key="index">
+        <swiper-item>
+          <view class='img-title'>{{item.caseName}}</view>
+          <image src="{{URLimg}}/dynamic/{{item.caseImg}}"bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+</view>
+<view class='btn'>
+  <view class='btn-text'>加入团队</view>
+</view>
+
+<view>
+    <loading hidden="{{lodingHidden}}">
+        加载中..
+    </loading>
+</view>

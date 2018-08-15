@@ -1,0 +1,34 @@
+<view youhuiquan>
+   <view class='youhuiquan-hearder'>
+      <view class='iconfont icon-youhuiquan'></view>
+      <view class='youhuiquan-hearder-wenzi-left'>券</view>
+      <view class='youhuiquan-hearder-wenzi-right'>{{all_num}} 张</view>
+   </view>
+   <view class='youhuiquan-main'  wx:for="{{youhuiquan}}">
+      <view class='youhuiquan-list' >
+        <view class='juchi'style='background-image:linear-gradient(-45deg, {{bgcolor}} 25%, transparent 25%, transparent), linear-gradient(-135deg, {{bgcolor}} 25%, transparent 25%, transparent);'>
+        </view>
+        <view class='list-left' style='background:{{bgcolor}};'>
+          <view class='.left-youhui'>
+            <view class='left-symbol'>￥</view>
+            <view class='left-value'>{{item.price}}</view>
+          </view>
+          <view class='left-man'>
+            <view><text>满 </text>{{item.satisfy}}<text> 可用</text> </view>
+          </view>
+        </view>
+
+        <view class='list-right'>
+          <view class='right-title'>
+            <view class='right-label'>{{item.label}}</view>
+            <view class='right-text'>{{item.type}}</view>
+          </view>
+          <view class='right-time'>{{item.time1}}-{{item.time2}}</view>
+          <view class='right-btn'>立即使用</view>
+        </view>
+        
+      </view>
+   </view>
+   
+</view>
+

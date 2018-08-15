@@ -1,0 +1,159 @@
+
+<view class="goods-navigator" bindtap="tabGoods">
+  <navigator class="goods-nav {{tabArr.curHdIndex=='0'? 'active' : ''}}" data-id="0">图文详情</navigator>
+  <navigator class="goods-nav {{tabArr.curHdIndex=='1'? 'active' : ''}}" data-id="1">产品信息</navigator>
+  <navigator class="goods-nav {{tabArr.curHdIndex=='2'? 'active' : ''}}" data-id="2">宝贝评价</navigator>
+</view>
+<view class="goods-info {{tabArr.curBdIndex=='0'? 'active' : ''}}">
+  <view class="cont">
+  <swiper autoplay="true" duration="1000" indicator-dots="true" interval="3000" style="height:285px" current="0" current-item-id="">
+    <block wx:for="{{image}}">
+      <swiper-item>
+        <image  src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="title">{{goods_index.goods_name}}</view>
+  <view class="title">
+  </view>
+  <view class="gmxx">
+    <view>
+      <view style="margin-top:4px;">
+     
+        <span class="jiage">
+           ￥{{price}}
+          <text class="yuan">定金：</text>
+          <text class='dingjin'> ￥{{money}}</text>
+        </span>
+        <span class="c6 fl_r font_14" style="color:#ccc"> 库存:{{kucun}} </span>
+      </view>
+    </view>
+    <view class="xian">
+    </view>
+    <view class="xian">
+    </view>
+    <view class="cu">
+      <text class="cu_one" style='margin-left:10rpx;'>促销 </text>
+      <view class="cu_a">送</view>
+      <text class="song">包装修</text>
+      <view class="cu_a">限</view>
+      <text class="song">限时折扣活动</text>
+      <view class="wu">
+      </view>
+    </view>
+    <view class="xian">
+    </view>
+    <view class="cu">
+      <text class="cu_one">服务</text>
+      <image class="fu_a" src="../../images/gou.png">
+      </image>
+      <text class="songa">官方唯一商城</text>
+      <image class="fu_a" src="../../images/gou.png">
+      </image>
+      <text class="songs">全国联保</text>
+      <image class="fu_a" src="../../images/gou.png">
+      </image>
+      <text class="songs">全场包邮</text>
+    </view>
+    <view class="fenge">
+    </view>
+    <view class="xian">
+    </view>
+    <view class="yan">
+      <text class="yan_one" style='margin-left:20rpx;'>尺寸大小</text>
+      <view class="yan_de"   wx:for="{{goods_size}}">
+        <text class="{{(sizenum==item.id )?'ys':'yan_a'}}"  data-text="{{item.size}}" data-attr_id="{{index}}" bindtap='changSize'>{{item.size}}</text>
+        <!-- && num != 0 -->
+      </view>
+    </view>
+    <view class="xian">
+    </view> 
+    <view class="yan">
+      <text class="yan_one" style='margin-left:20rpx;'>颜色分类</text>
+      <view class="yan_de" wx:if="{{num_color == 0}}" wx:for="{{z_color}}">
+        <text class="{{colornum==index?'ys':'yan_a'}}" selectable='true'  data-text="{{item.name}}" bindtap='changPro' data-spec_id="{{index}}">{{item}}</text>
+      </view>
+      <view class="yan_de" wx:if="{{num_color == 1}}" >
+        <text class="{{colornum == 0?'ys':'yan_a'}}" selectable='true'  data-text="{{item.name}}" bindtap='changPro' data-spec_id="{{index}}">{{y_color}}</text>
+      </view>
+      <text class="yan_onea" data-index="{{index}}">库存：{{invento}}</text>
+    </view>
+    <view class="xian">
+    </view>
+    <view class="shu">
+      <text class="cun">数量</text>
+      <view class="dian">
+        <view class="stepper">
+          <text class="" data-alpha-beta="0" bindtap='goods_sub'>-</text>
+          <view class="nownum">{{num2}}</view>
+          <text class="normal" data-alpha-beta="1" bindtap='goods_add'>+</text>
+        </view>
+      </view>
+      <text class="gous"></text>
+    </view>
+    <view class="fenge">
+    </view>
+  </view>
+</view>
+
+</view>
+<view  class="goods-detail {{tabArr.curBdIndex=='1'? 'active' : ''}}">
+  <view class="row goods-detail-list">
+    <view class="goods-detail-lf">类型</view>
+    <view class="goods-detail-rt">{{product_classify}}</view>
+  </view>
+  <view class="row goods-detail-list">
+    <view class="goods-detail-lf">风格</view>
+    <view class="goods-detail-rt">{{product_style}}</view>
+  </view>
+</view>
+<view class="goods-comment  {{tabArr.curBdIndex=='2'? 'active' : ''}}" wx:for="{{comment}}" style="background:#fff;">
+  <view class="comment-list">
+    <view class="comment-lf">
+      <image class="comment-favion" data-index="{{index}}" src="{{user[index].avatarUrl}}"></image>
+    </view> 
+    <view class="comment-mid">
+      <view style="padding-left:8px;" data-index="{{index}}">{{user[index].name}}</view>
+      <view class="star-status" style="padding-left:8px;"> 
+      </view>
+      <view style="padding-left:8px;">{{item.content}}</view>
+    </view>
+    <view class="comment-rt">{{item.ctime}}</view>
+    <view style="clear:both"></view>
+
+  </view>
+
+</view>
+
+<view class="footfixed">
+  <view class="footfixed">
+    <view class="zuo">
+      <view class="zuo_a">
+         <view  style='float:left; margin-left:20rpx;'>
+            <!-- <span class="iconfont .icon-shoucang" > </span> -->
+            <image style='width:35rpx;height:35rpx;' src='/images/dianpu.png'></image>
+            <view class="dbtextt">店铺</view>
+         </view>
+          <view style='float:right;margin-right:50rpx;'>
+           <image style='width:35rpx;height:35rpx;' src='/images/wangwang.png'></image>
+            <view class="dbtextt" >客服</view>
+          </view>
+           
+
+
+      </view>
+      <view class="zuo_b" bindtap='Commodity'>
+        <!-- <view bindtap="carttt" >
+          <span class="iconfont .icon-gouwuche" style="color:{{color_gou}}"> </span>
+          <view class="dbtext" style="color:{{color_gou}}">购物车</view>
+        </view> -->
+          <span class="iconfont .icon-shoucang" style="color:{{color_shou}}"> </span>
+          <view class="dbtext" style="color:{{color_shou}}">收藏</view>
+      </view>
+    </view>
+    <view class="right">
+      <view class="right_a" bindtap="cart" data-type="addcart">加入购物车</view>
+      <view class="right_b" bindtap='pay' data-status="1" data-type="buynow">立即购买</view>
+    </view>
+  </view>
+</view>

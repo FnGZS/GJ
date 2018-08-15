@@ -1,0 +1,112 @@
+<view class='content' wx:for="{{casesDetail}}">
+  <view class='jingdiananlie-1'>
+    <view class='jingdiananlie-left'>{{item.scheName}}</view>
+    <view class='jingdiananlie-right'>{{item.caseName}}</view>
+  </view>
+  <view class='jingdiananlie-2'>{{item.caseCont}}</view>
+  <view class='jingdiananlie-3'>
+    <view class='jingdiananlie-3-zi1'>浏览： {{item.browseNum}}</view>
+    <view class='jingdiananlie-3-zi1'>评论： {{item.comment}}</view>
+    <view class='jingdiananlie-3-zi1'>收藏： {{item.collection}}</view>
+    <view class='jingdiananlie-3-zi11'>10.58Km</view>
+  </view>
+  <view class='hengtiao'></view>
+
+  <view class='jingdiananlie-4'>
+    <view class='jingdiananlie-4-zong'>
+      <image src='../../images/jindu{{item.caseSche}}.png'></image>
+    </view>
+  </view>
+
+  <view class='hengtiao'></view>
+
+  <view class='jingdiananlie-5'>
+    <view class='jingdiananlie-5-left'>好友足迹</view>
+    <view class='foot-head' wx:for="{{footHead}}">
+      <image src='{{item.avatarUrl}}'></image>
+    </view>
+    <view class='foot-num'>等{{item.friNum}}位好友</view>
+  </view>
+
+  <view class='hengtiao'></view>
+
+  <view class='housemes'>
+    <view class='housemes-title'>
+      <view class='house-title-left'></view>
+      <view class='house-title-text'>房屋信息</view>
+    </view>
+    <view class='housemes-detail'>
+      <view class='housemes-detail-left'>
+        <view>户型 ：{{item.houseType}}</view>
+        <view>风格 ：{{item.caseStyle}}</view>
+      </view>
+      <view class='housemes-detail-right'>
+        <view>价格：{{item.casePrice}}￥</view>
+        <view>面积：{{item.caseArea}}㎡</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='hengtiao'></view>
+
+  <view class='progress' wx:for="{{stage}}">
+    <view class='progress-main'>
+      <image src='../../images/progress.png' class='progress-label'>
+        <view class='progress-label-text'>{{item.casePro}}</view>
+      </image>
+      <view wx:for="{{Dynamic[item.scheId]}}" data-index="{{index}}">
+        <view class='progress-top'>
+          <image src='{{item.avatarUrl}}' class='progress-touxiang'></image>
+          <view class='prgress-name'>{{item.dynContent.nickName}}</view>
+        </view>
+        <view class='progress-content'>
+          <view class='progress-content-text'>
+            {{item.dynContent.content}}
+          </view>
+          <view class='progress-content-img'>
+            <image src='{{URLimg}}/dynamic/{{item}}' wx:for="{{item.dynContent.contentImg}}"></image>
+          </view>
+          <view class='progress-content-bottom'>
+            <view class='progress-content-time'>{{item.dynContent.ctime}}</view>
+            <view class='progress-content-commentbtn' bindtap='comment' data-scheId ='{{item.scheId}}' data-dynId='{{item.dynContent.id}}' >
+              <view class='iconfont icon-xiepinglun'> 评论</view>
+            </view>
+          </view>
+          <view class='progress-comment'>
+            <view class='progress-comment-small'></view>
+            <view class='progress-comment-bac'>
+              <view wx:for="{{shortComment[item.dynContent.id]}}" class='progress-comment-mes'>
+                <view class='comment-name'>{{item.shortContent.nickName}}</view>
+                <view>：</view>
+                <view class='comment-text'>{{item.shortContent.content}}</view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='quanju' style='display:{{commentState}}' >
+    <view class='kongbai' style='height:{{kongbaiHeight}}px;width:100%;' bindtap='blank_click'></view>
+    <view class='comment'>
+      <input placeholder='写评论（最多100字）' placeholder="{{comment_placeholder}}" bindinput='comment_input' value='{{comment_content}}' ></input>
+      <view class='comment-send' bindtap='comment_send'>发送</view>
+    </view>
+  </view>
+
+
+  <!-- <view class='comment' style='display:{{commentState}}'>
+    <input placeholder='写评论（最多100字）'></input>
+    <view class='comment-send'>发送</view>
+  </view> -->
+    <view class='post' bindtap='yuyue'>
+      <view class='post-text'>预约</view>
+      <view >参观</view>
+    </view>
+  <view class='post1' bindtap='collection'>
+    <view class='post-text'>{{colleaction_text1}}</view>
+    <view >{{colleaction_text2}}</view>
+  </view>  
+</view>

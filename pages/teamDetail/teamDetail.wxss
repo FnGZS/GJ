@@ -1,0 +1,238 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1533613646066'); /* IE9*/
+  src: url('iconfont.eot?t=1533613646066#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
+  url('iconfont.ttf?t=1533613646066') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1533613646066#iconfont') format('svg'); /* iOS 4.1- */
+}
+page{
+  color: #fff;
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jingxuan:before { content: "\e609"; }
+
+.icon-gerenjianjie:before { content: "\e672"; }
+
+.teamDetail {
+  width: 100%;
+  height: 100%;
+}
+
+.headimg {
+  width: 100%;
+}
+
+.headimg image {
+  display: block;
+  margin: auto;
+  margin-top: 30rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.name-work {
+  width: 70%;
+  margin-left: 15%;
+  height: 50rpx;
+}
+
+.name-work-main {
+  margin-top: 10rpx;
+  display: flex;
+  /* text-align: center; */
+  margin:auto;
+  justify-content: center;
+}
+.name {
+  display: block;
+  font-size: 30rpx;
+  color: #5c5c5c;
+  line-height: 50rpx;
+}
+
+.work {
+  display: block;
+  font-size: 25rpx;
+  line-height: 55rpx;
+  margin-left: 10rpx;
+  color: #5c5c5c;
+}
+
+.goal {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  border-bottom: 1rpx solid #f1f1f1;
+  /* background: red */
+}
+
+.score {
+  width: 33.3%;
+  text-align: center;
+  color: #5c5c5c;
+}
+
+.score-num {
+  font-size: 30rpx;
+  margin-top: 25rpx;
+}
+
+.score-text {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+}
+
+.yuyueNum {
+  width: 33.3%;
+  text-align: center;
+  color: #5c5c5c;
+}
+
+.yuyueNum-num {
+  font-size: 30rpx;
+  margin-top: 25rpx;
+}
+
+.yuyueNum-text {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+}
+
+.caseNum {
+  width: 33.3%;
+  text-align: center;
+  color: #5c5c5c;
+}
+
+.caseNum-num {
+  font-size: 30rpx;
+  margin-top: 25rpx;
+}
+
+.caseNum-text {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+}
+
+.coumLine {
+  width: 1rpx;
+  height: 50rpx;
+  margin-top: 35rpx;
+  background: #e1e1e1;
+}
+
+.intro-title{
+  display: flex;
+  color: #5c5c5c;
+  margin-top: 40rpx;
+  margin-left: 5%;
+  padding-bottom: 20rpx;
+  /* border-bottom: 1px solid #f1f1f1; */
+}
+.intro-title-line{
+  width: 5rpx;
+  height: 40rpx;
+  background: #5c5c5c;
+}
+.icon-gerenjianjie{
+  font-size: 40rpx;
+}
+.intro-title-text{
+  line-height: 40rpx;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.time{
+  display: flex;
+  margin-left: 5%;
+  color: #5c5c5c;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  line-height: 35rpx;
+}
+.graduation{
+  display: flex;
+  margin-left: 5%;
+  color: #5c5c5c;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  line-height: 35rpx;
+}
+.goodat{
+  display: flex;
+  margin-left: 5%;
+  color: #5c5c5c;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  line-height: 35rpx;
+}
+
+.idea{
+  display: flex;
+  margin-left: 5%;
+  color: #5c5c5c;
+  font-size: 25rpx;
+  margin-top: 5rpx;
+  line-height: 35rpx;
+}
+.mes-title{
+  width: 125rpx;
+}
+.mes-text{
+  width: 78%;
+}
+.choice-title{
+  display: flex;
+  color: #5c5c5c;
+  margin-top: 40rpx;
+  margin-left: 5%;
+  padding-bottom: 20rpx;
+  /* border-bottom: 1px solid #f1f1f1; */
+}
+.icon-jingxuan{
+  font-size: 45rpx;
+}
+.choice-title-text{
+  line-height: 40rpx;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+}
+.lunbotu {
+  height: 350rpx;
+  width: 100%;
+}
+.lunbotu image{
+  height: 100%;
+}
+.slide-image {
+  width: 100%;
+}
+.img-title{
+  position: absolute;
+  font-size: 30rpx;
+  top: 20rpx;
+  left: 20rpx;
+  font-weight: bolder;
+}
+.btn{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 100rpx;
+  /* background: linear-gradient(to right,#ff5000,#ff9000); */
+  background: #ff9000;
+  text-align: center;
+  font-size: 38rpx;
+}
+.btn-text{
+  line-height: 100rpx;
+}

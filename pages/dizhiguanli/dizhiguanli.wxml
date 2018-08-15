@@ -1,0 +1,32 @@
+
+ 
+  <view class='total'>
+    <view class='address' bindtap='addnewaddress'>添加新地址</view>
+  </view> 
+  <view class='hui'></view>
+    <!-- 暂无地址 -->
+     <view class='none' style="display: {{display1}}" >您暂时还没有地址</view>  
+
+
+  <!-- 地址存在 -->
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" bindtap='Return' wx:key="">
+        <view class="content">
+          <view class='guding'>
+              <view class='imgaess'>{{item.first_name}}</view>
+        </view>
+        <view class='righ'>
+            <view class='dizhiguanli-header-left'><view class='name'>{{item.aname}}</view></view>
+            <view class='dizhiguanli-header-right'>{{item.aPhone}}</view>
+            <view style='clear:both;' class='dizhiguanli-main'><view class='default' wx:if="{{index== 0}}" >默认</view><view class='detailed'>{{item.address}}</view></view>
+        </view>
+      </view>
+      <view class="del" catchtap='editor' data-id="{{index}}">编辑</view>
+      <view class="del" catchtap="delete" style='background-color: #a6a6a6;'  data-id="{{index}}">删除</view>
+ </view>
+
+
+
+
+
+
+  

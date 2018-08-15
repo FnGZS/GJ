@@ -1,0 +1,59 @@
+<view class='content'>
+  <view class='head'>
+    <image src='../../images/baojia.jpg'></image>
+  </view>
+  <view class='result'>
+    <view class='title'>
+      装修报价方案如下
+    </view>
+    <view class='postion'>
+      <view class='left-text'>所在地区：</view>
+      <view class='right-text1'>{{province}}</view>
+      <view class='right-text1'>-</view>
+      <view class='right-text1'>{{city}}</view>
+      <view class='right-text1'>-</view>
+      <view class='right-text1'>{{distric}}</view>
+    </view> 
+    <view class='area'>
+      <view class='left-text'>房屋面积：</view>
+      <view class='right-text1'>{{area}}</view>
+      <view class='right-text'>㎡</view>
+    </view>  
+
+    <view class='pattern'>
+      <view class='left-text'>房屋格局：</view>
+      <view class='right-text'>{{pattern_shi}}</view>
+      <view class='right-text1'>室 </view>
+      <view class='right-text'>{{pattern_ting}}</view>
+      <view class='right-text1'>厅 </view>
+      <view class='right-text'>{{pattern_chu}}</view>
+      <view class='right-text1'>厨 </view>
+      <view class='right-text'>{{pattern_wei}}</view>
+      <view class='right-text'>卫</view>
+    </view>  
+
+    <view class='style'>
+      <view class='left-text'>装修风格：</view>
+      <view class='right-text'>{{style}}</view>
+    </view>  
+
+    <view class='grade'>
+      <view class='left-text'>装修档次：</view>
+      <view class='right-text'>{{grade}}</view>
+    </view>
+
+    <view class='line'></view>
+
+    <view class='cost'>
+      <view class='cost-text'>总报价：</view>
+      <view class='cost-num'>{{price}}</view>
+      <view class='cost-num'>￥</view>
+    </view>
+
+    <view class='line'></view>
+  </view>
+
+  <view class='bottom-text'>*稍后顾问将与您联系，免费提供详细的装修咨询服务</view>
+  <view class='bottom-text'>*装修档次与材料选择会影响报价结果，具体以实际测量为准</view>
+  <view class='bottom-text'>*以上价格仅供参考，更多优惠以线下门店咨询为准</view>
+</view>

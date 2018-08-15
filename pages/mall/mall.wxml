@@ -1,0 +1,57 @@
+<view class='section'>
+  <view class="search" bindtap='search'>
+    <input placeholder='搜索古杰商城'></input>
+  </view>
+  <view class='mall-bottom'>
+    <!-- 左右侧关联 -->
+     <!--左侧导航想要关联右边物品 只需要在这里加一个标识 标记当前的选项 传值这个标记到后台 -->
+    <view class="left">
+      <view  bindtap="Select" data-typeid="{{item.id}}" data-id="{{index}}" class="{{currentId==item.id?'clickSel':''}}" wx:for="{{classify}}">
+      {{item.goods_classify_name}}
+      </view>
+    </view>
+    <view class="right">
+      <view class="tabTit">
+        <view class="flex1 {{Sales?'fiex_color':''}}" data-sort="1" bindtap='sortGoods_control'>
+          <text >销量</text>
+          <view class='fs-up'>
+           
+          </view>
+        </view>
+        <view class="flex2 {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
+          <text>价格</text>
+          <view class='fs-up'>     
+          </view>
+        </view> 
+     
+      </view>
+
+       <!--将左侧导航传到后台的值 再取出来 从数据中提取出相应的信息  -->
+      <scroll-view class="mall-list" bindscrolltolower="bindDownLoad"	 scroll-y="true" >
+          <view class="ping" data-pro_id="0"   wx:for="{{classify[classifyid].goods_classify_list}}" item="item"> 
+            <view class="ping_b" bindtap="tapName" data-goosid="{{item.id}}"  data-goods_num="{{item.goods_num}}">
+              <image src='{{URLimg}}/goods/{{item.goods_img}}'>
+              </image>
+            </view>               
+            <view class="ping_a">                  
+              <view class="ping_aa" bindtap="tapName" data-goosid="{{item.id}}"  data-goods_num="{{item.goods_num}}">{{item.goods_name}}</view>
+              <view class='ping_num' bindtap="tapName" data-goosid="{{item.id}}"  data-goods_num="{{item.goods_num}}">
+                <view class="ping_cc">已售：{{item.goods_out}}</view>
+                <view class="ping_dd">库存：{{item.goods_inventory}}</view>
+              </view>    
+              <view class="padding_sp">
+                <view class="ping_ee">￥{{item.goods_price}}</view>      
+                <view >{{item.num}}</view>                   
+              </view>
+            </view>
+          </view>
+     
+    
+      
+      </scroll-view>
+    </view>
+  </view>
+  <view class='cart' bindtap="Gwc">
+  <span class="iconfont icon-gouwuchekong"></span>
+  </view>
+</view>

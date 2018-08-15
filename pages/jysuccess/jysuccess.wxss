@@ -1,0 +1,30 @@
+.success{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cen{
+  margin-top: 50px;
+}
+.cen image{
+  margin: auto;
+  width: 120px;
+  height: 120px;
+}
+.return{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.button{
+  margin-bottom: 20px;
+  border-radius: 30px;
+  line-height: 35px;
+  height: 35px;
+  width: 75%;
+  text-align: center;
+  /* border: red solid 1px; */
+  background-image: linear-gradient(to right, #f9d423 0%, #f83600 100%);
+  color: #fff;
+}

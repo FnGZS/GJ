@@ -1,0 +1,98 @@
+<view class='bg'>
+<view class="container" >
+  <view class="userinfo">
+    <view class='userinfo_btn' wx:if="{{!hasUserInfo && canIUse}}">
+     <image class="userinfo-avatar" src="/images/2.jpg" background-size="cover"></image>
+     
+    <button  class='getUserInfo ' open-type="getUserInfo" bindgetuserinfo="getUserInfo" > 登录 </button>
+    </view>
+    <block wx:else>
+      <view class='userinfo_btn_2'>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class="userinfo-nickname-bj">
+      <view class="userinfo-nickname">用户名:　{{userInfo.nickName}}</view>
+      <view class="userinfo-nickname-check">实名认证></view>
+      </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+  <view class='soujin1'  bindtap='Myorder'>
+        <view class='shou'>
+            <view class='iconfont icon-74wodedingdan'></view>
+            <view class='biankuang'>
+            <view class='shou-dingdan'>我的订单</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+            </view>
+        </view>
+ </view>
+<view class='main-dai'>
+      <view  bindtap='toast' class='main-dai1'>  
+        <view class='sign' wx:if="{{numpay>0}}">{{numpay}}</view>     
+        <view  class='iconfont icon-daifukuan' ></view>
+        <text>待付款</text>
+      </view >
+    <view  bindtap='toast2' class='main-dai1'>
+        <view class='sign' wx:if="{{numfa>0}}">{{numfa}}</view>    
+        <view class='iconfont icon-icon2' ></view>
+        <text>待发货</text>
+        </view >
+        <view  bindtap='toast3' class='main-dai1'>
+        <view class='sign' wx:if="{{numshou>0}}">{{numshou}}</view>     
+        <view class='iconfont icon-daishouhuo' ></view>
+        <text>待收货</text>
+      </view >
+       <view  bindtap='toast4' class='main-dai1'>  
+        <view class='iconfont icon-tuikuanshouhou' ></view>
+        <text>售后客服</text>
+        </view >
+ </view>
+<view class='kuang'>
+ <view class='soujin' bindtap='ShoppingCart'>
+        <view class='shou1'>
+            <view class='iconfont icon-gouwuche'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>购物车</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+            </view>
+        </view>
+ </view>
+ <view class='soujin' bindtap='collection' >
+        <view class='shou1'>
+            <view class='iconfont icon-wodeshoucang'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>我的收藏</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+             </view>
+        </view>
+ </view>
+ <navigator class='soujin'  url="../youhuiquan/youhuiquan">
+        <view class='shou1'>
+            <view class='iconfont icon-youhuiquan'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>优惠券</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+             </view>
+        </view>
+ </navigator>
+ <navigator class='soujin'  >
+        <view class='shou1' bindtap='address'>
+            <view class='iconfont icon-dizhiguanli'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>地址管理</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+             </view>
+        </view>
+  </navigator>
+  <navigator  class='soujin'  url="../lianxiwmen/lianxiwmen">
+        <view class='shou1' style=' border-bottom:0px;'>
+            <view class='iconfont icon-lianxiwomen'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>联系我们</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+             </view>
+        </view>
+  </navigator>
+  </view>
+   </view>

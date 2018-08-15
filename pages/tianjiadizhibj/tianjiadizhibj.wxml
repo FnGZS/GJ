@@ -1,0 +1,25 @@
+     
+ <form bindsubmit="formSubmit" bindreset="formReset">    
+            <view class="address">
+                  <view class="section Set">
+                    <textarea name="name" value='{{get_manames}}' bindblur="bindTextAreaBlur" placeholder-style="color:#a6a6a6;" auto-height placeholder="收货人" />
+                  </view>
+                  <view class='hui'></view>
+                  <view class="section Set">
+                    <textarea name="get_mareceiverPhone" value='{{get_mareceiverPhone}}' bindblur="bindTextAreaBlur" placeholder-style="color:#a6a6a6;" auto-height placeholder="电话号码" />
+                  </view>
+                  <view class='hui'></view>
+
+                  <view class="section Sett">
+                    <textarea name="get_mareceiverAddr" value='{{get_mareceiverAddr}}' bindblur="bindTextAreaBlur" placeholder-style="color:#a6a6a6;" auto-height placeholder="浙江省绍兴市越城区中路" />
+                  </view>
+                  <view class='hui'></view>
+                  <view class="section section_gap mo">
+                          默认地址
+                      <switch class='mor' name="switch"/>
+                  </view>
+
+            </view>
+        
+        <button class='sub' formType="submit" >保存</button>
+</form>

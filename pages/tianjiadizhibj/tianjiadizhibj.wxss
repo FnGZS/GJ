@@ -1,0 +1,90 @@
+.address{
+  /* border: red solid 1px; */
+  width: 100%;
+  height: 300px;
+}
+/* .consignee{
+
+} */
+.form-item{
+   border:1px solid #999;   
+  background: white;
+  width: 25.5%;
+  font-size: 12px;
+  height: 50rpx;
+  padding-top:15rpx;
+  padding-left:25rpx;
+  margin-left: 25rpx;
+  margin-top: 20rpx;
+  color: #AEAEAE;
+  float: left;
+
+}
+.form-item-bd picker{
+  color: #AEAEAE;
+ 
+}
+.arrows{
+  width: 20rpx;
+  height: 20rpx;
+   position: absolute;
+  left: 690rpx;
+  
+}
+.arrows image{
+  width: 100%;
+  height: 100%;
+}
+.sheng{
+  width: 100%;
+  height: 60px;
+}
+.Set{
+  /* border:1px solid #999; */
+  height: 60rpx;
+  width: 93%;
+  margin: auto;
+  margin-top: 15rpx;
+  font-size: 32rpx;
+}
+.Sett{
+  clear: both;
+  height: 90rpx;
+  width: 93%;
+  margin: auto;
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+.hui{
+  float: right;
+  width: 96.5%;
+  height: 1rpx;
+  background-color: #e6e6e6;
+}
+.heng{
+  clear: both;
+  float: right;
+  width: 96.5%;
+  height: 1rpx;
+   background-color: #e6e6e6;
+}
+.input-placeholder{
+  color: #AEAEAE;
+}
+.sub{
+  width: 95%;
+  color: #fff;
+  background-color: red; 
+}
+.mo{ 
+  margin-top: 10px;
+  padding-left: 12px;
+  width: 97%;
+  font-size: 32rpx;
+  color: #AEAEAE;
+}
+.mor{
+  float: right;
+  padding-right: 10px;
+}

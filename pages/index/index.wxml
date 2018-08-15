@@ -1,0 +1,174 @@
+
+
+ 
+
+
+    <view>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:200px;'>
+        <block wx:for="{{list}}" wx:key="key">
+          <swiper-item>
+            <!-- url="{{item.link}}" -->
+            <navigator hover-class="navigator-hover">
+              <image src="{{item}}" class="slide-image" />
+            </navigator>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+ 
+  <view class=" {{scrollTop.goTop_show  ?'index-search-2':'index-search-1'}}" bindtap="search">
+    <view class='index-search-form'>
+      <view class='index-search-text'>GJ</view>
+      <label class='index-search-label'>
+        <icon type="search" size="15" />搜索喜欢的商品</label>
+    </view>
+  </view>
+
+  <view class='index-conten'>
+    <view class='index-page'>
+
+      <view class='index-page-conten' bindtap="toCalculator">
+        <view class='iconbox iconColor1'>
+          <view class='iconfont icon-baojia'></view>
+        </view>
+        <view class='index-page-text'>
+          一键报价
+        </view>
+      </view>
+
+      <view class='index-page-conten' bindtap="toYuyue">
+        <view class='iconbox iconColor2'>
+          <view class='iconfont icon-yuyueliangfanghuise '></view>
+        </view>
+        <view class='index-page-text'>
+          预约量房
+        </view>
+      </view>
+
+      <view class='index-page-conten' bindtap='toKefu'>
+        <view class='iconbox iconColor3'>
+          <view class='iconfont icon-kefu1 '></view>
+        </view>
+        <view class='index-page-text'>
+          免费咨询
+        </view>
+      </view>
+
+      <view class='index-page-conten' bindtap="toZaixiangongdi">
+        <view class='iconbox iconColor4'>
+          <view class='iconfont icon-gongdi'></view>
+        </view>
+        <view class='index-page-text'>
+          在线工地
+        </view>
+      </view>
+
+      <view class='index-page-conten'>
+        <view class='iconbox iconColor5'>
+          <view class='iconfont icon-tehui'></view>
+        </view>
+        <view class='index-page-text'>
+          古杰特惠
+        </view>
+      </view>
+
+      <view class='index-page-conten' bindtap="toAnli">
+        <view class='iconbox iconColor6'>
+          <view class='iconfont icon-anli'></view>
+        </view>
+        <view class='index-page-text'>
+          经典案例
+        </view>
+      </view>
+
+      <view class='index-page-conten' bindtap="toShangcheng">
+        <view class='iconbox iconColor7'>
+          <view class='iconfont icon-shangcheng'></view>
+        </view>
+        <view class='index-page-text'>
+          古杰商城
+        </view>
+      </view>
+
+      <view class='index-page-conten' bindtap="team">
+        <view class='iconbox iconColor8'>
+          <view class='iconfont icon-tuandui'></view>
+        </view>
+        <view class='index-page-text'>
+          我的团队
+        </view>
+      </view>
+
+
+
+
+    </view>
+    <view class='line'></view>
+    <view class='index-goods'>
+      <view class='index-goods-title'>
+        为你选优
+      </view>
+      <view class='index-goods-conten'>
+        <view wx:for="{{sorting}}" wx:key="key">
+          <view class='index-goods-shop' bindtap='latex' data-id="{{item.id}}" data-num="{{item.goods_num}}">
+            <view class='goods-shop-top'>
+              {{item.goods_classify}}
+            </view>
+            <view class='goods-shop-title'>
+              "下单立减"
+            </view>
+            <view class='goods-shop-body' data-item="index">
+              <image src='{{goods[index]}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  
+    <view class='line'></view>
+    <!-- 案例搜索列表 -->
+    <view class='case-title'>
+      <view class='case-title-left'></view>
+      <view class='case-title-right'>经典案例</view>
+
+     
+    </view>
+    
+    <view wx:for="{{cases}}" class='scroll-view-main' bindtap="anli" data-id='{{item.id}}' style='display:{{display1}}' wx:key="key">
+      <view class='scroll-view-main-left'>
+        <image src='{{URLimg}}/cases/{{item.caseImg}}'></image>
+      </view>
+      <view class='scroll-view-main-right'>
+        <view class='scroll-view-main-right-top'>
+          <view class='scroll-view-main-right-1'>{{item.caseName}}</view>
+          <view class='scroll-view-main-right-2'>{{item.caseCont}}</view>
+        </view>
+
+        <view class='scroll-view-main-right-bottom'>
+          <view class='scroll-view-main-right-bottom1'>
+            <view class='iconfont icon-liulan'> </view>
+            <view>{{item.browseNum}}</view>
+          </view>
+          <view class='scroll-view-main-right-bottom1'>
+            <view class='iconfont icon-pinglun1'></view>
+            <view>{{item.comment}}</view>
+          </view>
+          <view class='scroll-view-main-right-bottom1'>
+            <view class='iconfont icon-shoucang'></view>
+            <view>{{item.collection}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  
+  </view>
+
+
+  <view>
+    <loading hidden="{{lodingHidden}}">
+      加载中..
+    </loading>
+  </view>
+    
+
+ 

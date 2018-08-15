@@ -1,0 +1,99 @@
+.pinglun-right{
+  float: right;
+  width: 70%;
+  height: 100rpx;
+} 
+.pinglun-right .star {
+  margin-top: 50rpx;
+  float: left;
+  height: 54rpx;
+  /* text-align: center; */
+  /* line-height: 54rpx; */
+   padding: 10rpx 10rpx 10rpx 0rpx; 
+}
+.star image{
+  width: 55rpx;
+  height: 55rpx;
+}
+.pinglun{
+  width: 100%;
+  height: 220rpx;
+}
+.pinglun-image image{
+  float: left;
+  margin: 20rpx 20rpx 20rpx 40rpx;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.huaxian{
+  margin-left: 20rpx;
+  border-bottom: #e6e6e6 solid 0.5rpx;
+}
+.changping{
+  height: 300rpx;
+  width: 100%;
+}
+.changping textarea{
+  width: 95%;
+  padding-left: 30rpx;
+  margin-top: 30rpx;
+  height: 150rpx;
+  padding-right: 20rpx;
+   line-height: 10rpx;
+  font-size: 30rpx;
+}
+.anniu{
+  font-size: 35rpx;
+  padding-top: 15rpx;
+  text-align: center;
+  height: 60rpx;
+  width: 90%;
+  border-radius: 20rpx;
+  margin: auto;
+  margin-top: 50px;
+  background-color:#f39a41;
+  color: #fff;
+}
+.framework1{
+  padding-top: 5px;
+  margin-top: 10px;
+  width: 100%;
+  background-color: #fff;
+}
+.shangji{
+  margin-left: 10px;
+  font-size: 28rpx;
+}
+.shangchuang{
+   margin: 10px 15px 0px 10px;
+  width: 65px;
+  height: 65px;
+  float: left;
+}
+.shangchuang image{
+  width: 65px;
+  height: 65px;
+  background: #d9d9d9;
+}
+.tupian image{
+  width: 65px;
+  height: 65px;
+}
+.tupian{
+  margin: 10px 15px 0px 10px;
+  /* border:red solid 1px; */
+  float: left;
+  width: 65px;
+  height: 65px;
+   position: relative; 
+}
+.delete {
+  top: 1px;
+  right:2rpx;
+  position:absolute; 
+  z-index: 999;
+  width: 17px;
+  height: 17px;
+    /* border: red solid 1px;  */
+}

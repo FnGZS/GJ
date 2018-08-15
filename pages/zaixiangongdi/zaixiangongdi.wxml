@@ -1,0 +1,94 @@
+<view class="container1">
+  <view class="filter-flex">
+    <view class="filter-tab">
+      <text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">装修价格</text>
+      <text bindtap="setFilterPanel" data-findex="2" class="{{showfilterindex==2?'active':''}}">装修面积</text>
+      <text bindtap="setFilterPanel" data-findex="3" class="{{showfilterindex==3?'active':''}}">装修风格</text>
+      <text bindtap="setFilterPanel" data-findex="4" class="{{showfilterindex==4?'active':''}}">附近工地</text>
+
+    </view>
+    <view class="filter-content" wx:if="{{showfilter}}">
+      <view class="filter-panel" wx:if="{{showfilterindex==1}}">
+        <view class="filter-panel-left">
+          <view wx:for="{{filterdata[0].price}}" wx:key="{{item.id}}" bindtap="setPriceIndex" data-priceindex="{{index}}" class="ziti  {{priceindex==index?'active':''}}">
+            <text decode="{{true}}">&nbsp;&nbsp;</text>{{item.name}}</view>
+        </view>
+      </view>
+      <view class="filter-panel" wx:if="{{showfilterindex==2}}">
+        <view class="filter-panel-left">
+          <view wx:for="{{filterdata[0].area}}" wx:key="{{item.id}}" bindtap="setAreaIndex" data-areaindex="{{index}}"  class="ziti  {{areaindex==index?'active':''}}">
+            <text decode="{{true}}">&nbsp;&nbsp;</text>{{item.name}}</view>
+        </view>
+      </view>
+      <view class="filter-panel" wx:if="{{showfilterindex==3}}">
+        <view class="filter-panel-left">
+          <view wx:for="{{filterdata[0].style}}" wx:key="{{item.id}}" bindtap="setStyleIndex" data-styleindex="{{index}}" class="ziti  {{styleindex==index?'active':''}}">
+            <text decode="{{true}}">&nbsp;&nbsp;</text>{{item.name}}</view>
+        </view>
+      </view>
+      <view class="filter-panel" wx:if="{{showfilterindex==4}}">
+        <view class="filter-panel-left">
+          <view wx:for="{{filterdata[0].nearby}}" wx:key="{{item.id}}" bindtap="setNearbyIndex" data-nearbyindex="{{index}}"  class="ziti  {{nearbyindex==index?'active':''}}">
+            <text decode="{{true}}">&nbsp;&nbsp;</text>{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+
+
+    <view class="filter-shadow" wx:if="{{showfilter}}" bindtap="hideFilter"></view>
+    <!-- 关闭筛选 -->
+  </view>
+  <scroll-view style='overflow: hidden;height:610rpx' class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading" style="height:{{scorll_height}}rpx">
+      <view wx:for="{{cases}}" class='scroll-view-main ' bindtap="anli" data-caseid = "{{item.id}}">
+        <view class='scroll-view-main-left'>
+          <image src='{{URLimg}}/cases/{{item.caseImg}}'></image>
+        </view>
+        <view class='scroll-view-main-right'>
+          <view class='scroll-view-main-right-1'>{{item.caseName}}</view>
+          <view class='scroll-view-main-right-2'>{{item.caseCont}}</view>
+          <view class='scroll-view-main-right-bottom'>
+            <view class='scroll-view-main-right-bottom1'>
+              <view class='iconfont icon-liulan'> </view>
+              <view>{{item.browseNum}}</view>
+            </view>
+            <view class='scroll-view-main-right-bottom1'>
+              <view class='iconfont icon-pinglun1'></view>
+              <view>{{item.comment}}</view>
+            </view>
+            <view class='scroll-view-main-right-bottom1'>
+              <view class='iconfont icon-shoucang'></view>
+              <view>{{item.collection}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='scroll-view-main-right-jiantou'>
+          <view class='iconfont icon-jiantou1'></view> 
+        </view>
+        
+      </view>
+
+  </scroll-view>
+
+
+  <view class='map1'>
+
+    <view class='shou' bindtap="gongdifenbu">
+      <view class='heitiao'></view>
+      <view class='shou-dingdan'>工地参观
+        <text> (46个工地装修中)</text>
+      </view>
+
+      <view style='float: right;' class='iconfont icon-jiantou'></view>
+      <text class='quanping'>全屏</text>
+
+    </view>
+    <view class='map'>
+      <map id="myMap" show-location/>
+
+    </view>
+  </view>
+</view>

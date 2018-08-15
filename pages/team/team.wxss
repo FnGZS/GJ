@@ -1,0 +1,282 @@
+.page {
+  font-family: SimHei;
+}
+
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  color:#666;
+
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.menu-container {
+  width: 160rpx; 
+  flex: 0 0 160rpx;
+  background: #f6f6f6;
+}
+
+.detail-container {
+  flex: 1;
+  height: 100%;
+}
+
+.scroll-view {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-view-ul {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-view-item {
+  height: 110rpx;
+  width: 100%;
+  font-size: 24rpx;
+  color: #666;
+  border-left: 8rpx solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.scroll-view-item:after {
+  content: '';
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #dfdfdf;
+  transform: scaleY(0.5);
+  position: absolute;
+}
+
+.active {
+  background: #fff;
+  color: #b68f4c;
+  border-left: 8rpx solid #b68f4c;
+}
+.right{
+  flex:80%;
+  height:100%;
+  overflow:hidden;
+  background:#fff;
+
+}
+.tabTit {
+  height:70rpx;
+line-height:30rpx;
+border-bottom:solid 1px #eee;
+width:100%;
+z-index:1;
+background:#ffffff;
+font-size:26rpx;
+display:flex;
+color:#666;
+
+}
+
+.flex1 {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  position: relative;
+  
+}
+.flex1 text{
+ padding-left:110rpx;
+margin-top:20rpx;
+font-size:25rpx;
+width:100%;
+border-right:1px solid #f4f4f4;
+height:30rpx;
+}
+.flex2 {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  position: relative;
+  
+}
+.flex2 text{
+ padding-left:110rpx;
+margin-top:20rpx;
+font-size:25rpx;
+width:100%;
+height:30rpx;
+}
+.fiex_color{
+  color: #ff6e00;
+}
+
+.mall-list{
+  height: 90%;
+}
+.ping {
+  display: flex;
+  width: 100%;
+  padding: 5rpx 5rpx 0rpx 5rpx;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+
+.ping_b {
+  flex: 0.25;
+  text-align: center;
+}
+
+.ping image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.ping_aa {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  height: 72rpx;
+  font-size: 26rpx;
+}
+
+.ping_a {
+  flex: 0.72;
+  font-size: 28rpx;
+  padding:0rpx 10rpx 0rpx 10rpx;
+}
+.ping_num{
+  display: flex;
+}
+.ping_cc {
+  display: inline-block;
+  font-size: 25rpx;
+  color: #999;
+  margin: 6rpx 0;
+  margin-left: 5rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ping_dd{
+  display: inline-block;
+  font-size: 25rpx;
+  color: #999;
+  margin: 6rpx 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 15rpx;
+}
+
+.ping_ee {
+  color: #EF3C3C;
+  flex: 1;
+}
+.padding_sp {
+  display: flex;
+  align-items: center;
+}
+/* .market-scroll-list {
+  height: 100%;
+}
+
+.title {
+  height: 55rpx;
+  background-color: #f6f6f6;
+  border-left: 6rpx solid #b68f4c;
+  padding-left: 25rpx;
+  line-height: 55rpx;
+  color: #666;
+  font-size:28rpx;
+
+}
+
+.inner {
+  display: flex;
+  padding: 40rpx;
+  position: relative;
+  color:#666;
+
+}
+
+.inner:after {
+  content: '';
+  left: 30rpx;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #dfdfdf;
+  transform: scaleY(0.5);
+  position: absolute;
+}
+
+.cover {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid #dfdfdf;
+  background: #f6f6f6;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
+.cover-img image {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  flex: 1;
+  padding: 0 30rpx;
+  font-size: 0;
+}
+
+.info-title {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.info-subtitle {
+  color: #999;
+  font-size: 20rpx;
+  margin-top: -3rpx;
+}
+
+.info-desc {
+  color: #666;
+  font-size: 22rpx;
+  margin-top: 5rpx;
+}
+
+.num {
+  width: 120rpx;
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  bottom: 0;
+  font-size: 22rpx;
+  color: #666;
+} */

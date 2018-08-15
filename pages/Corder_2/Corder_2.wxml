@@ -1,0 +1,66 @@
+      <view class='Crossone'><image src='/images/hengtiao.jpg'></image> </view>
+      <view>
+            <view class='adress' bindtap='Choice'>
+              <view class='Consignee'>
+                <view class='Con'>收货人：{{adn}}</view>
+                <view class='phone'>{{adp}}</view>
+              </view>
+              <view class='Consignee-address'>
+                <view class='addre'>收货地址：{{add}}</view>
+                <!-- <image class='Arrow' src='/images/jian.png'></image> -->
+              </view>
+              <view class='Consignee-addresss'>
+                <view class='addres'>(单击可以选择您想要的地址或添加新的地址)</view>
+              </view>
+          </view>
+      </view>
+      
+      <view class='Crosstwo'><image src='/images/hengtiaotwo.jpg'></image> </view>
+    <view wx:for="{{numberss}}" wx:key='' >
+                    <view class='store-name'>
+                        <view><image src='{{goods_icon}}'></image>  </view>
+                        <view class='store-n'>古杰商城</view>
+                    </view>
+                    <view class="content" >
+                          <view class='Collection'>
+                            <view class='Collection-img' data-index="{{index}}"><image src='{{imgs[index]}}'></image></view>
+                              <view class='contents'>
+                                <view class='goodsname' data-index="{{index}}" >{{names[index]}}</view>
+                                <view class='Collection-num' data-index="{{index}}"><text space="ensp">分类：{{yanses[index]}}，尺码：{{sizes[index]}}</text></view>
+                                <view class='price' data-index="{{index}}"><text space="ensp">定金：{{cun[index]}}   <text style='color:#000'>x{{nums[index]}}</text></text></view>
+                              </view>
+                          </view>
+                    </view>
+                    <view class='Underline'></view>
+                    <view class='Distribution'>
+                        <view class='store-n'>运费险</view>
+                        <view class='shipping'>卖家送，确认收货前退货可赔</view>
+                    </view>
+                  
+                    <view class='Underline'></view>
+
+         
+   </view>
+     <view class='Underline'></view>
+                    <view class='Distribution'>
+                        <view class='store-n'>买家留言：</view>
+                        <view class='shipping'> <textarea bindblur='message' placeholder="选填：填写内容已和卖家协商确认过" /></view>
+                    </view>
+     <view class='Underline'></view>
+      <view class='Distribution'>
+          <view class='store-n'>优惠券</view>
+          <view class='shipping'> 
+                <!-- 书桌类型满10元减1元 -->
+                  <picker style='width:550rpx;' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                 <view style='float:right' class="picker">
+                   {{array[index] || '选择优惠券'}}
+                 </view>
+                </picker> 
+          </view>
+      </view> 
+   <view class='fu'></view>
+ <view class="cart-footer">
+                      <text class="cart-toatl-price">合计:￥{{sum}}.00</text>
+                      <view class='cart-footer-button' bindtap='Immediate'> 立即结算</view>
+          </view>  
+      

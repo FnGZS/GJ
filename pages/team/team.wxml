@@ -1,0 +1,76 @@
+<view class="detail">
+  <view class="content">
+    <view class="menu-container">
+      <scroll-view scroll-y="true" class="scroll-view" scroll-into-view="head-{{indexSize}}">
+        <view class="scroll-view-ul">
+          <block wx:for="{{arr}}" wx:for-item="item" wx:key="index" id="head-{{index}}">
+            <view class="scroll-view-item {{indexSize === index?'active':''}}" bindtap="scrollTo" data-index="{{index}}">{{item.profession}}
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="right">
+      <view class="tabTit">
+        <view class="flex1 {{Sales?'fiex_color':''}}" data-sort="1" bindtap='sortGoods_control'>
+          <text >销量</text>
+        </view>
+        <view class="flex2 {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
+          <text>价格</text>
+        </view> 
+     
+      </view>
+
+       <!--将左侧导航传到后台的值 再取出来 从数据中提取出相应的信息  -->
+      <scroll-view class="mall-list" bindscrolltolower="bindDownLoad"	 scroll-y="true" >
+          <view class="ping" data-pro_id="0"   wx:for="{{teamMes[indexSize].list}}" item="item" data-id="{{item.id}}" bindtap='toDetail'> 
+            <view class="ping_b" >
+              <image src='{{URLimg}}/team/{{item.img}}'>
+              </image>
+            </view>               
+            <view class="ping_a">                  
+              <view class="ping_aa" >{{item.name}}</view>
+              <view class='ping_num' >
+                <view class="ping_cc">已售：{{item.out}}</view>
+                <view class="ping_dd">库存：{{item.inventory}}</view>
+              </view>    
+              <view class="padding_sp">
+                <view class="ping_ee">￥{{item.price}}</view>      
+                <view >{{item.num}}</view>                   
+              </view>
+            </view>
+          </view>
+      </scroll-view>
+    </view>
+
+    <!-- <swiper indicator-dots='true' class="detail-container" bindchange="change" data-index="{{index}}" current="{{indexSize}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" duration="{{duration}}">
+      <swiper-item wx:for="{{arr}}" wx:for-item="item" wx:key="index">
+        <scroll-view scroll-y="true" class=" market-scroll-list">
+          <view class="title">{{arr[indexSize].profession}} </view>
+          <a wx:for="{{arr[indexSize].list}}" wx:key="index" wx:key="index" item="item" key="key">
+            <view class="inner" bindtap="tapName" data-title="{{item.name}}" data-id="{{item.id}}" data-img="{{item.img}}" data-year="{{item.year}}">
+              <view class="cover">
+                <view class="cover-img">
+                  <image src='{{item.img}}'></image>
+                </view>
+              </view>
+
+              <view class="info overflow">
+                <view class="info-title overflow">{{item.name}}</view>
+                <view class="info-subtitle overflow">{{item.saying}}</view>
+                <view class="info-desc overflow">从业{{item.year}}年</view>
+              </view>
+              <view class="num">
+
+              </view>
+            </view>
+
+          </a>
+
+        </scroll-view>
+      </swiper-item>
+
+    </swiper> -->
+
+  </view>
+</view>

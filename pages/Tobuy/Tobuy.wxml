@@ -1,0 +1,47 @@
+    <view class='detailed'>
+          <view class='pay'>买家已付款</view>
+    </view>
+      <view>
+            <view class='adress'  bindtap='Choice'>
+              <view class='Consignee' >
+                <view class='Con'>收货人：{{consignee}}</view>
+                <view class='phone'>{{receivePhone}}</view>
+              </view>
+              <view class='Consignee-address'>
+                <view class='addre'>收货地址：{{receiveAddress}}</view>
+                <!-- <image class='Arrow' src='/images/jian.png'></image> -->
+              </view>
+            </view>
+      </view>
+         <view >       
+            <view class='line'></view>
+              <view class='store-name'>
+                  <view><image src='{{shopImg}}'></image>  </view>
+                  <view class='store-n'>{{shopName}}</view>
+              </view>
+               <view class="content" wx:for="{{imgs}}" >
+                    <view class='Collection'>
+                      <view class='Collection-img'><image src='{{imgs[index]}}'></image></view>
+                        <view class='contents'>
+                          <view class='goodsname'>{{names[index]}}</view>
+                          <view class='Collection-num'><text space="ensp">分类：{{goodsCols[index]}}，尺码：{{goodsSizes[index]}}</text></view>
+                          <view class='price'><text space="ensp">定金：{{deposits[index]}}   <text style='color:#000'>x{{nums[index]}}</text></text></view>
+                        </view>
+                    </view>
+              </view>
+              <view class='Underline'></view>
+              <view class='Distribution'>
+                  <view class='store-n'>运费险</view>
+                  <view class='shipping'>卖家送，确认收货前退货可赔</view>
+              </view>
+        </view>
+      <view class='Underline'></view>
+      <view class='Distribution'>
+          <image src='/images/dianhua.png'></image>
+          <view class='store-n'>联系客服</view>
+      </view>
+      <view class='Underline'></view>
+       <view class="cart-footer">
+            <view class='cart-footer-button-left'>查看物流</view>
+            <!-- <view class='cart-footer-button-right'> 付款</view> -->
+      </view>   

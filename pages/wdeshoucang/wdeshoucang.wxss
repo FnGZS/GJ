@@ -1,0 +1,139 @@
+/* dai */
+.daifukuan{
+  padding-top: 10rpx;
+  width: 100%;
+  height: 60rpx;
+  background-color: #e6e6e6;
+  font-size: 35rpx;
+  text-align: center;
+}
+.daifukuan .iconfont{
+  color: #f59183;
+  margin-left: 39%;
+  margin-top: 10rpx;
+  float: left;
+}
+.daifukuan text{
+  margin-top: 5rpx;
+  font-size: 30rpx;
+  margin-right: 41%;  
+  float: right;
+}
+.daifukuan-neirong{
+  height: 600rpx;
+  margin-top: 20rpx;
+  width: 100%;
+  }
+.daifukuan-zhu{
+  width: 100%;
+  height: 300rpx;
+  
+}
+.daifukuan-zhu1{
+  width: 100%;
+  height: 250rpx;
+  
+}
+.daifukuan-zhu-hearder{
+  background-color:#f5fbe5; 
+  width: 100%;
+  height: 60rpx;
+}
+.daifukuan-zhu-hearder .iconfont{
+  float: left;
+  padding: 15rpx 10rpx 10rpx 10rpx;
+}
+.daifukuan-zhu-hearder-wenzi{
+  margin-top: 15rpx;
+  float: left;
+  width: 20%;
+  font-size: 22rpx;
+}
+.daifukuan-zhu-hearder-right{
+  margin-right: 20rpx;
+    margin-top: 15rpx;
+  float: right;
+  font-size: 22rpx;
+  color: red;
+}
+.daifukuan-zhu-mu{
+  width: 100%;
+  height: 155rpx;
+  background-color: #fcf5f5;
+}
+.daifukuan-zhu-mu-left{
+  height: 120rpx;
+  width: 15.5%;
+  float: left;
+  margin: 10rpx 10rpx 10rpx 10rpx;   
+}
+.daifukuan-zhu-mu-left image{
+  width: 115rpx;
+  height: 120rpx;
+}
+.daifukuan-zhu-mu-right{
+  height: 150rpx;
+  width: 80%;
+  float: left;
+   
+}
+.daifukuan-zhu-mu-right-left{
+  margin-top: 10rpx;
+  width: 100%;
+  height: 50rpx;  
+  font-size: 20rpx;
+  float: left;
+}
+.daifukuan-zhu-mu-right-right{
+  float: left;
+  width: 70%;
+  height: 40rpx;  
+  font-size: 20rpx;
+  color:#515151; 
+}
+.daifukuan-zhu-mu-right-anniu{
+  margin-top: 20rpx;
+  float: right;
+  background-color: #fff;
+  padding-top:10rpx;
+  width: 19%;
+  height: 45rpx;
+  font-size: 25rpx;
+  border: red solid 1px;
+  text-align: center;
+}
+.daifukuan-zhu-mu-right-anniu1{
+  margin-right: 10rpx;
+  float: right;
+  background-color: #fff;
+  padding-top:10rpx;
+  width: 19%;
+  height: 45rpx;
+  font-size: 25rpx;
+  border: red solid 1px;
+  text-align: center;
+}
+.daifukuan-zhu-mu-right-anniu0{
+  margin-top: 30rpx;
+  height:50rpx;
+}
+.mu-right{
+   width: 80%;
+  float: left;
+}
+.mu-left{ 
+  height: 80rpx;
+  width: 19%;
+  float: left;
+}
+.daifukuan-zhu-mu-right-anniu0 .iconfont{
+  margin-top: 8rpx;
+  margin-left: 3rpx;
+  float: left;   
+}
+.daifukuan-zhu-mu-right-anniu0 text{
+  width: 68%;
+  margin-top: 10rpx;
+  float: right;
+  font-size: 25rpx;  
+}
