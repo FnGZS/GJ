@@ -17,7 +17,8 @@ Page({
     console.log(options)
     this.setData({
       URLimg: iURL,
-      id:options.id,
+      // id:options.id,
+      id:3,
       lodingHidden: false,
     })
     this.getDetail();

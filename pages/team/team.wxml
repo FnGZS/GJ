@@ -18,24 +18,25 @@
         <view class="flex2 {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
           <text>价格</text>
         </view> 
-    </view>
+     
+      </view>
 
        <!--将左侧导航传到后台的值 再取出来 从数据中提取出相应的信息  -->
       <scroll-view class="mall-list" bindscrolltolower="bindDownLoad"	 scroll-y="true" >
           <view class="ping" data-pro_id="0"   wx:for="{{teamMes[indexSize].list}}" item="item" data-id="{{item.id}}" bindtap='toDetail'> 
             <view class="ping_b" >
-              <image src='{{URLimg}}/team/{{item.img}}'>
+              <image src='{{URLimg}}/team/{{item.goods_img}}'>
               </image>
             </view>               
             <view class="ping_a">                  
-              <view class="ping_aa" >{{item.name}}</view>
+              <view class="ping_aa" >{{item.goods_name}}</view>
               <view class='ping_num' >
-                <view class="ping_cc">已售：{{item.out}}</view>
-                <view class="ping_dd">库存：{{item.inventory}}</view>
+                <view class="ping_cc">已售：{{item.goods_out}}</view>
+                <view class="ping_dd">库存：{{item.goods_inventory}}</view>
               </view>    
               <view class="padding_sp">
-                <view class="ping_ee">￥{{item.price}}</view>      
-                <view >{{item.num}}</view>                   
+                <view class="ping_ee">￥{{item.goods_price}}</view>      
+                <view >{{item.goods_num}}</view>                   
               </view>
             </view>
           </view>

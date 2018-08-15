@@ -1,22 +1,22 @@
 <view class='teamDetail' >
   <view class='headimg'>
-    <image src='{{URLimg}}/team/{{detail.img}}'></image>
+    <image src='{{URLimg}}/team/{{detail.goods_img}}'></image>
   </view>
   <view class='name-work'>
     <view class='name-work-main'>
-      <view class='name'>{{detail.name}}</view>
-      <view class='work'>{{detail.occupation}}</view>
+      <view class='name'>{{detail.goods_name}}</view>
+      <view class='work'>{{detail.goods_classify}}</view>
     </view>
   </view>
   <view class='goal'>
     <view class='score'>
-      <view class='score-num'>{{detail.price}}</view>
+      <view class='score-num'>{{detail.goods_price}}</view>
       <view class='score-text'>价格</view>
     </view>
     <view class='coumLine'></view>
     <view class='yuyueNum'>
-      <view class='yuyueNum-num'>{{detail.inventory}}</view>
-      <view class='yuyueNum-text'>可预约数</view>
+      <view class='yuyueNum-num'>{{detail.goods_inventory}}</view>
+      <view class='yuyueNum-text'>可购买数</view>
     </view>
     <view class='coumLine'></view>
     <view class='caseNum'>
@@ -65,8 +65,38 @@
   </view>
 
 </view>
-<view class='btn'>
+<!-- <view class='btn'>
   <view class='btn-text'>加入团队</view>
+</view> -->
+
+<view class="footfixed">
+  <view class="footfixed">
+    <view class="zuo">
+      <view class="zuo_a">
+         <view  style='float:left; margin-left:20rpx;'>
+            <!-- <span class="iconfont .icon-shoucang" > </span> -->
+            <image style='width:40rpx;height:40rpx;' src='/images/dianpu.png'></image>
+            <view class="dbtextt">店铺</view>
+         </view>
+          <view style='float:right;margin-right:50rpx;'>
+           <image style='width:40rpx;height:40rpx;' src='/images/wangwang.png'></image>
+            <view class="dbtextt" >客服</view>
+          </view>
+      </view>
+      <view class="zuo_b" bindtap='Commodity'>
+        <view bindtap="carttt" >
+          <span class="iconfont .icon-gouwuche" style="color:{{color_gou}}"> </span>
+          <view class="dbtext" style="color:{{color_gou}}">购物车</view>
+        </view>
+          <!-- <span class="iconfont .icon-shoucang" style="color:{{color_shou}}"> </span>
+          <view class="dbtext" style="color:{{color_shou}}">收藏</view> -->
+      </view>
+    </view>
+    <view class="right">
+      <view class="right_a" bindtap="cart" data-type="addcart">加入购物车</view>
+      <view class="right_b" bindtap='pay' data-status="1" data-type="buynow">立即购买</view>
+    </view>
+  </view>
 </view>
 
 <view>
