@@ -93,6 +93,7 @@ Page({
       content: '确定要付款',
       confirmColor: "#56a4ff",
       success(res) {
+        
         if (res.confirm) {
           wx.request({
             url: URL + '/user/query_openid',
@@ -105,8 +106,8 @@ Page({
             },
             success: function (res) {
               console.log(res);
-              pay.Unified(res.data.openId);
-             /*
+              var flag=pay.Unified(res.data.openId);
+              console.log(flag);
               wx.request({
                 url: URL + '/Order/pending_payment',
                 data: {
@@ -125,7 +126,7 @@ Page({
                   that.onShow();//重加载
                 }
               });
-              */
+              
             },
             complete:function()
             {
@@ -437,7 +438,8 @@ Page({
           // console.log(that.data.Anumbers)
 
           console.log(that.data.numbers)
-          // console.log(that.data.daifu)
+           console.log(that.data.daifu)
+          console.log(that.data.Anummm)
         }
 
       }

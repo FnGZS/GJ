@@ -77,7 +77,7 @@
                       <view class='stroe-name'>{{item.shopName}}</view>
                       <view class='Unpaid'>{{item.state}}</view>
                     </view>
-                   <view class='pictore' data-index = "{{index}}" wx:if = "{{Anummm > 1}}"  wx:for="{{item.img.length}}" wx:for-item="items"  data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
+                   <view class='pictore' data-index = "{{index}}" wx:if = "{{Anummm > 0}}"  wx:for="{{item.img.length}}" wx:for-item="items"  data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
                         <view class='pic' data-index = "{{item.id}}" style='heigh:500rpx'><image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image></view>
                         <view class='content'  >
                             <view class='content-introduce'   >
