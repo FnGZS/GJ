@@ -1,59 +1,62 @@
-var cou_id = 0 ;
-var heji =0;
+var cou_id = 0;
+var heji = 0;
 Page({
- 
+
   /**
    * 页面的初始数据
    */
-  data: { 
+  data: {
     array: ['暂无优惠券'],
-    Consignee : '',
+    Consignee: '',
     phone: [],
-    address:[],
-    goods_icon:[],
-    Shopping_name:[],
-    list:[],
-    goods_id:0,
-    item:'',
-    selAddress:'',
-    addresss:'',//地址传回来的地址值
+    address: [],
+    goods_icon: [],
+    Shopping_name: [],
+    list: [],
+    goods_id: 0,
+    item: '',
+    selAddress: '',
+    addresss: '',//地址传回来的地址值
     addname: '',//地址传回来的用户名值
     addphone: '',//地址传回来的电话号码值
-    judge:'',
+    judge: '',
     add: '暂无',//地址传回来的地址值
     adn: '暂无',//地址传回来的用户名值
     adp: '暂无',//地址传回来的电话号码值
-    goods_id:0,
-    goods_color:'',
-    goods_dimension:'',
-    goods_earnest:'',
-    numm:'',
-    goods_price:'',
-    Coupons_conter:'',
-    couponId:0,
-    earnest:0,
-    shocse:[],//暂时存放优惠券
-    messages:'',
-    shopName:''
+    goods_id: 0,
+    goods_color: '',
+    goods_dimension: '',
+    goods_earnest: '',
+    numm: '',
+    goods_price: '',
+    goods_classify: '',
+    goods_style: '',
+    isTeam: '',
+    Coupons_conter: '',
+    couponId: 0,
+    earnest: 0,
+    shocse: [],//暂时存放优惠券
+    messages: '',
+    shopName: ''
   },
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var indexx = e.detail.value;
     var g_earnest = this.data.earnest; //获取商品的总价
-    
-    
+
+
     console.log(g_earnest)
     this.setData({
-      index: e.detail.value, 
+      index: e.detail.value,
     })
     if (this.data.array[indexx] != '暂无优惠券' || this.data.array[indexx] == undefined) {//满足条件减去相应的值
       var g_satisfy = this.data.Coupons_conter[indexx].satisfy;
       cou_id = this.data.couponId[indexx].id;
       console.log(cou_id)
-      if (parseInt(g_earnest) >= parseInt(g_satisfy)){
+      if (parseInt(g_earnest) >= parseInt(g_satisfy)) {
         g_earnest = g_earnest - this.data.Coupons_conter[indexx].price;
-            //  console.log(this.data.Coupons_conter[indexx].price)
-        }
+        //  console.log(this.data.Coupons_conter[indexx].price)
+      }
     }
     this.setData({
       earnest: g_earnest,
@@ -65,28 +68,45 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-      var imgURL = getApp().globalData.IMGURL;
-      var UserId = wx.getStorageSync('UserId');
-      var URL = getApp().globalData.PHPURL;
-      var that = this;
-      var an = '';
-      var ap = '';
-      var ad = '';
-      var arr = [];
+    var imgURL = getApp().globalData.IMGURL;
+    var UserId = wx.getStorageSync('UserId');
+    var URL = getApp().globalData.PHPURL;
+    var that = this;
+    var an = '';
+    var ap = '';
+    var ad = '';
+    var arr = [];
 
-      console.log(imgURL)
-    this.setData({
-      judge: options.judge,
-      goods_img: imgURL + '/goods/'  + options.goods_img,
-      goods_name: options.goods_name,
-      goods_price: options.goods_price,
-      goods_color: options.goods_color,
-      goods_dimension: options.goods_dimension,
-      goods_earnest: options.goods_earnest,
-      goods_id: options.goods_id,
-      numm: options.numm,
-      earnest: options.goods_earnest * options.numm
-    })
+    console.log(imgURL)
+    if (options.isTeam == 0) {
+      this.setData({
+        judge: options.judge,
+        goods_img: imgURL + '/goods/' + options.goods_img,
+        goods_name: options.goods_name,
+        goods_price: options.goods_price,
+        goods_color: options.goods_color,
+        goods_dimension: options.goods_dimension,
+        goods_earnest: options.goods_earnest,
+        goods_id: options.goods_id,
+        numm: options.numm,
+        earnest: options.goods_earnest * options.numm
+      })
+    } else {
+      this.setData({
+        judge: options.judge,
+        goods_img: imgURL + '/team/' + options.goods_img,
+        goods_name: options.goods_name,
+        goods_price: options.goods_price,
+        goods_classify: options.goods_classify,
+        goods_style: options.goods_style,
+        goods_earnest: options.goods_earnest,
+        goods_id: options.goods_id,
+        numm: options.numm,
+        earnest: options.goods_price * options.numm,
+        isTeam: options.isTeam
+      })
+    }
+
     heji = this.data.earnest;
     // 相关信息
     wx.request({
@@ -166,7 +186,7 @@ Page({
     });
   },
   //立即结算
-  Immediate:function(){
+  Immediate: function () {
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
@@ -180,55 +200,78 @@ Page({
       content: '确定要提交吗',
       confirmColor: "#56a4ff",
       success(res) {
-        console.log(res);
         if (res.confirm) {
           //付款成功
-        wx.request({
-          url: URL +'/user/query_openid',
-          data:{
-            userId:UserId
-          },
-          method: 'GET',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success:function(res){
-             var OpenId=res.data
-             console.log(OpenId); 
-          }
-        })
-          //加入数据库中并且跳转
-        /**  wx.request({
-            url: URL + '/Mall/order_buy',
-            data: {
-              userId: UserId,  //用户id
-              goodsId: that.data.goods_id, //商品id
-              couponId: cou_id,  //优惠券的id
-              price: that.data.goods_price, //商品价格
-              color: that.data.goods_color,   //颜色
-              size: that.data.goods_dimension, //尺寸大小
-              deposit: that.data.goods_earnest,  //定金
-              num: that.data.numm,     //数量
-              pay: that.data.earnest,  //实付金额
-              b: 1, //模拟接口（付款成功）
-              message: that.data.messages,//买家留言
-              name: that.data.adn, //收件人
-              phone: that.data.adp,//地址电话号码
-              address: that.data.add //详细地址
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (res) {
-              console.log(res.data)
-              //模拟支付接口
-              wx.redirectTo({
-                url: '../jysuccess/jysuccess'
-              })
+          if (that.data.isTeam == 0) {
+            wx.request({
+              url: URL + '/Mall/order_buy',
+              data: {
+                userId: UserId,  //用户id
+                goodsId: that.data.goods_id, //商品id
+                couponId: cou_id,  //优惠券的id
+                price: that.data.goods_price, //商品价格
+                color: that.data.goods_color,   //颜色
+                size: that.data.goods_dimension, //尺寸大小
+                deposit: that.data.goods_earnest,  //定金
+                num: that.data.numm,     //数量
+                pay: that.data.earnest,  //实付金额
+                b: 1, //模拟接口（付款成功）
+                message: that.data.messages,//买家留言
+                name: that.data.adn, //收件人
+                phone: that.data.adp,//地址电话号码
+                address: that.data.add, //详细地址
+                isTeam: 0
+              },
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                console.log(res.data)
+                //模拟支付接口
+                wx.redirectTo({
+                  url: '../jysuccess/jysuccess'
+                })
 
-            }
-          });**/
+              }
+            });
+          } else {
+            wx.request({
+              url: URL + '/Mall/order_buy',
+              data: {
+                userId: UserId,  //用户id
+                goodsId: that.data.goods_id, //商品id
+                couponId: cou_id,  //优惠券的id
+                price: that.data.goods_price, //商品价格
+                color: that.data.goods_classify,   //从事什么
+                size: that.data.goods_style, //擅长风格
+                deposit: that.data.goods_earnest,  //定金
+                num: that.data.numm,     //数量
+                pay: that.data.earnest,  //实付金额
+                b: 1, //模拟接口（付款成功）
+                message: that.data.messages,//买家留言
+                name: that.data.adn, //收件人
+                phone: that.data.adp,//地址电话号码
+                address: that.data.add, //详细地址
+                isTeam: 1
+              },
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                console.log(res.data)
+                //模拟支付接口
+                wx.redirectTo({
+                  url: '../jysuccess/jysuccess'
+                })
+
+              }
+            });
+          }
+
+
+
         }
         else {
           //待付款
@@ -271,40 +314,40 @@ Page({
 
   },
   //买家留言
-  message:function(e){
+  message: function (e) {
     console.log(e.detail.value)
     this.setData({
       messages: e.detail.value
     })
   },
-  Choice:function(){
+  Choice: function () {
     this.setData({
-      judge:''
+      judge: ''
     })
     console.log(this.data.goods_id)
-     wx.navigateTo({
-       url: '../dizhiguanli/dizhiguanli?implement=' + 1,
-     })
+    wx.navigateTo({
+      url: '../dizhiguanli/dizhiguanli?implement=' + 1,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+
     var Address_turn = '';
     var phone = '';
     var name_turn = '';
 
     //添加地址
-    if (this.data.judge == '1') {        
-    }else{
+    if (this.data.judge == '1') {
+    } else {
       var that = this;
       let pages = getCurrentPages();
       let currPage = pages[pages.length - 1];
@@ -326,41 +369,41 @@ Page({
         adp: phone
       })
     }
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

@@ -398,7 +398,7 @@ Page({
             })
           }
 
-          console.log(arrpay)
+          console.log(arrorder)
           that.setData({
             daifu: arrpay,
             daifa: arrfa,

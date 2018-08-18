@@ -27,7 +27,8 @@ Page({
     yanses:[],
     nums:[],
     guiges:[],
-    goodsid:[]
+    goodsid:[],
+    isTeam:[]
   },
   carts_query:function(){
     var userId = wx.getStorageSync('UserId');
@@ -59,13 +60,18 @@ Page({
                 cun: res.data
               })
               for (var i = 0; i < that.data.carts.length; i++) {
-                arr[i] = that.data.imgurl + '/' + 'goods/' + that.data.carts[i].goods_img;
+                if (that.data.carts[i].tro.isTeam == 0){
+                  arr[i] = that.data.imgurl + '/' + 'goods/' + that.data.carts[i].goods_img;
+                }
+                else{
+                  arr[i] = that.data.imgurl + '/' + 'team/' + that.data.carts[i].goods_img;
+                }
               }
               that.setData({
                 list: arr
               })
           }
-          console.log(that.data.display)
+        console.log(that.data.carts)
           
       }
      
@@ -191,9 +197,10 @@ Page({
       var guige = JSON.stringify(that.data.guiges);
       var nums = JSON.stringify(that.data.nums);
       var goodsid = JSON.stringify(that.data.goodsid);
+      var isTeam = JSON.stringify(that.data.isTeam);
       console.log(goodsid)
       wx.navigateTo({
-        url: '../Corder_2/Corder_2?judge=' + 1 + '&product=' + zz + '&cun=' + yy + '&num=' + num + '&name=' + name + '&img=' + img + '&size=' + size + '&yanse=' + yanse + '&guige=' + guige + '&nums=' + nums + '&goodsid=' + goodsid,
+        url: '../Corder_2/Corder_2?judge=' + 1 + '&product=' + zz + '&cun=' + yy + '&num=' + num + '&name=' + name + '&img=' + img + '&size=' + size + '&yanse=' + yanse + '&guige=' + guige + '&nums=' + nums + '&goodsid=' + goodsid + '&isTeam=' + isTeam,
       })
     }
     else if (that.data.product == 0){
@@ -282,14 +289,23 @@ Page({
     let yanse = [''];
     let numbered = [''];
     let goodsid = [''];
+    let isTeam = [''];
     // console.log(carts.length)
     for (let i = 0; i < carts.length; i++) {         // 循环列表得到每个数据
-      if (carts[i].selected) {                     // 判断选中才会计算价格
-        total += carts[i].tro.num * carts[i].tro.deposit;   // 所有价格加起来
+      if (carts[i].selected) {    // 判断选中才会计算价格  
+        if (carts[i].tro.isTeam == 0){
+          total += carts[i].tro.num * carts[i].tro.deposit;   // 所有价格加起来
+        } else{
+          total += carts[i].tro.num * carts[i].tro.price;   // 所有价格加起来          
+        }              
         // pro[i] = carts[i].
         // console.log(carts[i].tro.goodsId)
         pro[i] = carts[i].tro.id;
-        mon[i] = carts[i].tro.deposit;
+        if (carts[i].tro.isTeam == 0){
+          mon[i] = carts[i].tro.deposit;
+        }else{
+          mon[i] = carts[i].tro.price;
+        }
         name[i] = carts[i].goods_name;
         img[i] = carts[i].goods_img;
         guige[i] = carts[i].goods_classify;
@@ -297,6 +313,7 @@ Page({
         yanse[i] = carts[i].tro.goodsColor;
         numbered[i] = carts[i].tro.num;
         goodsid[i] = carts[i].tro.goodsId;
+        isTeam[i] = carts[i].tro.isTeam;
       }
 
     }
@@ -394,6 +411,16 @@ Page({
         k--;
       }
     }
+    for (var k = 0; k < isTeam.length; k++) {
+      if (isTeam[k] == "") {
+        isTeam.splice(k, 1);
+        k--;
+      }
+      else if (isTeam[k] == undefined) {
+        isTeam.splice(k, 1);
+        k--;
+      }
+    }
     console.log(goodsid)
     // console.log(mon)
     // console.log(pro)
@@ -415,7 +442,8 @@ Page({
       yanses:yanse,
       nums: numbered,
       guiges:guige,
-      goodsid: goodsid
+      goodsid: goodsid,
+      isTeam: isTeam
     });
     console.log(this.data.product)
   }

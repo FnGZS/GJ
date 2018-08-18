@@ -23,7 +23,9 @@
                       <view class='Unpaid'>{{item.state}}</view>
                     </view>
                     <view class='pictore' data-index = "{{index}}" wx:for="{{list[index]}}" wx:for-item="items"  data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
-                        <view class='pic' data-index = "{{item.id}}"><image src='https://www.sxscott.com/gujie/public/goods/{{items}}'></image></view>
+                        <view class='pic' data-index = "{{item.id}}">
+                          <image src='https://www.sxscott.com/gujie/public/goods/{{items}}' ></image>
+                        </view>
                         <view class='content'  >
                             <view class='content-introduce'   >
                                {{item.name[index]}}

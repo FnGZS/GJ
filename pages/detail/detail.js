@@ -131,7 +131,8 @@ gouwu:function(){
                 goodsColor: that.data.colortext,
                 goodsSize: that.data.sizetext, 
                 price: that.data.price,
-                deposit:that.data.money
+                deposit:that.data.money,
+                isTeam:0
               },
               method: 'POST',
               header: {
