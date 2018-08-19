@@ -61,6 +61,8 @@
 
       </view>
   
-       <button type='button' class='sub' formType="submit">保存</button>
-       <!-- <view class='sub' bindtap='submit'>保存</view> -->
+      <view class="btn-area">
+        <button formType="submit" style='color:#fff;background-color: red; width:95%' >保存</button>
+      </view>
+       <!-- <view c lass='sub' bindtap='submit'>保存</view> -->
 </form>

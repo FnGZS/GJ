@@ -29,6 +29,7 @@ Page({
     Anumbersss: 0,
     Anumm: 0,
     Anummm: 0,
+    Anummmm:0,
     Anums: 0,
     dfu: [],
     dfa: [],
@@ -62,7 +63,7 @@ Page({
   Interface: function (e) {
     console.log(e)
     var start = e.currentTarget.dataset.state;
-    var orderids = e.currentTarget.dataset.id;
+    var orderids = e.currentTarget.dataset.id; 
     console.log(start)
     if (start == "待付款") {
       wx.navigateTo({
@@ -285,7 +286,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res)
+        console.log(res.data)
         if (res.data == null) {
           that.setData({
             display: 'block',
@@ -411,8 +412,10 @@ Page({
             arrorder: arrorder,
             Anumm: arrpay.length,
             Anummm: arrfa.length,
+            Anummmm: arrpay.length,
             Anums: arrshou.length
           })
+          
           if (that.data.daifu.length > 0) {
             that.setData({
               Anumbers: that.data.daifu[arrpay.length - 1].img.length,
@@ -433,13 +436,14 @@ Page({
               Anumbersss: that.data.daishou[arrshou.length - 1].img.length,
             })
           }
+          console.log(that.data.daifu)
           // console.log(that.data.Anumbersss)
           // console.log(that.data.list)
           // console.log(that.data.Anums)
-          console.log(that.data.daishou)
-          // console.log(that.data.Anumbers)
+          // console.log(that.data.daishou)
+          console.log(that.data.Anummm)
 
-          console.log(that.data.numbers)
+          // console.log(that.data.numbers)
           // console.log(that.data.daifu)
         }
 

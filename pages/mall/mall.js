@@ -410,7 +410,7 @@ Page({
   //搜索
   search: function () {
     wx.navigateTo({
-      url: '../search/search'
+      url: '../search1/search1'
     });
   }
 })

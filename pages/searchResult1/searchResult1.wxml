@@ -1,0 +1,69 @@
+<view class='content'>
+  <view class='search-heard'>
+    <view class='left'>
+      <icon type="search" size="17" />
+      <input value='{{content}}' bindinput='serach_content'></input>
+    </view>
+    <view class='right' bindtap='search_btn'>
+      <label>搜索</label> 
+    </view>
+  </view>
+
+  <!-- <view class="tabTit">
+    <view class="flex1 {{Case?'fiex_color':''}}" data-search="1" bindtap='search_control'>
+      <text>案例</text>
+    </view>
+    <view class="flex2 {{Goods?'fiex_color':''}}" data-search="2" bindtap='search_control'>
+      <text>商品</text>
+    </view>
+  </view> -->
+
+  <!-- 案例搜索列表 -->
+  <!-- <scroll-view style=' overflow: hidden;' class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
+    <view wx:for="{{cases}}" class='scroll-view-main ' bindtap="anli" style='display:{{display1}}'>
+      <view class='scroll-view-main-left'>
+        <image src='{{URLimg}}/cases/{{item.caseImg}}'></image>
+      </view>
+      <view class='scroll-view-main-right'>
+        <view class='scroll-view-main-right-1'>{{item.caseName}}</view>
+        <view class='scroll-view-main-right-2'>{{item.caseCont}}</view>
+        <view class='scroll-view-main-right-bottom'>
+          <view class='scroll-view-main-right-bottom1'>
+            <view class='iconfont icon-dianzan'> </view>
+            <view>{{item.thumbsUp}}</view>
+          </view>
+          <view class='scroll-view-main-right-bottom1'>
+            <view class='iconfont icon-pinglun1'></view>
+            <view>{{item.comment}}</view>
+          </view>
+          <view class='scroll-view-main-right-bottom1'>
+            <view class='iconfont icon-shoucang'></view>
+            <view>{{item.collection}}</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+
+    <!-- 商品搜索列表 -->
+    <view wx:for="{{goods}}">
+      <view class="ping" data-pro_id="1" bindtap='tapName' data-id = "{{item.id}}">
+        <view class="ping_b">
+          <image src="{{URLimg}}/goods/{{item.goods_img}}">
+          </image>
+        </view>
+        <view class="ping_a">
+          <view class="ping_aa">{{item.goods_name}}</view>
+          <view class='ping_num'>
+            <view class="ping_cc">已售：{{goods_inventory[index]}}</view>
+            <view class="ping_dd">库存：{{kucun[index]}}</view>
+          </view>
+
+          <view class="padding_sp">
+            <view class="ping_ee">￥{{goods_price[0][0]}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  <!-- </scroll-view> -->
+</view>
