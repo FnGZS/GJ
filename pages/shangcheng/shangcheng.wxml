@@ -33,7 +33,7 @@
             <text class='cart-pro-name-guige' wx:if="{{item.tro.isTeam == 0}}">颜色：{{item.tro.goodsColor}}</text>
             <text class="cart-pro-price" wx:if="{{item.tro.isTeam == 0}}">￥{{item.tro.deposit}}</text>
 
-            <text class='cart-pro-name-guigere' wx:if="{{item.tro.isTeam == 1}}">负责：{{item.tro.goodsSize}}</text>
+            <text class='cart-pro-name-guigere' wx:if="{{item.tro.isTeam == 1}}">从事：{{item.tro.goodsSize}}</text>
             <text class='cart-pro-name-guige' wx:if="{{item.tro.isTeam == 1}}">擅长：{{item.tro.goodsColor}}</text>
             <text class="cart-pro-price" wx:if="{{item.tro.isTeam == 1}}">￥{{item.tro.price}}</text>
 

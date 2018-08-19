@@ -307,6 +307,7 @@ Page({
           var nums = [];
           var names = [];
           var imgss = [];
+          var isTeam = [];
           console.log(that.data.orders[0].name)
           for (var i = 0; i < that.data.orders.length; i++) {
             arr[i] = JSON.parse(that.data.orders[i].img);
@@ -318,13 +319,15 @@ Page({
             deposits[i] = JSON.parse(that.data.orders[i].deposit);
             nums[i] = JSON.parse(that.data.orders[i].num);
             imgss[i] = JSON.parse(that.data.orders[i].img);
+            isTeam[i] = JSON.parse(that.data.orders[i].isTeam);
             that.data.orders[i].name = names[i];
             that.data.orders[i].goodsSize = goodsSizes[i];
             that.data.orders[i].goodsCol = goodsCols[i];
             that.data.orders[i].price = prices[i];
             that.data.orders[i].deposit = deposits[i];
             that.data.orders[i].num = nums[i];
-            that.data.orders[i].img = imgss[i]
+            that.data.orders[i].img = imgss[i];
+            that.data.orders[i].isTeam = isTeam[i]
           }
           console.log(that.data.orders)
           that.setData({
