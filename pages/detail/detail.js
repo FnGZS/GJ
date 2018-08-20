@@ -131,7 +131,8 @@ gouwu:function(){
                 goodsColor: that.data.colortext,
                 goodsSize: that.data.sizetext, 
                 price: that.data.price,
-                deposit:that.data.money
+                deposit:that.data.money,
+                isTeam:0
               },
               method: 'POST',
               header: {
@@ -274,6 +275,7 @@ gouwu:function(){
     var goods_color = this.data.colortext; 
     var goods_id = this.data.goods_id;
     var numm = this.data.num2;
+    var isTeam = 0;
     // console.log(UserId)
     var UserId = wx.getStorageSync('UserId');
     var login = wx.getStorageSync('login');
@@ -283,7 +285,7 @@ gouwu:function(){
     if (login) {
 
       wx.navigateTo({
-        url: '../Corder/Corder?numm=' + numm + '&goods_id=' + goods_id + '&goods_color=' + goods_color + '&goods_dimension=' + goods_dimension + '&goods_price=' + goods_price + '&goods_earnest=' + goods_earnest + '&goods_name=' + goods_name + '&goods_img=' + goods_img + '&judge=' + judge,
+        url: '../Corder/Corder?numm=' + numm + '&goods_id=' + goods_id + '&goods_color=' + goods_color + '&goods_dimension=' + goods_dimension + '&goods_price=' + goods_price + '&goods_earnest=' + goods_earnest + '&goods_name=' + goods_name + '&goods_img=' + goods_img + '&judge=' + judge + '&isTeam=' + isTeam ,
       })
 
     }
@@ -323,7 +325,8 @@ gouwu:function(){
         console.log(res)
         that.setData({
           goods: res.data,
-          goods_index: res.data
+          goods_index: res.data,
+          goods_img: res.data.goods_img
         })
         console.log(that.data.goods)
         var num = JSON.parse(that.data.goods.goods_imgs);

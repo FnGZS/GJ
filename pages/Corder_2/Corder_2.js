@@ -50,6 +50,7 @@ Page({
     nums: [],
     guiges: [],
     goodsid:[],
+    isTeam:[],
     Coupon_id:'',
     guige:[]
   },
@@ -93,7 +94,7 @@ Page({
       var an = '';
       var ap = '';
       var ad = '';
-      console.log(imgURL)
+    console.log(options)
     this.setData({
       judge: options.judge,
       cun: JSON.parse(options.cun),
@@ -106,11 +107,17 @@ Page({
       guiges: JSON.parse(options.guige),
       nums: JSON.parse(options.nums),
       goodsid: JSON.parse(options.goodsid),
+      isTeam: JSON.parse(options.isTeam),
     })
     var qq = [];
     for (var i = 0; i < this.data.numberss;i++)
     {
-      qq[i] = imgURL + "/goods/" + this.data.imgs[i]
+      if (this.data.isTeam[i] == 0){
+        qq[i] = imgURL + "/goods/" + this.data.imgs[i];
+      }else{
+        qq[i] = imgURL + "/team/" + this.data.imgs[i];
+        
+      }
     }
     console.log(qq)
     this.setData({

@@ -27,7 +27,8 @@
                               <view class='contents'>
                                 <view class='goodsname' data-index="{{index}}" >{{names[index]}}</view>
                                 <view class='Collection-num' data-index="{{index}}"><text space="ensp">分类：{{yanses[index]}}，尺码：{{sizes[index]}}</text></view>
-                                <view class='price' data-index="{{index}}"><text space="ensp">定金：{{cun[index]}}   <text style='color:#000'>x{{nums[index]}}</text></text></view>
+                                <view class='price' data-index="{{index}}" wx:if="{{isTeam[index] == 0}}"><text space="ensp" >定金：{{cun[index]}}   <text style='color:#000'>x{{nums[index]}}</text></text></view>
+                                <view class='price' data-index="{{index}}" wx:if="{{isTeam[index] == 1}}"><text space="ensp" >价格：{{cun[index]}}   <text style='color:#000'>x{{nums[index]}}</text></text></view>
                               </view>
                           </view>
                     </view>

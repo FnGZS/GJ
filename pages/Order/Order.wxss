@@ -145,10 +145,18 @@
   white-space: nowrap;  /*强制不换行*/
 }
 .Benefits{
-  border-top: #dbdbdb solid 1px;
+  border-top: #dbdbdb solid 1rpx;
   clear: both;
   width: 100%;
-   height: 40px; 
+   /* height: 40px;  */
+}
+.Benefits1{
+   border-top: #dbdbdb solid 1rpx;
+  border-bottom: #dbdbdb solid 1rpx; 
+  /* border: red solid 1rpx; */
+  clear: both;
+  width: 100%;
+  height: 40px;  
 }
 .pay{
   line-height: 50rpx;
@@ -202,7 +210,7 @@
   background-color: #e6e6e6;
 }
 .gu{
-  border-bottom: #dbdbdb solid 1px;
+  /* border-bottom: #dbdbdb solid 1px; */
   /* height: 190px; */
 }
 .Deposit{
@@ -260,7 +268,9 @@
 }
 /* 是否显示 */
 .disll{
+  border-bottom: #dbdbdb solid 1rpx; 
   display: block;
+  height:40px;
 }
 .disl{
   display: none;

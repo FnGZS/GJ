@@ -80,7 +80,8 @@ Page({
     deposits: [],
     nums: [],
     names: [],
-    imgs: []
+    imgs: [],
+    isTeam:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -120,6 +121,7 @@ Page({
         var namess = [];
         var img = [];
         var xx = [];
+        var isTeam = [];
         namess = JSON.parse(that.data.address.name);
         goodsSizess = JSON.parse(that.data.address.goodsSize);
         goodsColss = JSON.parse(that.data.address.goodsCol);
@@ -127,9 +129,17 @@ Page({
         depositss = JSON.parse(that.data.address.deposit);
         numss = JSON.parse(that.data.address.num);
         img = JSON.parse(that.data.address.img);
-        for (var i = 0; i < img.length; i++) {
-          xx.push(imgURL + '/goods/' + img[i]);
-        }
+        isTeam = JSON.parse(that.data.address.isTeam);
+       
+          for (var i = 0; i < img.length; i++) {
+            if (isTeam[i] == 0){
+              xx.push(imgURL + '/goods/' + img[i]);
+            }else{
+              xx.push(imgURL + '/team/' + img[i]);
+            }   
+          }
+      
+        
         that.setData({
           goodsSizes: goodsSizess,
           names: namess,
@@ -137,7 +147,8 @@ Page({
           prices: pricess,
           deposits: depositss,
           nums: numss,
-          imgs: xx
+          imgs: xx,
+          isTeam: isTeam
         })
         console.log(that.data.address)
       }

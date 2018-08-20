@@ -78,7 +78,7 @@
             <image style='width:40rpx;height:40rpx;' src='/images/dianpu.png'></image>
             <view class="dbtextt">店铺</view>
          </view>
-          <view style='float:right;margin-right:50rpx;'>
+          <view style='float:right;margin-right:50rpx;' bindtap='kefu'>
            <image style='width:40rpx;height:40rpx;' src='/images/wangwang.png'></image>
             <view class="dbtextt" >客服</view>
           </view>

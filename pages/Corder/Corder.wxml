@@ -22,11 +22,13 @@
       </view>
       <view class="content" >
             <view class='Collection'>
-              <view class='Collection-img'><image src='/images/touxiang2.jpeg'></image></view>
+              <view class='Collection-img'><image src='{{goods_img}}'></image></view>
                 <view class='contents'>
                   <view class='goodsname'>{{goods_name}}</view>
-                  <view class='Collection-num'><text space="ensp">分类：{{goods_color}}，尺码：{{goods_dimension}}</text></view>
-                  <view class='price'><text space="ensp">￥{{goods_price}}  定金：{{goods_earnest}}   <text style='color:#000'>x{{numm}}</text></text></view>
+                  <view class='Collection-num' wx:if="{{isTeam == 0}}"><text space="ensp">分类：{{goods_color}}，尺码：{{goods_dimension}}</text></view>
+
+                  <view class='Collection-num' wx:if="{{isTeam == 1}}"><text space="ensp">从事：{{goods_classify}}，擅长：{{goods_style}}</text></view>
+                  <view class='price'><text space="ensp">￥{{goods_price}}.00  定金：{{goods_earnest}}   <text style='color:#000'>x{{numm}}</text></text></view>
                 </view>
             </view>
       </view>
@@ -58,6 +60,6 @@
       </view>
       <view class='Underline'></view>
       <view class="cart-footer">
-                  <text class="cart-toatl-price">合计:￥{{earnest}}</text>
+                  <text class="cart-toatl-price">合计:￥{{earnest}}.00</text>
                   <view class='cart-footer-button' bindtap='Immediate'> 立即结算</view>
       </view>  

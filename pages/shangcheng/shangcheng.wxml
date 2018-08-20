@@ -1,57 +1,69 @@
- 
-<view class="main" >
-         <view class="cart-box" >  
-         <!-- 判断有无商品添加进来 -->
-           <view class='nerver' style='display:{{display}}'  >
-           <image class='max' src='/images/gouwuche.png'></image>
-            <view>暂无商品</view>    
-        </view> 
-                 <!-- <view class='nerver' style='display:{{display}}'> 暂无商品</view>  -->
-                 <view class='Transverse' style='display:{{dis}}'></view> 
-             <!-- 有商品 -->
-             <view wx:for="{{carts}}" wx:key="{{index}}">
-               <view >
-                  <view class='Store'>
-                      <view class='pos'>
-                           <icon wx:if="{{item.selected}}" type="success"  data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
-                       <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" catchtap="selectList"/>
-                      </view>
-                      <view class='Storename'>{{item.shopName}}</view>      
-                  </view>
-                  <view class='xi'></view>
-                  <!-- 内容  -->
-                  <view  class="cart-list"  >         
-                            <icon wx:if="{{item.selected}}" type="success"  data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
-                            <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" catchtap="selectList"/>
-                            <view catchtap='click' data-id ="{{item.id}}">
-                                <text class="cart-del" catchtap="deleteList" data-index="{{index}}">删除</text> 
-                                <navigator ><image class="cart-thumb" src="{{list[index]}}"></image></navigator>
-                                <text class="cart-pro-name">{{item.goods_name}}</text>
-                                <text class='cart-pro-name-guige'>规格：{{item.goods_classify}}</text>
-                                <text class='cart-pro-name-guigere'>尺寸：{{item.tro.goodsSize}}  颜色：{{item.tro.goodsColor}}</text>
-                                <text class="cart-pro-price">￥{{item.tro.deposit}}</text>
-                                
-                                <view class="cart-count-box">
-                                    <view class='iconfont icon-jian cart-count-down' catchtap="minusCount" data-obj="{{obj}}" data-index="{{index}}"></view>
-                                    <text class="cart-count-num">{{item.tro.num}}</text>
-                                    <view class='iconfont icon-jia cart-count-add' catchtap="addCount" data-index="{{index}}"></view>
-                                </view>  
-                            </view>
-                    </view> 
-              </view>
-                  <!-- 分隔灰色的线条 -->
-                  <view class='Transverse'></view> 
-                          
-              </view>
-        <view class="cart-footer">
-            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll"/>
-            <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll"/>
-            <text class='quanxuan'>全选</text>
-            <text class="cart-toatl-price">￥{{totalPrice}}(不含运费)</text>
-            <view class='cart-footer-button' bindtap='payment'> 立即结算</view>
+<view class="main">
+  <view class="cart-box">
+    <!-- 判断有无商品添加进来 -->
+    <view class='nerver' style='display:{{display}}'>
+      <image class='max' src='/images/gouwuche.png'></image>
+      <view>暂无商品</view>
+    </view>
+    <!-- <view class='nerver' style='display:{{display}}'> 暂无商品</view>  -->
+    <view class='Transverse' style='display:{{dis}}'></view>
+    <!-- 有商品 -->
+    <view wx:for="{{carts}}" wx:key="{{index}}">
+      <view>
+        <view class='Store'>
+          <view class='pos'>
+            <icon wx:if="{{item.selected}}" type="success" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
+            <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" catchtap="selectList" />
+          </view>
+          <view class='Storename'>{{item.shopName}}</view>
         </view>
-       </view>  
-</view> 
+        <view class='xi'></view>
+        <!-- 内容  -->
+        <view class="cart-list">
+          <icon wx:if="{{item.selected}}" type="success" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
+          <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" catchtap="selectList" />
+           <view catchtap='click' data-id="{{item.id}}" >
+            <text class="cart-del" catchtap="deleteList" data-index="{{index}}">删除</text>
+            <navigator>
+              <image class='cart-thumb' src='{{imgurl}}/goods/{{item.goods_img}}' wx:if="{{item.tro.isTeam == 0}}"></image>
+              <image class='cart-thumb' src='{{imgurl}}/team/{{item.goods_img}}' wx:if="{{item.tro.isTeam == 1}}"></image>
+            </navigator>
+            <text class="cart-pro-name">{{item.goods_name}}</text>
+            <text class='cart-pro-name-guigere' wx:if="{{item.tro.isTeam == 0}}">规格：{{item.tro.goodsSize}}</text>
+            <text class='cart-pro-name-guige' wx:if="{{item.tro.isTeam == 0}}">颜色：{{item.tro.goodsColor}}</text>
+            <text class="cart-pro-price" wx:if="{{item.tro.isTeam == 0}}">￥{{item.tro.deposit}}</text>
+
+            <text class='cart-pro-name-guigere' wx:if="{{item.tro.isTeam == 1}}">从事：{{item.tro.goodsSize}}</text>
+            <text class='cart-pro-name-guige' wx:if="{{item.tro.isTeam == 1}}">擅长：{{item.tro.goodsColor}}</text>
+            <text class="cart-pro-price" wx:if="{{item.tro.isTeam == 1}}">￥{{item.tro.price}}</text>
+
+            <view class="cart-count-box" wx:if="{{item.tro.isTeam == 0}}">
+              <view class='iconfont icon-jian cart-count-down' catchtap="minusCount" data-obj="{{obj}}" data-index="{{index}}" ></view>
+              <text class="cart-count-num"  >{{item.tro.num}}</text>
+              <view class='iconfont icon-jia cart-count-add' catchtap="addCount" data-index="{{index}}" ></view>
+            </view>
+
+            <view class="cart-count-box" wx:if="{{item.tro.isTeam == 1}}">
+              <view class='iconfont icon-jian cart-count-down' catchtap="minusCount" data-obj="{{obj}}" data-index="{{index}}" style='color:#ddd' ></view>
+              <text class="cart-count-num"  >1</text>
+              <view class='iconfont icon-jia cart-count-add' catchtap="addCount" data-index="{{index}}" style='color:#ddd'></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 分隔灰色的线条 -->
+      <view class='Transverse'></view>
+
+    </view>
+    <view class="cart-footer">
+      <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll" />
+      <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll" />
+      <text class='quanxuan'>全选</text>
+      <text class="cart-toatl-price">￥{{totalPrice}}(不含运费)</text>
+      <view class='cart-footer-button' bindtap='payment'> 立即结算</view>
+    </view>
+  </view>
+</view>
 
 
 <!-- url="../details/details?id={{item.id}}" -->
