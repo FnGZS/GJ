@@ -444,14 +444,14 @@ Page({
           // console.log(that.data.daishou)
           console.log(that.data.Anummm)
 
-<<<<<<< HEAD
+
           console.log(that.data.numbers)
            console.log(that.data.daifu)
           console.log(that.data.Anummm)
-=======
+
           // console.log(that.data.numbers)
           // console.log(that.data.daifu)
->>>>>>> 37446273cdede3ebf5176bb25f9be6058341b06c
+
         }
 
       }
