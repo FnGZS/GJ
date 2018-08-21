@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "装修进度",
+  "enablePullDownRefresh": true,
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#EECFA1",

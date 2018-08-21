@@ -253,8 +253,8 @@ Page({
     var style = that.data.decorarray[that.data.decorindex];
     var grade = that.data.decoratearry[that.data.decorateindex];
     var phone = that.data.phone;
-    var phone = '17857058385';
-    var area = 100;
+    // var phone = '17857058385';
+    // var area = 100;
 
     var price = area * 500 + shi * 2000 + ting * 3000 + chu * 4000 + wei * 5000 + 1000 + 1000;
 

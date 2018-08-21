@@ -46,8 +46,9 @@
 
     <view class='cost'>
       <view class='cost-text'>总报价：</view>
-      <view class='cost-num'>{{price}}</view>
       <view class='cost-num'>￥</view>
+      <view class='cost-num'>{{price}}</view>
+      
     </view>
 
     <view class='line'></view>

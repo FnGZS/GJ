@@ -346,7 +346,7 @@ page{
   height: 80rpx;
   font-size: 27rpx;
   padding: 5rpx;
-  background-color: #ddd;
+
   position: fixed;
   bottom: 100rpx;
   right: 50rpx;

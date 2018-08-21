@@ -75,8 +75,6 @@
   </view>
 </view>
 
-
-<<<<<<< HEAD
 <view class="weui-cells__title {{isShow==1?'dis':''}}" >
           <view class='nerver' style='display:{{displaypay}}'  >
            <image class='max' src='/images/gouwuche.png'></image>
@@ -108,7 +106,8 @@
                         </view>
                         <view class='baitiao'></view>
                     </view>
-=======
+</view>
+</view>
 <view class="weui-cells__title {{isShow==1?'dis':''}}">
   <view class='nerver' style='display:{{displaypay}}'>
     <image class='max' src='/images/gouwuche.png'></image>
@@ -153,7 +152,6 @@
       </view>
       <view class='baitiao'></view>
     </view>
->>>>>>> 37446273cdede3ebf5176bb25f9be6058341b06c
 
     <view class='pictore' data-index="{{index}}" wx:if="{{Anummmm == 1}}" wx:for="{{Anumbers}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
       <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
