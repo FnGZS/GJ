@@ -10,13 +10,17 @@ Page({
     URL: getApp().globalData.PHPURL,
     URLimg: "",
     img:"tu0",
+    lodingHidden: true,
     kongbaiHeight:null,
     caseid:null,
     caseMes:null,
     commentState:'none',
     comment_placeholder:'写评论（最多100字）',
     comment_content:null,
+    commentNum:null,
     casesDetail:null,
+    collection:null,
+    collectionColor:null,
     footHead:null,
     stage:null,
     Dynamic:[],
@@ -24,8 +28,8 @@ Page({
     current_scheId:null,
     current_dynId:null,
     current_userId:null,
-    colleaction_text1:'收藏',
-    colleaction_text2: '案例'
+    colleaction_text1:null,
+    colleaction_text2: null
   },
   blank_click:function(e){
     // console.log(e);
@@ -41,9 +45,12 @@ Page({
     var that = this;
     this.setData({
       URLimg: iURL,
-      caseid: options.caseid
+      caseid: options.caseid,
+      // caseid:1,
+      lodingHidden: false,
     });
     this.getCasesDetail(); //获取案例详情
+    this.getIsColect(); //获取是否收藏了案例
     this.getStateMes(); //获取案例阶段信息
     // 获取系统信息
     wx.getSystemInfo({
@@ -68,7 +75,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -89,7 +96,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.getCasesDetail(); //获取案例详情
+    this.getIsColect(); //获取是否收藏了案例
+    this.getStateMes(); //获取案例阶段信息
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -99,18 +116,17 @@ Page({
     
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
     
   },
+  //获取案例详情
   getCasesDetail:function(){
     var that = this;
     wx.request({
       url: this.data.URL + '/Decorate/detail_case',
       data: {
-        caseId:this.data.caseid
+        caseId:this.data.caseid,
+        userId: wx.getStorageSync('UserId')
       },
       method: 'POST',
       header: {
@@ -121,17 +137,50 @@ Page({
         var array = [];
         var obj = res.data;
         array.push(obj);
+        console.log(array)
         that.setData({
-          casesDetail: array
+          casesDetail: array,
+          collection: array[0].collection,
+          commentNum: array[0].comment
         })
-        // console.log(that.data.casesDetail)
+        console.log(that.data.casesDetail)
         that.setData({
           footHead:that.data.casesDetail[0].friHead
         })
       } 
     }) 
   },
-
+  //获取是否收藏了当前案例
+  getIsColect:function(){
+    var that = this;
+    wx.request({
+      url: this.data.URL + '/Decorate/isCollect',
+      data: {
+        caseId: this.data.caseid,
+        userId: wx.getStorageSync('UserId')
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+        if(res.data == 1){
+          that.setData({
+            colleaction_text1: '取消',
+            colleaction_text2: '收藏',
+            collectionColor: '#ddd'
+          })
+        }else{
+          that.setData({
+            colleaction_text1: '收藏',
+            colleaction_text2: '案例',
+             collectionColor: '#FF9000'
+          })
+        }
+      }
+    }) 
+  },
   //获取阶段信息
   getStateMes:function(){
     var that = this;
@@ -146,11 +195,17 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         that.setData({
           stage:res.data
         })  
-        // console.log(that.data.stage);
-        
+        console.log(that.data.stage);
+        if (that.data.stage == null){
+          that.setData({
+            stage:[],
+            lodingHidden: true,
+          })
+        }
         for (var i = 0; i < that.data.stage.length ; i ++){
           that.getDynamicMes(that.data.stage[i].scheId);
         }
@@ -232,7 +287,8 @@ Page({
         array[dynId] = obj;
         
         that.setData({
-          shortComment:array
+          shortComment:array,
+          lodingHidden: true,
         })
         // console.log(that.data.shortComment[1]);
       }
@@ -290,10 +346,10 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(res);
           that.setData({
             commentState: 'none',
-            comment_content: null
+            comment_content: null,
+            commentNum: parseInt(that.data.commentNum) + 1
           })
           that.getShortComment(that.data.current_scheId, that.data.current_dynId);
         }
@@ -312,7 +368,22 @@ Page({
     }
     console.log(this.data.comment_content);
   },
-
+  //图片预览
+  imgYu:function(e){
+    console.log(e)
+    var pic = e.currentTarget.dataset.yuimgs;
+    var index = e.currentTarget.dataset.index;
+    for(var i = 0 ; i < pic.length ; i ++){
+      pic[i] = this.data.URLimg + '/dynamic/' + pic[i];
+    }
+    wx.previewImage({
+      current: pic[index],     //当前图片地址
+      urls: pic,               //所有要预览的图片的地址集合 数组形式
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   //收藏
   collection:function(){
     var that = this;
@@ -331,16 +402,33 @@ Page({
         },
         success: function (res) {
           console.log(res);
+          
           if (res.data == -1) {
+            wx.showToast({
+              title: '取消成功',
+              icon: 'none',
+              duration: 1000
+            })
             that.setData({
               colleaction_text1: '收藏',
-              colleaction_text2: '案例'
+              colleaction_text2: '案例',
+              collection: parseInt(that.data.collection) - 1,
+              collectionColor: '#FF9000'
+              
             })
           }
           else {
+            wx.showToast({
+              title: '收藏成功',
+              icon:'none',
+              duration:1000
+            })
             that.setData({
               colleaction_text1: '取消',
-              colleaction_text2: '收藏'
+              colleaction_text2: '收藏',
+              collection: parseInt(that.data.collection) + 1,
+              collectionColor: '#ddd'
+              
             })
           }
         }

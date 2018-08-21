@@ -42,9 +42,9 @@
 
 
   <view class="form-item">
-    <view class="form-item-bd">
+    <view class="form-item-bd" >
       <view style='float:left;width:200rpx; margin-top: 10rpx;'>您的房屋面积</view>
-      <view style='float:right' class="arrows">
+      <view style='' class="m2">
         ㎡
       </view>
       <input class='PF' name="userName" maxlength='4' bindinput="areaInput" />

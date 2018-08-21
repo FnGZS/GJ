@@ -122,7 +122,6 @@
       <view class='baitiao'></view>
     </view>
 
-
     <view class='pictore' data-index="{{index}}" wx:if="{{Anummmm == 1}}" wx:for="{{Anumbers}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
       <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>

@@ -6,8 +6,8 @@
   <view class='jingdiananlie-2'>{{item.caseCont}}</view>
   <view class='jingdiananlie-3'>
     <view class='jingdiananlie-3-zi1'>浏览： {{item.browseNum}}</view>
-    <view class='jingdiananlie-3-zi1'>评论： {{item.comment}}</view>
-    <view class='jingdiananlie-3-zi1'>收藏： {{item.collection}}</view>
+    <view class='jingdiananlie-3-zi1'>评论： {{commentNum}}</view>
+    <view class='jingdiananlie-3-zi1'>收藏： {{collection}}</view>
     <view class='jingdiananlie-3-zi11'>10.58Km</view>
   </view>
   <view class='hengtiao'></view>
@@ -63,8 +63,8 @@
           <view class='progress-content-text'>
             {{item.dynContent.content}}
           </view>
-          <view class='progress-content-img'>
-            <image src='{{URLimg}}/dynamic/{{item}}' wx:for="{{item.dynContent.contentImg}}"></image>
+          <view class='progress-content-img' >
+            <image src='{{URLimg}}/dynamic/{{itemy}}' wx:for="{{item.dynContent.contentImg}}" wx:for-item="itemy" data-index='{{index}}' data-yuImgs='{{item.dynContent.contentImg}}' bindtap='imgYu' ></image>
           </view>
           <view class='progress-content-bottom'>
             <view class='progress-content-time'>{{item.dynContent.ctime}}</view>
@@ -74,8 +74,8 @@
           </view>
           <view class='progress-comment'>
             <view class='progress-comment-small'></view>
-            <view class='progress-comment-bac'>
-              <view wx:for="{{shortComment[item.dynContent.id]}}" class='progress-comment-mes'>
+            <view class='progress-comment-bac' wx:if="{{shortComment[item.dynContent.id]}}">
+              <view wx:for="{{shortComment[item.dynContent.id]}}" class='progress-comment-mes' >
                 <view class='comment-name'>{{item.shortContent.nickName}}</view>
                 <view>：</view>
                 <view class='comment-text'>{{item.shortContent.content}}</view>
@@ -105,8 +105,14 @@
       <view class='post-text'>预约</view>
       <view >参观</view>
     </view>
-  <view class='post1' bindtap='collection'>
+  <view class='post1' bindtap='collection' style=' background-color: {{collectionColor}};'>
     <view class='post-text'>{{colleaction_text1}}</view>
     <view >{{colleaction_text2}}</view>
   </view>  
+</view>
+
+<view>
+    <loading hidden="{{lodingHidden}}">
+        加载中..
+    </loading>
 </view>

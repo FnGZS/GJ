@@ -464,7 +464,6 @@ Page({
 
           // console.log(that.data.numbers)
           // console.log(that.data.daifu)
-
         }
 
       }
