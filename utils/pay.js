@@ -40,7 +40,7 @@ function pay (param) {
             icon: 'success',
             duration: 2000
           })
-          
+        
         },
         fail: function () {
           // fail
@@ -58,7 +58,7 @@ function pay (param) {
     complete: function () {
       // complete
       console.log("pay complete")
-      r
+      
     }
   })
 }

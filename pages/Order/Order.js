@@ -108,7 +108,20 @@ Page({
             success: function (res) {
               console.log(res);
               var flag=pay.Unified(res.data.openId);
-              console.log(flag);
+           
+              wx.request({
+                url: URL + '/User/notice',
+                data: {},
+                method: 'GET',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log(res)
+               
+                }
+              });
+
               wx.request({
                 url: URL + '/Order/pending_payment',
                 data: {
