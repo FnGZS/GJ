@@ -152,10 +152,6 @@
       </view>
       <view class='baitiao'></view>
     </view>
-<<<<<<< HEAD
-=======
-
->>>>>>> 05a4ac49ca7e8815d8637259fc0e8e2fcb884a6e
 
     <view class='pictore' data-index="{{index}}" wx:if="{{Anummmm == 1}}" wx:for="{{Anumbers}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
       <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">

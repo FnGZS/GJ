@@ -448,13 +448,9 @@ Page({
           console.log(that.data.numbers)
            console.log(that.data.daifu)
           console.log(that.data.Anummm)
-<<<<<<< HEAD
-=======
 
           // console.log(that.data.numbers)
           // console.log(that.data.daifu)
-
->>>>>>> 05a4ac49ca7e8815d8637259fc0e8e2fcb884a6e
         }
 
       }

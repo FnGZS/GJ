@@ -406,7 +406,7 @@ Page({
             that.setData({
               colleaction_text1: '收藏',
               colleaction_text2: '案例',
-              collection: that.data.collection - 1,
+              collection: parseInt(that.data.collection) - 1,
               collectionColor: '#FF9000'
               
             })
@@ -420,7 +420,7 @@ Page({
             that.setData({
               colleaction_text1: '取消',
               colleaction_text2: '收藏',
-              collection: that.data.collection + 1,
+              collection: parseInt(that.data.collection) + 1,
               collectionColor: '#ddd'
               
             })
