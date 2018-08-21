@@ -195,11 +195,17 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         that.setData({
           stage:res.data
         })  
-        // console.log(that.data.stage);
-        
+        console.log(that.data.stage);
+        if (that.data.stage == null){
+          that.setData({
+            stage:[],
+            lodingHidden: true,
+          })
+        }
         for (var i = 0; i < that.data.stage.length ; i ++){
           that.getDynamicMes(that.data.stage[i].scheId);
         }
