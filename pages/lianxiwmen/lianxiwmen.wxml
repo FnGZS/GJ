@@ -1,2 +1,45 @@
-<view class='lianxiwmen1'>联系电话：178545222333</view>
-<view class='lianxiwmen2'>地址：**某某有限公司</view>
+<view class='heard'>
+八年口碑公司,值得信赖
+</view>
+<view class='conter'>
+  <view class='toto'>
+    <view class='left'>
+      公司地址
+    </view>
+    <view class='right'>
+      绍兴市柯桥区山阴路218-22号
+    </view>
+  </view>
+    <view class='toto'>
+    <view class='left'>
+      联系方式
+    </view>
+    <view class='right'>
+      0575-8478268
+    </view>
+  </view>
+</view>
+<view class='image-conter'>
+      <view class='toto-image'>
+        公司展示  
+       
+      </view>
+       <view class='image'>
+        <image src='../../images/baojia.jpg'></image>
+        </view>
+</view>
+<view class='version'>
+    <view class='version-top'>
+        <view  class='version-logo'>
+          <image src='../../images/logo.jpg'></image>
+        </view>
+        <view class='Support'>
+            古杰网络科技提供技术支持
+        </view>
+         
+     </view>
+     <view class='version-text'>
+    版本 4.0.1
+     
+     </view>   
+</view>

@@ -40,7 +40,7 @@ function pay (param) {
             icon: 'success',
             duration: 2000
           })
-          return 1;
+          
         },
         fail: function () {
           // fail
