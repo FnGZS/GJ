@@ -136,6 +136,7 @@ Page({
             },
             success:function(res){
               var open_id=res.data.openId;
+              console.log(open_id);
                 let infoOpt={
                   openId: open_id,
                   toTal:total

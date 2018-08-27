@@ -45,6 +45,7 @@ function pay(param) {
       },
       fail: function (message) {
         // fail
+        reject(message)
         console.log(message);
         console.log("支付失败")
       },
@@ -106,7 +107,7 @@ function pay(param) {
         head: 'application/x-www-form-urlencoded',
         data: formData, // 设置请求的 header
         success: function (res) {
-
+          console.log(res);
           var result_code = getXMLNodeValue('result_code', res.data.toString("utf-8"))
           var resultCode = result_code.split('[')[2].split(']')[0]
           if (resultCode == 'FAIL') {
