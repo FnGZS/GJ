@@ -153,7 +153,7 @@
     </view>
 
     <view class='Benefits1'>
-      <view class='pay' bindtap='payment' data-id="{{item.orderId}}">付款</view>
+      <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.price[index]}}">付款</view>
       <view class='cha' bindtap='Cancellation' data-id="{{item.orderId}}">取消订单</view>
     </view>
   </view>

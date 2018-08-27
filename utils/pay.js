@@ -1,6 +1,7 @@
 var utilMd5 = require('md5.js');
+var Promise = require('promise');
 var URL = getApp().globalData.PHPURL;
-var success=false
+
 /* 随机数 */
 function randomString () {
   var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
@@ -23,47 +24,51 @@ function createTimeStamp () {
   return parseInt(new Date().getTime() / 1000) + ''
 }
 /* 支付   */
-function pay (param,order_number,openId) {//传进统一付款需要的param 和付款的订单号 后者可查询订单是否成功
-  wx.requestPayment({
-    timeStamp: param.timeStamp,
-    nonceStr: param.nonceStr,
-    package: param.package,
-    signType: param.signType,
-    paySign: param.paySign,
-    success: function (res) {
+function pay(param) {
+  let promise = new Promise(function (resolve, reject) {
+      //传进统一付款需要的param 和付款的订单号 后者可查询订单是否成功
+    wx.requestPayment({
+      timeStamp: param.timeStamp,
+      nonceStr: param.nonceStr,
+      package: param.package,
+      signType: param.signType,
+      paySign: param.paySign,
+      success: function (res) {
+        
+            wx.showToast({
+              title: '支付成功',
+              icon: 'success',
+              duration: 2000
+            })
+            resolve(res);
+          
+      },
+      fail: function (message) {
+        // fail
+        console.log(message);
+        console.log("支付失败")
+      },
+      complete: function (res) {
+        // complete
+        
+        console.log("pay complete")
+        wx.setStorageSync('success', true);
       
-    
-          wx.showToast({
-            title: '支付成功',
-            icon: 'success',
-            duration: 2000
-          })
-         
-   
-    },
-    fail: function (message) {
-      // fail
-      console.log(message);
-      console.log("支付失败")
-    },
-    complete: function () {
-      // complete
-      console.log("pay complete")
-      wx.setStorageSync('success', true);
-    }
-  })
+      }
+    })
+  });
+  return promise;
 }
-function Unified(openId){
-
+  function Unified(info) {
+    let promise = new Promise(function (resolve, reject) {
   var that=this;
-
   wx.request({
     url: URL + '/User/getIp',
     success: function (e) {
-  
+    
       //微信支付
-      var OpenId = openId;
-     
+      var OpenId = info.openId;
+      var total_fee = info.toTal * 100; 
       var appid = 'wx5df54af6861286cb';//appid  
       var body = '绍兴古杰装饰设计有限公司';//商户名
       var mch_id = '1497178752';//商户号  
@@ -71,9 +76,7 @@ function Unified(openId){
       var notify_url = URL + '/User/notice';//通知地址z
       var spbill_create_ip = e.data;//ip
       // var total_fee = parseInt(that.data.wxPayMoney) * 100;
-      var total_fee = 1;
       var out_trade_no = mch_id + createTimeStamp()
-      
       var trade_type = "JSAPI";
       var key = 'wanghang18867152140gujiexiaochen';
       var unifiedPayment = 'appid=' + appid + '&body=' + body + '&mch_id=' + mch_id + '&nonce_str=' + nonce_str + '&notify_url=' + notify_url + '&openid=' + OpenId + '&out_trade_no=' + out_trade_no + '&spbill_create_ip=' + spbill_create_ip + '&total_fee=' + total_fee + '&trade_type=' + trade_type + '&key=' + key
@@ -95,7 +98,7 @@ function Unified(openId){
       formData += "<sign>" + sign + "</sign>"
       formData += "</xml>"
       console.log(formData)
-
+     
       //统一支付
       wx.request({
         url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
@@ -137,16 +140,19 @@ function Unified(openId){
             var sign = utilMd5.md5(stringSignTemp).toUpperCase()
             console.log(sign)
             var param = { "timeStamp": timeStamp, "package": 'prepay_id=' + tmp1[0], "paySign": sign, "signType": 'MD5', "nonceStr": nonceStr }
-           pay(param, out_trade_no,openId)
-        
+            resolve(param);
+           //console.log( pay(param, out_trade_no, OpenId));
+            
           }
 
         },
 
       })
     }
-  })
 
+  })
+    });
+    return promise;
 }
        
 

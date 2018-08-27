@@ -1,6 +1,11 @@
 var pay = require('../../utils/pay.js');
+
+
 var app = getApp()
 var URL = getApp().globalData.PHPURL;
+
+
+
 Page({
   data: {
     isShow: 0,
@@ -109,8 +114,9 @@ Page({
   //付款
   payment: function(e) {
     var UserId = wx.getStorageSync('UserId');
- 
+    console.log(e);
     var orderids = e.currentTarget.dataset.id;
+    var total = e.currentTarget.dataset.total;
     let that = this;
     wx.showModal({
       title: '提示',
@@ -128,16 +134,22 @@ Page({
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function(res) {
-              wx.setStorageSync('success', false)
-              pay.Unified(res.data.openId);
-           
-              },
-            complete: function() {
-             
+            success:function(res){
+              var open_id=res.data.openId;
+                let infoOpt={
+                  openId: open_id,
+                  toTal:total
+                }
+                //promise异步处理 写的头大
+                pay.Unified(infoOpt).then((res) => {
+                  var data=res;
+                  pay.pay(data).then((res) => {
+                    console.log(res);
+                    that.getpaymentend(orderids)
+                  })
+              })
             }
-
-          })
+          })   
         }
 
       }
