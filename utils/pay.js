@@ -1,4 +1,6 @@
 var utilMd5 = require('md5.js');
+var URL = getApp().globalData.PHPURL;
+var success=false
 /* 随机数 */
 function randomString () {
   var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
@@ -21,8 +23,7 @@ function createTimeStamp () {
   return parseInt(new Date().getTime() / 1000) + ''
 }
 /* 支付   */
-function pay (param) {
-  console.log(param);
+function pay (param,order_number,openId) {//传进统一付款需要的param 和付款的订单号 后者可查询订单是否成功
   wx.requestPayment({
     timeStamp: param.timeStamp,
     nonceStr: param.nonceStr,
@@ -30,25 +31,15 @@ function pay (param) {
     signType: param.signType,
     paySign: param.paySign,
     success: function (res) {
-      // success
-      console.log(res)
-      wx.navigateBack({
-        delta: 1, // 回退前 delta(默认为1) 页面
-        success: function (res) {
+      
+    
           wx.showToast({
             title: '支付成功',
             icon: 'success',
             duration: 2000
           })
-        
-        },
-        fail: function () {
-          // fail
-        },
-        complete: function () {
-          // complete
-        }
-      })
+         
+   
     },
     fail: function (message) {
       // fail
@@ -58,20 +49,21 @@ function pay (param) {
     complete: function () {
       // complete
       console.log("pay complete")
-      
+      wx.setStorageSync('success', true);
     }
   })
 }
 function Unified(openId){
-  var URL = getApp().globalData.PHPURL;
+
   var that=this;
+
   wx.request({
     url: URL + '/User/getIp',
     success: function (e) {
-      console.log(openId);
+  
       //微信支付
       var OpenId = openId;
-      console.log(OpenId);
+     
       var appid = 'wx5df54af6861286cb';//appid  
       var body = '绍兴古杰装饰设计有限公司';//商户名
       var mch_id = '1497178752';//商户号  
@@ -81,6 +73,7 @@ function Unified(openId){
       // var total_fee = parseInt(that.data.wxPayMoney) * 100;
       var total_fee = 1;
       var out_trade_no = mch_id + createTimeStamp()
+      
       var trade_type = "JSAPI";
       var key = 'wanghang18867152140gujiexiaochen';
       var unifiedPayment = 'appid=' + appid + '&body=' + body + '&mch_id=' + mch_id + '&nonce_str=' + nonce_str + '&notify_url=' + notify_url + '&openid=' + OpenId + '&out_trade_no=' + out_trade_no + '&spbill_create_ip=' + spbill_create_ip + '&total_fee=' + total_fee + '&trade_type=' + trade_type + '&key=' + key
@@ -110,7 +103,7 @@ function Unified(openId){
         head: 'application/x-www-form-urlencoded',
         data: formData, // 设置请求的 header
         success: function (res) {
-          console.log(res.data)
+
           var result_code = getXMLNodeValue('result_code', res.data.toString("utf-8"))
           var resultCode = result_code.split('[')[2].split(']')[0]
           if (resultCode == 'FAIL') {
@@ -134,7 +127,7 @@ function Unified(openId){
             var tmp = prepay_id.split('[')
             var tmp1 = tmp[2].split(']')
             //签名  
-            console.log(tmp1);
+         
             var key = 'wanghang18867152140gujiexiaochen';
             var appId = 'wx5df54af6861286cb';
             var timeStamp = createTimeStamp();
@@ -144,7 +137,8 @@ function Unified(openId){
             var sign = utilMd5.md5(stringSignTemp).toUpperCase()
             console.log(sign)
             var param = { "timeStamp": timeStamp, "package": 'prepay_id=' + tmp1[0], "paySign": sign, "signType": 'MD5', "nonceStr": nonceStr }
-            pay(param)
+           pay(param, out_trade_no,openId)
+        
           }
 
         },
