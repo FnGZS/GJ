@@ -297,8 +297,8 @@ Page({
               couponId: res.data
             })
             
-            console.log(that.data.couponId.length)
-            if (res.data == -1) {
+            // console.log(that.data.couponId.length)
+            if (res.data == -1 || res.data==null) {
               that.setData({
                 array: ['暂无优惠券']
               })
