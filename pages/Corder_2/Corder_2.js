@@ -299,11 +299,7 @@ Page({
               couponId: res.data
             })
             
-<<<<<<< HEAD
-            
-=======
-            // console.log(that.data.couponId.length)
->>>>>>> 731486fd8fa7d1d26e573ac5cb13591152d5d2d0
+
             if (res.data == -1 || res.data==null) {
               that.setData({
                 array: ['暂无优惠券']
