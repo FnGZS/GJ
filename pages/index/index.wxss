@@ -256,8 +256,7 @@ opacity:.0;
 }
  .line{
   height: 8rpx;
-  width: 100%;
-  background: #ddd;
+  width: 100%;U
   margin-bottom: 5rpx;
 } 
 /* 案例 */
@@ -265,14 +264,14 @@ opacity:.0;
   display: flex;
  
   height: 35rpx;
-background: white;
-  border-bottom: 1px solid #ddd;
+  background: white;
+  border-bottom: 1px solid #EDEDED;
   padding: 15rpx;
 }
 .case-title-left{
   width: 10rpx;
   height: 100%;
-  background: #B68F4C;
+  background: #ff9000;
   
 }
 .case-title-right{
@@ -287,7 +286,7 @@ height:35rpx;
   padding: 10rpx;
   display: flex;
   background-color: white;
-  border-bottom: 1px solid #EECFA1;
+  border-bottom: 1px solid #EDEDED;
 }
 .scroll-view-main-left{
   width:40%;

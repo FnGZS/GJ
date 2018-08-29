@@ -2,7 +2,7 @@
 <view class="container" >
   <view class="userinfo">
     <view class='userinfo_btn' wx:if="{{!hasUserInfo && canIUse}}">
-     <image class="userinfo-avatar" src="/images/2.jpg" background-size="cover"></image>
+     <image class="userinfo-avatar" src="/images/Unlogin.png" background-size="cover"></image>
      
     <button  class='getUserInfo ' open-type="getUserInfo" bindgetuserinfo="getUserInfo" > 登录 </button>
     </view>
@@ -58,6 +58,15 @@
             </view>
         </view>
  </view>
+  <navigator class='soujin'  url="../youhuiquan/youhuiquan">
+        <view class='shou1'>
+            <view class='iconfont icon-youhuiquan'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>wode</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+             </view>
+        </view>
+ </navigator>
  <view class='soujin' bindtap='collection' >
         <view class='shou1'>
             <view class='iconfont icon-wodeshoucang'></view>
@@ -76,6 +85,7 @@
              </view>
         </view>
  </navigator>
+ 
  <navigator class='soujin'  >
         <view class='shou1' bindtap='address'>
             <view class='iconfont icon-dizhiguanli'></view>
