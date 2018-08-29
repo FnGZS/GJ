@@ -10,11 +10,7 @@
     <!-- 有商品 -->
     <view wx:for="{{carts}}" wx:key="{{index}}">
       <view>
-        <view class='Store'>
-          <view class='pos'>
-            <icon wx:if="{{item.selected}}" type="success" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
-            <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" catchtap="selectList" />
-          </view>
+        <view class='Store' >
           <view class='Storename'>{{item.shopName}}</view>
         </view>
         <view class='xi'></view>
