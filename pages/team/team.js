@@ -182,7 +182,7 @@ Page({
     var img = e.currentTarget.dataset.img;
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../teamDetail/teamDetail?id=' + id
+      url: '../teamDetail1/teamDetail1?id=' + id
     });
   },
   /**
