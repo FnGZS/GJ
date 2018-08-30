@@ -114,6 +114,7 @@ Page({
     {
       if (this.data.isTeam[i] == 0){
         qq[i] = imgURL + "/goods/" + this.data.imgs[i];
+        console.log(qq[i]);
       }else{
         qq[i] = imgURL + "/team/" + this.data.imgs[i];
         
@@ -254,7 +255,7 @@ Page({
     var that = this;
     
     //添加地址
-    console.log(1111111)
+  
     console.log(that.data.judge)
     if (this.data.judge == '1') {
     } else {
@@ -292,16 +293,18 @@ Page({
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
+        
             console.log(res.data)
             that.setData({
               couponId: res.data
             })
             
-            console.log(that.data.couponId.length)
-            if (res.data == -1) {
+
+            if (res.data == -1 || res.data==null) {
               that.setData({
                 array: ['暂无优惠券']
               })
+              console.log(1111111)
             }
             else {
               for (var i = 0; i < res.data.length; i++) {

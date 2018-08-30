@@ -1,24 +1,29 @@
-
 var pay = require('../../utils/pay.js');
+
+
 var app = getApp()
+var URL = getApp().globalData.PHPURL;
+
+
+
 Page({
   data: {
     isShow: 0,
     currentTab: 0,
     xx: 5,
     orders: [],
-    list: [],//商品图片
-    iconn: [],//店铺图标
-    daifu: [],// 待支付
-    daifa: [],// 待发货
-    daishou: [],// 待收货
+    list: [], //商品图片
+    iconn: [], //店铺图标
+    daifu: [], // 待支付
+    daifa: [], // 待发货
+    daishou: [], // 待收货
     daiping: [], // 待评价
     display: 'none', //是否有商品
     displaypay: 'none', //是否有商品
     displayfa: 'none', //是否有商品
     displayshou: 'none', //是否有商品
-    displayping: 'none',//是否有商品
-    arrorder: [],//全部订单
+    displayping: 'none', //是否有商品
+    arrorder: [], //全部订单
     orderid: '',
     names: '',
     imgs: '',
@@ -29,14 +34,15 @@ Page({
     Anumbersss: 0,
     Anumm: 0,
     Anummm: 0,
-    Anummmm:0,
+    Anummmm: 0,
     Anums: 0,
     dfu: [],
     dfa: [],
     dshou: [],
-    dping: []
+    dping: [],
+   
   },
-  onLoad: function (e) {
+  onLoad: function(e) {
     var that = this;
     that.setData({
       currentTab: e.currentTab,
@@ -45,7 +51,7 @@ Page({
     console.log(e.currentTab)
     this.onShow();
   },
-  swichNav: function (e) {
+  swichNav: function(e) {
     console.log(e)
 
     for (var i = 0; i < 5; i++) {
@@ -60,10 +66,10 @@ Page({
 
   },
   // 链接的界面用商品的orderid判断
-  Interface: function (e) {
+  Interface: function(e) {
     console.log(e)
     var start = e.currentTarget.dataset.state;
-    var orderids = e.currentTarget.dataset.id; 
+    var orderids = e.currentTarget.dataset.id;
     console.log(start)
     if (start == "待付款") {
       wx.navigateTo({
@@ -83,18 +89,41 @@ Page({
       })
     }
   },
+  //付款成功
+  getpaymentend: function (orderids){
+    var that=this;
+    wx.request({
+      url: URL + '/Order/pending_payment',
+      data: {
+        orderId: orderids,
+        b: 1
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+        wx.navigateTo({
+          url: '../Order/Order?currentTab=2'
+        })
+        that.onShow(); //重加载
+      }
+    });
+  },
   //付款
-  payment: function (e) {
+  payment: function(e) {
     var UserId = wx.getStorageSync('UserId');
-    var URL = getApp().globalData.PHPURL;
+    console.log(e);
     var orderids = e.currentTarget.dataset.id;
+    var total = e.currentTarget.dataset.total;
     let that = this;
     wx.showModal({
       title: '提示',
       content: '确定要付款',
       confirmColor: "#56a4ff",
       success(res) {
-        
+
         if (res.confirm) {
           wx.request({
             url: URL + '/user/query_openid',
@@ -105,46 +134,34 @@ Page({
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function (res) {
-              console.log(res);
-              var flag=pay.Unified(res.data.openId);
-              console.log(flag);
-              wx.request({
-                url: URL + '/Order/pending_payment',
-                data: {
-                  orderId: orderids,
-                  b: 1
-                },
-                method: 'POST',
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                success: function (res) {
-                  console.log(res)
-                  wx.navigateTo({
-                    url: '../Order/Order?currentTab=2'
-                  })
-                  that.onShow();//重加载
+            success:function(res){
+              var open_id=res.data.openId;
+              console.log(open_id);
+                let infoOpt={
+                  openId: open_id,
+                  toTal:total
                 }
-              });
-              
-            },
-            complete:function()
-            {
-              
+                //promise异步处理 写的头大
+                pay.Unified(infoOpt).then((res) => {
+                  var data=res;
+                  pay.pay(data).then((res) => {
+                    console.log(res);
+                    that.getpaymentend(orderids)
+                  })
+              })
             }
-            
-          }) 
+          })   
         }
 
       }
     });
+  
 
   },
   //取消订单
-  Cancellation: function (e) {
+  Cancellation: function(e) {
     var orderids = e.currentTarget.dataset.id;
-    var URL = getApp().globalData.PHPURL;
+
     var that = this;
     wx.showModal({
       title: '提示',
@@ -162,9 +179,9 @@ Page({
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function (res) {
+            success: function(res) {
               console.log(res)
-              that.onShow();//重加载
+              that.onShow(); //重加载
             }
           });
         }
@@ -174,10 +191,10 @@ Page({
 
   },
   //待发货按钮（模拟物流）
-  Deliver: function (e) {
+  Deliver: function(e) {
     var orderids = e.currentTarget.dataset.id;
     var UserId = wx.getStorageSync('UserId');
-    var URL = getApp().globalData.PHPURL;
+
     var that = this;
     wx.showModal({
       title: '提示',
@@ -195,7 +212,7 @@ Page({
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function (res) {
+            success: function(res) {
               console.log(res)
               that.onShow();
             }
@@ -205,13 +222,13 @@ Page({
       }
     });
   },
-  
- 
+
+
   //待收货按钮（模拟物流）
-  Collect: function (e) {
+  Collect: function(e) {
     var orderids = e.currentTarget.dataset.id;
     var UserId = wx.getStorageSync('UserId');
-    var URL = getApp().globalData.PHPURL;
+
     var that = this;
     wx.showModal({
       title: '提示',
@@ -229,7 +246,7 @@ Page({
             header: {
               'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function (res) {
+            success: function(res) {
               console.log(res)
               that.onShow();
             }
@@ -241,24 +258,24 @@ Page({
 
   },
   //评价
-  evaluate: function (e) {
+  evaluate: function(e) {
     console.log(e)
     var ord_id = e.currentTarget.dataset.orderid;
     var goods_id = e.currentTarget.dataset.id;
     console.log(ord_id)
     wx.navigateTo({
       url: '../pinglun/pinglun?goods_id=' + goods_id + '&orderids=' + ord_id,
-    })
+    }) 
     this.onShow(); //重加载
   },
 
-  onShow: function () {
+  onShow: function() {
     //  全部订单数据
     var UserId = wx.getStorageSync('UserId');
-    var URL = getApp().globalData.PHPURL;
+   
     var imgURL = getApp().globalData.IMGURL;
-    var arr = [];//商品图片
-    var axx = [];//店铺图片
+    var arr = []; //商品图片
+    var axx = []; //店铺图片
 
     var that = this;
     var numpay = 0;
@@ -276,7 +293,8 @@ Page({
     that.data.daishou = [];
     that.data.daiping = [];
     that.data.arrorder = [];
-    console.log(that.data.currentTab)
+    console.log(wx.getStorageSync('success'))
+    
     wx.request({
       url: URL + '/Order/whole',
       data: {
@@ -286,7 +304,7 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data)
         if (res.data == null) {
           that.setData({
@@ -296,8 +314,7 @@ Page({
             displayshou: 'block',
             displayping: 'block'
           })
-        }
-        else {
+        } else {
           that.setData({
             orders: res.data
           })
@@ -343,16 +360,13 @@ Page({
             if (that.data.orders[j].state == "待付款") {
               arrpay[numpay] = that.data.orders[j];
               numpay = numpay + 1;
-            }
-            else if (that.data.orders[j].state == "待发货") {
+            } else if (that.data.orders[j].state == "待发货") {
               arrfa[numfa] = that.data.orders[j];
               numfa = numfa + 1;
-            }
-            else if (that.data.orders[j].state == "待收货") {
+            } else if (that.data.orders[j].state == "待收货") {
               arrshou[numshou] = that.data.orders[j];
               numshou = numshou + 1;
-            }
-            else if (that.data.orders[j].state == "待评价") {
+            } else if (that.data.orders[j].state == "待评价") {
               arrping[numpin] = that.data.orders[j];
               numpin = numpin + 1;
             }
@@ -416,7 +430,7 @@ Page({
             Anummmm: arrpay.length,
             Anums: arrshou.length
           })
-          
+
           if (that.data.daifu.length > 0) {
             that.setData({
               Anumbers: that.data.daifu[arrpay.length - 1].img.length,
@@ -446,7 +460,7 @@ Page({
 
 
           console.log(that.data.numbers)
-           console.log(that.data.daifu)
+          console.log(that.data.daifu)
           console.log(that.data.Anummm)
 
           // console.log(that.data.numbers)

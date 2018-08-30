@@ -1,4 +1,7 @@
 var utilMd5 = require('md5.js');
+var Promise = require('promise');
+var URL = getApp().globalData.PHPURL;
+
 /* 随机数 */
 function randomString () {
   var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
@@ -21,57 +24,52 @@ function createTimeStamp () {
   return parseInt(new Date().getTime() / 1000) + ''
 }
 /* 支付   */
-function pay (param) {
-  console.log(param);
-  wx.requestPayment({
-    timeStamp: param.timeStamp,
-    nonceStr: param.nonceStr,
-    package: param.package,
-    signType: param.signType,
-    paySign: param.paySign,
-    success: function (res) {
-      // success
-      console.log(res)
-      wx.navigateBack({
-        delta: 1, // 回退前 delta(默认为1) 页面
-        success: function (res) {
-          wx.showToast({
-            title: '支付成功',
-            icon: 'success',
-            duration: 2000
-          })
+function pay(param) {
+  let promise = new Promise(function (resolve, reject) {
+      //传进统一付款需要的param 和付款的订单号 后者可查询订单是否成功
+    wx.requestPayment({
+      timeStamp: param.timeStamp,
+      nonceStr: param.nonceStr,
+      package: param.package,
+      signType: param.signType,
+      paySign: param.paySign,
+      success: function (res) {
+        
+            wx.showToast({
+              title: '支付成功',
+              icon: 'success',
+              duration: 2000
+            })
+            resolve(res);
           
-        },
-        fail: function () {
-          // fail
-        },
-        complete: function () {
-          // complete
-        }
-      })
-    },
-    fail: function (message) {
-      // fail
-      console.log(message);
-      console.log("支付失败")
-    },
-    complete: function () {
-      // complete
-      console.log("pay complete")
-      r
-    }
-  })
+      },
+      fail: function (message) {
+        // fail
+        reject(message)
+        console.log(message);
+        console.log("支付失败")
+      },
+      complete: function (res) {
+        // complete
+        
+        console.log("pay complete")
+        wx.setStorageSync('success', true);
+      
+      }
+    })
+  });
+  return promise;
 }
-function Unified(openId){
-  var URL = getApp().globalData.PHPURL;
+  function Unified(info) {
+    let promise = new Promise(function (resolve, reject) {
   var that=this;
   wx.request({
     url: URL + '/User/getIp',
     success: function (e) {
-      console.log(openId);
+    
       //微信支付
-      var OpenId = openId;
-      console.log(OpenId);
+      var OpenId = info.openId;
+      var total_fee = info.toTal * 100; 
       var appid = 'wx5df54af6861286cb';//appid  
       var body = '绍兴古杰装饰设计有限公司';//商户名
       var mch_id = '1497178752';//商户号  
@@ -79,7 +77,6 @@ function Unified(openId){
       var notify_url = URL + '/User/notice';//通知地址z
       var spbill_create_ip = e.data;//ip
       // var total_fee = parseInt(that.data.wxPayMoney) * 100;
-      var total_fee = 1;
       var out_trade_no = mch_id + createTimeStamp()
       var trade_type = "JSAPI";
       var key = 'wanghang18867152140gujiexiaochen';
@@ -102,7 +99,7 @@ function Unified(openId){
       formData += "<sign>" + sign + "</sign>"
       formData += "</xml>"
       console.log(formData)
-
+     
       //统一支付
       wx.request({
         url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
@@ -110,7 +107,7 @@ function Unified(openId){
         head: 'application/x-www-form-urlencoded',
         data: formData, // 设置请求的 header
         success: function (res) {
-          console.log(res.data)
+          console.log(res);
           var result_code = getXMLNodeValue('result_code', res.data.toString("utf-8"))
           var resultCode = result_code.split('[')[2].split(']')[0]
           if (resultCode == 'FAIL') {
@@ -134,7 +131,7 @@ function Unified(openId){
             var tmp = prepay_id.split('[')
             var tmp1 = tmp[2].split(']')
             //签名  
-            console.log(tmp1);
+         
             var key = 'wanghang18867152140gujiexiaochen';
             var appId = 'wx5df54af6861286cb';
             var timeStamp = createTimeStamp();
@@ -144,15 +141,19 @@ function Unified(openId){
             var sign = utilMd5.md5(stringSignTemp).toUpperCase()
             console.log(sign)
             var param = { "timeStamp": timeStamp, "package": 'prepay_id=' + tmp1[0], "paySign": sign, "signType": 'MD5', "nonceStr": nonceStr }
-            pay(param)
+            resolve(param);
+           //console.log( pay(param, out_trade_no, OpenId));
+            
           }
 
         },
 
       })
     }
-  })
 
+  })
+    });
+    return promise;
 }
        
 
