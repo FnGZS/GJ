@@ -234,63 +234,67 @@ line-height: 100rpx;
   display: block;
   margin: auto;
   margin-top: 30rpx;
-  width: 120rpx;
-  height: 120rpx;
+  width: 150rpx;
+  height: 150rpx;
   border-radius: 50%;
 }
 .name{
   display: flex;
   margin-left: 5%;
   color: #5c5c5c;
-  font-size: 30rpx;
-  margin-top: 5rpx;
-  line-height: 40rpx;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  line-height: 50rpx;
+}
+.intro{
+  margin-right: 5%;
 }
 .intro_classify{
     display: flex;
   margin-left: 5%;
   color: #5c5c5c;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-top: 5rpx;
-  line-height: 40rpx;
+  line-height: 50rpx;
 }
 .time{
   display: flex;
   margin-left: 5%;
   color: #5c5c5c;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-top: 5rpx;
-  line-height: 40rpx;
+  line-height: 50rpx;
 }
 .graduation{
   display: flex;
   margin-left: 5%;
   color: #5c5c5c;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-top: 5rpx;
-  line-height: 40rpx;
+  line-height: 50rpx;
 }
 .intro_goodat{
     display: flex;
   margin-left: 5%;
   color: #5c5c5c;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-top: 5rpx;
-  line-height: 40rpx;
+  line-height: 50rpx;
 }
 .idea{
   display: flex;
   margin-left: 5%;
   color: #5c5c5c;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-top: 5rpx;
-  line-height: 40rpx;
+  line-height: 50rpx;
 }
 .mes-title{
-  width: 150rpx;
+  width: 165rpx;
 }
 .mes-text{
   width: 78%;
+  font-size: 28rpx;
 }
 /*宝贝评价*/
 .goods-comment{
