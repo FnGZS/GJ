@@ -32,15 +32,15 @@
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
+
 
 			"current": 41,
 
 			"current": -1,
 
-=======
+
 			"current": -1,
->>>>>>> b2c5cf9815f935966cb1f10ebd96041e23c2bda1
+
 			"list": [
 				{
 					"id": -1,
@@ -287,20 +287,15 @@
 					"name": "联系我们",
 					"pathName": "pages/lianxiwmen/lianxiwmen",
 					"query": ""
-<<<<<<< HEAD
 
-=======
->>>>>>> b2c5cf9815f935966cb1f10ebd96041e23c2bda1
+
+
 				},
 				{
 					"id": -1,
 					"name": "团队详情（商城界面一样）",
 					"pathName": "pages/teamDetail1/teamDetail1"
-<<<<<<< HEAD
 
-
-=======
->>>>>>> b2c5cf9815f935966cb1f10ebd96041e23c2bda1
 				}
 			]
 		}
