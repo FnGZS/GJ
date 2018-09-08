@@ -123,7 +123,7 @@ width:120rpx;
 height:50rpx;
 position:absolute;
 top:55rpx;
-left:600rpx;
+left:580rpx;
 opacity:.0;
 
 }
