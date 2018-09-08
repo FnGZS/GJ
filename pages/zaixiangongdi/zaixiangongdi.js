@@ -199,26 +199,37 @@ Page({
   //获取案例列表
   fetchCaseData:function(e){   
     var that = this;
-    wx.request({
-      //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
-      url: this.data.URL + '/Decorate/decor_tabs_display',
-      data: {
-        p: this.data.priceindex,
-        pp:this.data.areaindex,
-        ppp:this.data.styleindex
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
+    wx.getLocation({
       success: function (res) {
-        //  console.log(res);
-        that.setData({
-          cases:res.data
-        })
-        console.log(that.data.cases);
+        var latitude = res.latitude
+        var longitude = res.longitude
+        wx.request({
+          //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
+          url: that.data.URL + '/Decorate/decor_tabs_display',
+          data: {
+            p: that.data.priceindex, //传装修价格
+            pp: that.data.areaindex, //传装修面积
+            ppp: that.data.styleindex, //传装修风格
+            pppp: that.data.nearbyindex, //传附近工地
+            lat: latitude, //传纬度
+            lng: longitude //传经度
+
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            //  console.log(res);
+            that.setData({
+              cases: res.data
+            })
+            console.log(that.data.cases);
+          }
+        }) 
       }
-    }) 
+    })
+   
   },
   setFilterPanel: function (e) { //展开筛选面板
     const d = this.data;
@@ -279,9 +290,11 @@ Page({
     const d = this.data;
     const dataset = e.currentTarget.dataset;
     this.setData({
-      nearbyindex: dataset.nearbyindex
-      // subcateindex: d.cateindex == dataset.cateindex ? d.subcateindex : 0
+      nearbyindex: dataset.nearbyindex,
+      cases: null
     })
+    this.hideFilter();
+    this.fetchCaseData();
       console.log(this.data.nearbyindex);
   },  
 
