@@ -68,17 +68,8 @@
 .active {
   background: #fff;
   color: #ff9000;
-  border-left: 8rpx solid #ff9000
-  
-  
-  
-  
-  
-  
-  ;
-
-}awdasdasd
-asdasczxczxczxczxczxcasdasd          asdasdasd
+  border-left: 8rpx solid #ff9000 ;
+}
 .right{
   flex:80%;
   height:100%;

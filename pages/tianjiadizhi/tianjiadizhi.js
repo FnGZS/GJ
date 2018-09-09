@@ -362,136 +362,6 @@ Page({
     city: '',
     area: '',
   },
-  formSubmit: function (e) {
-    var URL = getApp().globalData.PHPURL;
-    // console.log('form发生了submit事件，携带数据为：', e.detail.value)
-    var UserId = wx.getStorageSync('UserId');
-    var that = this;
-    // console.log(UserId);
-    var phones = e.detail.value.phone;
-    var names = e.detail.value.name;
-    // console.log(names.length);
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-    var moren = 0;
-    var provincenum = 0;
-    var citynum = 0;
-    var areanum = 0;
-    provincenum = this.data.province;
-    // console.log(provincenum)
-    // console.log(citynum)
-    // console.log(areanum)
-
-
-    if (names.length == 0) {
-      wx.showToast({
-        title: '收货人必须填写',
-        icon: 'success',
-        duration: 1500
-      })
-      return false;
-    }
-    if (phones == '') {
-      wx.showToast({
-        title: '手机号为空',
-        icon: 'success',
-        duration: 1500
-      })
-      return false;
-    } else if (phones.length < 11) {
-      wx.showToast({
-        title: '手机号长度有误！',
-        icon: 'success',
-        duration: 1500
-      })
-      return false;
-    }
-    else if (!myreg.test(phones)) {
-      wx.showToast({
-        title: '手机号有误！',
-        icon: 'success',
-        duration: 1500
-      })
-      return false;
-    } else if (!this.data.province || !this.data.city) {
-      wx.showToast({
-        title: '省市区需填写',
-        icon: 'success',
-        duration: 1500
-      })
-      // return false;
-    }
-    else if (!e.detail.value.address) {
-      wx.showToast({
-        title: '详细地址需添',
-        icon: 'success',
-        duration: 1500
-      })
-      return false;
-    }
-    else {
-      console.log(e.detail.value.switch)
-      if (e.detail.value.switch) {
-        moren = 1;
-      }
-      else {
-        moren = 0;
-      }
-      if (this.data.area == undefined || this.data.area == '') {
-        this.setData({
-          area: ''
-        })
-      }
-
-      console.log(this.data.area)
-      console.log(e.detail.value.address)
-      console.log(moren)
-      wx.request({
-        url: URL + '/User/add_receive',
-        data: {
-          userId: UserId,
-          name: e.detail.value.name,
-          phone: e.detail.value.phone,
-          province: this.data.province,
-          city: this.data.city,
-          distric: this.data.area,
-          area: e.detail.value.address,
-          def: moren
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          console.log(res.data)
-          if (res.data == -1) {
-            wx.showToast({
-              title: '您超出字数限额',
-            })
-          }
-          else if (res.data == 0) {
-            wx.showToast({
-              title: '添加不成功',
-            })
-          } else {
-            wx.showToast({
-              title: '保存成功',
-            })
-            wx.navigateBack();
-          }
-
-        }
-      });
-    }
-
-
-
-    console.log(UserId)
-    console.log(e.detail.value.name)
-    console.log(e.detail.value.phone)
-    console.log(this.data.province)
-    console.log(this.data.city)
-    console.log(this.data.area)
-  },
   bindPickerChange1: function (e) {
 
     this.setData({
@@ -698,6 +568,137 @@ Page({
         citySelIndex: ''
       })
     }
+  },
+  formSubmit: function (e) {
+    var URL = getApp().globalData.PHPURL;
+    // console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    var UserId = wx.getStorageSync('UserId');
+    var that = this;
+    // console.log(UserId);
+    var phones = e.detail.value.phone;
+    var names = e.detail.value.name;
+    // console.log(names.length);
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    var moren = 0;
+    var provincenum = 0;
+    var citynum = 0;
+    var areanum = 0;
+    provincenum = this.data.province;
+    // console.log(provincenum)
+    // console.log(citynum)
+    // console.log(areanum)
+
+
+    if (names.length == 0) {
+      wx.showToast({
+        title: '收货人必须填写',
+        icon: 'success',
+        duration: 1500
+      })
+      return false;
+    }
+    else{
+      if (phones == '') {
+        wx.showToast({
+          title: '手机号为空',
+          icon: 'success',
+          duration: 1500
+        })
+        return false;
+      } else if (phones.length < 11) {
+        wx.showToast({
+          title: '手机号长度有误！',
+          icon: 'success',
+          duration: 1500
+        })
+        return false;
+      }
+      else{
+        if (!myreg.test(phones)) {
+          wx.showToast({
+            title: '手机号有误！',
+            icon: 'success',
+            duration: 1500
+          })
+          return false;
+        } else if (!this.data.province || !this.data.city) {
+          wx.showToast({
+            title: '省市区需填写',
+            icon: 'success',
+            duration: 1500
+          })
+          // return false;
+        }
+        else{
+          if (!e.detail.value.address) {
+            wx.showToast({
+              title: '详细地址需添',
+              icon: 'success',
+              duration: 1500
+            })
+            return false;
+          }
+          else{
+            if (e.detail.value.switch) {
+              moren = 1;
+            }
+            else {
+              moren = 0;
+            }
+            if (this.data.area == undefined || this.data.area == '') {
+              this.setData({
+                area: ''
+              })
+            }
+
+            console.log(this.data.area)
+            console.log(e.detail.value.address)
+            console.log(moren)
+            wx.request({
+              url: URL + '/User/add_receive',
+              data: {
+                userId: UserId,
+                name: e.detail.value.name,
+                phone: e.detail.value.phone,
+                province: this.data.province,
+                city: this.data.city,
+                distric: this.data.area,
+                area: e.detail.value.address,
+                def: moren
+              },
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                console.log(res.data)
+                if (res.data == -1) {
+                  wx.showToast({
+                    title: '您超出字数限额',
+                  })
+                }
+                else if (res.data == 0) {
+                  wx.showToast({
+                    title: '添加不成功',
+                  })
+                } else {
+                  wx.showToast({
+                    title: '保存成功',
+                  })
+                  wx.navigateBack();
+                }
+
+              }
+            });
+          }
+        }
+      }
+    }
+    
+   
+     
+     
+   
   },
 })
 

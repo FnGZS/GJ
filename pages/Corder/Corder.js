@@ -327,6 +327,7 @@ Page({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (res) {
+              console.log(res);
               var open_id = res.data.openId;
               console.log(open_id);
               let infoOpt = {
@@ -338,7 +339,7 @@ Page({
                 var data = res;
                 pay.pay(data).then((res) => {
                   console.log(res);
-                  that.getpaymentend()
+                  that.getpaymented()
                 }).catch(function (res) {
                   that.getcancel();
                 })
