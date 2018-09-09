@@ -1,3 +1,6 @@
+var pay = require('../../utils/pay.js');
+var app = getApp()
+var URL = getApp().globalData.PHPURL;
 var cou_id = 0 ;
 var heji =0;
 var xx = [];
@@ -164,13 +167,12 @@ Page({
     this.setData({
       sum: summ
     })
-
+    console.log(Total);
 
   },
   //立即结算
   Immediate:function(){
     var UserId = wx.getStorageSync('UserId');
-    var URL = getApp().globalData.PHPURL;
     var that = this;
     var b = 0;
     wx.showModal({
@@ -206,7 +208,7 @@ Page({
             message: that.data.messages,
             b: b,
             couponId: that.data.Coupon_id,
-            
+              
           },
           method: 'POST',
           header: {

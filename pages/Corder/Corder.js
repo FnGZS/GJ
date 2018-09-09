@@ -209,7 +209,7 @@ Page({
         name: that.data.adn, //收件人
         phone: that.data.adp,//地址电话号码
         address: that.data.add, //详细地址
-        isTeam: 1
+        isTeam: 0
       },
       method: 'POST',
       header: {
