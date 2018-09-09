@@ -40,10 +40,15 @@
         </view>
       </view>
 
-      <view class='index-page-conten' bindtap='toKefu'>
+      <view class='index-page-conten'>
         <view class='iconbox iconColor3'>
           <view class='iconfont icon-kefu1 '></view>
         </view>
+        <view class='contact-list'>
+           <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>  
+         <contact-button type="default-dark" size="30" session-from="weapp"></contact-button> 
+      
+           </view>
         <view class='index-page-text'>
           免费咨询
         </view>

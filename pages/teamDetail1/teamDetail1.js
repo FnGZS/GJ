@@ -159,7 +159,7 @@ Page({
     var goods_name = this.data.detail.goods_name;
     var goods_earnest = 0;
     var goods_price = this.data.detail.goods_price;
-    // var goods_dimension = this.data.sizetext;
+    // var goods_dimension = this.data.sizetext; 
     var goods_style = this.data.detail.style;
     var goods_classify = this.data.detail.goods_classify;
     // var goods_color = this.data.colortext;

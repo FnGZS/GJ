@@ -209,11 +209,7 @@ Page({
       url: '../yuyue/yuyue'
     });
   },
-  toKefu:function(){
-    wx.navigateTo({
-      url: '../kefuhuihua/kefuhuihua'
-    })
-  },
+
   toZaixiangongdi: function () {
     wx.navigateTo({
       url: '../gongdifenbu/gongdifenbu'

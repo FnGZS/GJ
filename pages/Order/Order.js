@@ -337,6 +337,8 @@ Page({
             prices[i] = JSON.parse(that.data.orders[i].price);
             deposits[i] = JSON.parse(that.data.orders[i].deposit);
             nums[i] = JSON.parse(that.data.orders[i].num);
+             
+            console.log(JSON.parse(that.data.orders[i].img).length)
             imgss[i] = JSON.parse(that.data.orders[i].img);
             isTeam[i] = JSON.parse(that.data.orders[i].isTeam);
             that.data.orders[i].name = names[i];
@@ -346,6 +348,7 @@ Page({
             that.data.orders[i].deposit = deposits[i];
             that.data.orders[i].num = nums[i];
             that.data.orders[i].img = imgss[i];
+          
             that.data.orders[i].isTeam = isTeam[i]
           }
           console.log(that.data.orders)
