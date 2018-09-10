@@ -47,7 +47,7 @@
         <view class='iconfont icon-tuikuanshouhou' ></view>
         <text>售后客服</text>
         </view >
- </view>
+ </view>  
 <view class='kuang'>
  <view class='soujin' bindtap='ShoppingCart'>
         <view class='shou1'>
@@ -62,7 +62,7 @@
         <view class='shou1'>
             <view class='iconfont icon-youhuiquan'></view>
                 <view class='biankuang'>
-            <view class='shou1-dingdan'>wode</view>
+            <view class='shou1-dingdan'>我的店铺</view>
             <view style='float: right;' class='iconfont icon-jiantou' ></view>
              </view>
         </view>

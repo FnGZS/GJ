@@ -268,6 +268,12 @@ Page({
     }) 
     this.onShow(); //重加载
   },
+  logistics:function(){
+    console.log(12312312);
+    wx.navigateTo({
+      url: '../logistics/logistics'
+    }) 
+  },
 
   onShow: function() {
     //  全部订单数据

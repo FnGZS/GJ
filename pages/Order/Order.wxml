@@ -61,7 +61,7 @@
         </view>
         <view class="{{item.state=='待发货' ? 'disll' : 'disl'}}">
           <view class='pay' bindtap='Deliver' data-id="{{item.orderId}}">待发货</view>
-          <view class='cha' bindtap='logistics'>查看物流</view>
+
         </view>
         <view class="{{item.state=='待收货' ? 'disll' : 'disl'}}">
           <view class='pay' bindtap='Collect'>待收货</view>
@@ -82,7 +82,7 @@
         </view>
     
         
-  <view class='gu' wx:key="" wx:for="{{daifu}}">
+  <view hlass='gu' wx:key="" wx:for="{{daifu}}">
     <!-- 待付款 -->
     <view class='line'></view>
     <view class='Store'>
@@ -234,10 +234,7 @@
       <view class='baitiao'></view>
     </view>
 
-    <view class='Benefits1'>
-      <view class='pay' bindtap='Deliver' data-id="{{item.orderId}}">待发货</view>
-      <view class='cha'>查看物流</view>
-    </view>
+
   </view>
 </view>
 <view class="weui-cells__title {{isShow==3?'dis':''}}">
@@ -318,7 +315,7 @@
     <view class='Benefits1'>
       <!-- <view class='gu'> -->
       <view class='pay' bindtap='Collect' data-id="{{item.orderId}}">待收货</view>
-      <view class='cha'>查看物流</view>
+      <view class='cha' bindtap='logistics'>查看物流</view>
       <!-- </view> -->
     </view>
   </view>
@@ -402,7 +399,7 @@
 
     <view class='Benefits1'>
       <view class='evaluate' bindtap='evaluate' data-orderId="{{item.orderId}}" data-id="{{item.goodsId}}">评价</view>
-      <view class='cha'>查看物流</view>
+      <view class='cha' bindtap='logistics'>查看物流</view>
     </view>
   </view>
 </view>
