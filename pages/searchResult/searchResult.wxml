@@ -10,12 +10,13 @@
   </view>
 
   <view class="tabTit">
+  <view class="flex2 {{Goods?'fiex_color':''}}" data-search="2" bindtap='search_control'>
+      <text>商品</text>
+    </view>
     <view class="flex1 {{Case?'fiex_color':''}}" data-search="1" bindtap='search_control'>
       <text>案例</text>
     </view>
-    <view class="flex2 {{Goods?'fiex_color':''}}" data-search="2" bindtap='search_control'>
-      <text>商品</text>
-    </view>
+    
   </view>
 
   <!-- 案例搜索列表 -->

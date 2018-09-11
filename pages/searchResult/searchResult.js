@@ -9,11 +9,11 @@ Page({
     URL: getApp().globalData.PHPURL,
     URLimg: "",
     content:'',
-    Case: true,
-    Goods: false,
+    Case: false,
+    Goods: true,
     case_num: 2,
-    display1:'flex',
-    display2: 'none',
+    display1:'none',
+    display2: 'flex',
     goods: '',
     cases:'',
     goods_name:[],
@@ -189,7 +189,6 @@ Page({
     // this.serach_content();
     //获取搜索商品列表
     wx.request({
-      //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
       url: this.data.URL + '/Index/goods_search',
       data: {
         content: this.data.content,
@@ -257,10 +256,34 @@ Page({
 
   //搜索
   search_btn:function(){
-    console.log(this.data.content);
-    this.fresh();
-  }
+    this.uploadKeyword();
+    //判断是否为空，如果是空就不能搜索
+    if (this.data.content != null && this.data.content != '') {
+      this.fresh();
+    } else {
+      wx.showToast({
+        title: '请输入搜索的关键字',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+  },
 
+//上传搜索数据到数据库中
+  uploadKeyword: function (e) {
+    wx.request({
+      url: this.data.URL + '/Index/hot_search',
+      data: {
+        content: this.data.content,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+      }
 
+    })
+  },
 
 })
