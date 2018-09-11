@@ -283,10 +283,32 @@ gouwu:function(){
     var judge =1;
     var that = this;
     if (login) {
-
-      wx.navigateTo({
-        url: '../Corder/Corder?numm=' + numm + '&goods_id=' + goods_id + '&goods_color=' + goods_color + '&goods_dimension=' + goods_dimension + '&goods_price=' + goods_price + '&goods_earnest=' + goods_earnest + '&goods_name=' + goods_name + '&goods_img=' + goods_img + '&judge=' + judge + '&isTeam=' + isTeam ,
+      wx.request({
+        url: URL + '/Mall/order_addr_shop',
+        data: {
+          userId: UserId,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data)
+          console.log(res.data.addr)
+          // 判断收货地址是否存在
+          if (res.data.addr == "[]" || res.data.name == "[]" || res.data.phone == "[]") {
+            wx.showToast({
+              title: '暂无收货地址',
+            })
+          }
+          else(
+            wx.navigateTo({
+              url: '../Corder/Corder?numm=' + numm + '&goods_id=' + goods_id + '&goods_color=' + goods_color + '&goods_dimension=' + goods_dimension + '&goods_price=' + goods_price + '&goods_earnest=' + goods_earnest + '&goods_name=' + goods_name + '&goods_img=' + goods_img + '&judge=' + judge + '&isTeam=' + isTeam,
+            })
+          )
+        }
       })
+          
 
     }
     else {

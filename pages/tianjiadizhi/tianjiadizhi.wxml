@@ -2,7 +2,7 @@
  <form bindsubmit="formSubmit" >    
       <view class="address">
             <view class="section Set">
-              <textarea name="name" bindblur="bindTextAreaBlur" placeholder-style="color:#a6a6a6;" auto-height placeholder="收货人" />
+              <textarea name="name" bindblur="bindTextAreaBlur" placeholder-style="color:#a6a6a6;" auto-focus auto-height placeholder="收货人" />
             </view>
             <view class='hui'></view>
             <view class="section Set">

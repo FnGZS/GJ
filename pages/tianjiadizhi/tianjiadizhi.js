@@ -600,7 +600,7 @@ Page({
     else{
       if (phones == '') {
         wx.showToast({
-          title: '手机号为空',
+          title: '手机号不能空！',
           icon: 'success',
           duration: 1500
         })

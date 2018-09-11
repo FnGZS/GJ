@@ -46,7 +46,7 @@
         </view>
         <view class='contact-list'>
            <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>  
-         <contact-button type="default-dark" size="30" session-from="weapp"></contact-button> 
+         <!-- <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>  -->
       
            </view>
         <view class='index-page-text'>

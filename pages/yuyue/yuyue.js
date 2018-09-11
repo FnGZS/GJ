@@ -95,6 +95,10 @@ Page({
              wx.showToast({
                title: '您已经预约一次',
              })
+           }else{
+             wx.showToast({
+               title: '预约成功',
+             })
            }
          }
        })
@@ -128,7 +132,7 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     if (name == '') {
       wx.showToast({
-        title: '输入的姓名为空',
+        title: '手机号码错误',
       })
       return false;
     }

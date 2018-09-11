@@ -139,7 +139,16 @@ Page({
           add: ad,
           adp: ap
         })
-
+        console.log(an)
+        // // 判断收货地址是否存在
+        // if(an == undefined || ap == undefined || ad == undefined ){
+        //       wx.showToast({
+        //         title: '暂无收货地址信息',
+        //       })
+        //       wx.switchTab({
+        //         url: '../wode/wode' 
+        //       })
+        // }
         //优惠券
         wx.request({
           url: URL + '/Mall/order_coupon',
@@ -436,7 +445,7 @@ Page({
       if (currPage.data.selAddress == "") {
         that.getUserAddress(that.data.userId);
       } else {
-        that.setData({//将携带的参数赋值
+        that.setData({//将携带的参数赋值 
           addresss: currPage.data.good_address,
           addname: currPage.data.good_name,
           addphone: currPage.data.good_phone
