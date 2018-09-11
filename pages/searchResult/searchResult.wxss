@@ -117,7 +117,7 @@
   margin-top: 100rpx;
   margin: auto;
   width: 95%;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
 }
 .scroll-view-main-left{
   width:40%;
@@ -230,4 +230,19 @@
 .padding_sp {
   display: flex;
   align-items: center;
+}
+.noThing_main{
+  margin-top: 150rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.noThing_main image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.noThing_text{
+  margin-top: 20rpx;
+  font-size: 23rpx;
 }

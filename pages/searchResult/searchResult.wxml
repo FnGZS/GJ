@@ -21,6 +21,19 @@
 
   <!-- 案例搜索列表 -->
   <scroll-view style=' overflow: hidden;' class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
+      <!-- 没有商品或案例 -->
+    <view class='noThing scroll-view-main' style='display:{{display_noGoods}}'>
+      <view class='noThing_main'> 
+        <image src='../../images/sad.png'></image>
+        <view class='noThing_text'>暂无商品哦~</view>
+      </view>
+    </view>  
+    <view class='noThing scroll-view-main' style='display:{{display_noCases}}'>
+      <view class='noThing_main'> 
+        <image src='../../images/sad.png'></image>
+        <view class='noThing_text'>暂无案例哦~</view>
+      </view>
+    </view>  
     <view wx:for="{{cases}}" class='scroll-view-main ' bindtap="anli" style='display:{{display1}}'>
       <view class='scroll-view-main-left'>
         <image src='{{URLimg}}/cases/{{item.caseImg}}'></image>
@@ -65,6 +78,10 @@
           </view>
         </view>
       </view>
+
     </view>
+       
   </scroll-view>
+
+
 </view>
