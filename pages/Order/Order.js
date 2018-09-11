@@ -181,6 +181,12 @@ Page({
             },
             success: function(res) {
               console.log(res)
+          
+              that.data.daifu = [];
+              that.data.daifa = [];
+              that.data.daishou = [];
+              that.data.daiping = [];
+              that.data.arrorder = [];
               that.onShow(); //重加载
             }
           });
@@ -289,16 +295,13 @@ Page({
     var numshou = 0;
     var numpin = 0;
     var numorder = 0;
-    var arrpay = [];
-    var arrfa = [];
-    var arrshou = [];
-    var arrping = [];
-    var arrorder = [];
-    that.data.daifu = [];
-    that.data.daifa = [];
-    that.data.daishou = [];
-    that.data.daiping = [];
-    that.data.arrorder = [];
+    that.setData({
+      daifu: '',
+      daifa: '',
+      daishou: '',
+      daiping: '',
+      arrorder: ''
+    })
     console.log(wx.getStorageSync('success'))
     
     wx.request({
