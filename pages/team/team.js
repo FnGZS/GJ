@@ -135,14 +135,15 @@ Page({
   sortGoods: function () {
     var that = this;
     var classiyLT = that.data.teamMes
-    console.log(classiyLT); 
+    console.log(classiyLT);
+  
     if (that.data.Sales) {
       var classiyLT = that.data.teamMes
       for (var i = 0; i < classiyLT.length; i++) {
         for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
           for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++)// j开始等于0，  
           {
-            if (parseInt(classiyLT[i].list[k].out) < parseInt(classiyLT[i].list[k + 1].out)) {
+            if (parseInt(classiyLT[i].list[k].goods_out) < parseInt(classiyLT[i].list[k + 1].goods_out)) {
               var arrt = classiyLT[i].list[k];
               classiyLT[i].list[k] = classiyLT[i].list[k + 1];
               classiyLT[i].list[k + 1] = arrt;
@@ -159,7 +160,7 @@ Page({
         for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
           for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++)// j开始等于0，  
           {
-            if (parseInt(classiyLT[i].list[k].price) > parseInt(classiyLT[i].list[k + 1].price)) {
+            if (parseInt(classiyLT[i].list[k].goods_price) > parseInt(classiyLT[i].list[k + 1].goods_price)) {
               var arrt = classiyLT[i].list[k];
               classiyLT[i].list[k] = classiyLT[i].list[k + 1];
               classiyLT[i].list[k + 1] = arrt;
