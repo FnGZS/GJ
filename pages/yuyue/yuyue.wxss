@@ -5,7 +5,7 @@
 .yuyue-name input{width: 75%;float: right;}
 .yuyue-text{margin-top: 13rpx;margin-left: 26rpx;float: left;font-size: 30rpx;}
 .yuyue-name-yanzheng input{margin-left: 18rpx;width: 40%;float: left;}
-.yuyue-anniu{padding-top: 5rpx;text-align: center;  float: right;width: 250rpx; height: 60rpx; padding-top: -30px;background-color:#f4cc5c;}
+.yuyue-anniu{padding-top: 5rpx;text-align: center;  float: right;width: 250rpx; height: 60rpx; padding-top: -30px;background-color:#f4cc5c;display: flex;justify-content: center;align-items: center;font-size: 28rpx;}
 .yuyue-tijiao{margin-top: 50rpx;background-color: #e0620d;}
 .yuyue-footer{text-align: center;font-size: 25rpx;margin-top: 30rpx;}
 .tiaozheng{ margin-top: 10rpx;font-size: 30rpx;}

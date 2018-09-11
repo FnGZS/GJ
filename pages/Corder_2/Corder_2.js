@@ -187,6 +187,7 @@ Page({
         message: that.data.messages,
         b: 0,
         couponId: that.data.Coupon_id,
+        isTeam: that.data.isTeam
       },
       method: 'POST',
       header: {
@@ -220,6 +221,7 @@ Page({
             message: that.data.messages,
             b: b,
             couponId: that.data.Coupon_id,
+            isTeam: that.data.isTeam
         },
         method: 'POST',
         header: {
@@ -280,45 +282,7 @@ Page({
         }
         else {
           //待付款
-          if (that.data.isTeam == 0) {
-            wx.request({
-              url: URL + '/Mall/order_buy',
-              data: {
-                userId: UserId,  //用户id
-                goodsId: that.data.goods_id, //商品id
-                couponId: cou_id,  //优惠券的id
-                price: that.data.goods_price, //商品价格
-                color: that.data.goods_color,   //颜色
-                size: that.data.goods_dimension, //尺寸大小
-                deposit: that.data.goods_earnest,  //定金
-                num: that.data.numm,     //数量
-                pay: that.data.earnest,  //实付金额
-                b: 0,//模拟接口（未付款）
-                message: that.data.messages,//买家留言
-                name: that.data.adn, //收件人
-                phone: that.data.adp,//地址电话号码
-                address: that.data.add, //详细地址
-                isTeam: that.data.isTeam
-              },
-              method: 'POST',
-              header: {
-                'content-type': 'application/x-www-form-urlencoded'
-              },
-              success: function (res) {
-                console.log(res.data)
-                //模拟支付接口
-                wx.redirectTo({
-                  url: '../Order/Order?currentTab=1'
-                })
-
-              }
-            });
-          } else {
             that.getcancel();
-          }
-
-
-
         }
       }
     });

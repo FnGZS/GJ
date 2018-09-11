@@ -1,5 +1,4 @@
-  <!-- 暂无收藏 -->
-   <view class='nerver' style='display:{{display}}'>暂无收藏</view> 
+
    <!-- 收藏 -->
    <view class="tabTit">
     <view class="flex1 {{Case?'fiex_color':''}}" data-search="1" bindtap='search_control'>
@@ -9,6 +8,8 @@
       <text>商品</text>
     </view>
   </view>
+    <!-- 暂无收藏 -->
+   <view class='nerver' style='display:{{display}}'>暂无收藏</view> 
  <view  class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
       <view class="content" data-id="{{item.goods_id}}" bindtap='goods'>
               <view class='Collection'>

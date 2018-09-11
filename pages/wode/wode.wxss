@@ -1,6 +1,19 @@
 page{
   background: #F7F7F7;
 }
+.close{
+  position: absolute;
+  margin-left: 200rpx;
+  margin-top:30rpx;
+  font-size: 28rpx;
+  width: 100rpx;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background:#424242;
+}
 .kuang{
   margin-top:20rpx;
 }
@@ -16,7 +29,7 @@ page{
 }
 .container{
   color: black;
-  background-color: #ff5500;
+  background-color: #FFA500;
   background-size: 100% 100%;
    border-bottom:#FAEBD7 solid 3px; 
    border-right: #FAEBD7 solid 3px; 
@@ -31,7 +44,7 @@ width:96%;
   height: 55rpx;
   line-height: 55rpx;
     background: none !important;
-  color: #424242 !important;
+  color: #fff !important;
   font-size: 30rpx;
    width: 200rpx;
  
@@ -159,7 +172,7 @@ width:96%;
     margin: 0 auto;
     background: white;  
     font-size: 70rpx;
-    color: #FFD39B;
+    color:#F5842D;
 }
 .main-dai2 .iconfont{
     width: 70rpx;

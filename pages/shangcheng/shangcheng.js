@@ -9,7 +9,7 @@ Page({
     check:0, 
     hasList: false,          // 列表是否有数据
     totalPrice: 0,           // 总价，初始为0
-    selectAllStatus: true,    // 全选状态，默认全选
+    selectAllStatus: false,    // 全选状态，默认全选
     obj: {
       name: "hello"
     },
@@ -28,7 +28,8 @@ Page({
     nums:[],
     guiges:[],
     goodsid:[],
-    isTeam:[]
+    isTeam:[],
+  
   },
   carts_query:function(){
     var userId = wx.getStorageSync('UserId');
@@ -221,6 +222,7 @@ Page({
    * 购物车全选事件
    */
   selectAll(e) {
+    
     let selectAllStatus = this.data.selectAllStatus;
     selectAllStatus = !selectAllStatus;
     let carts = this.data.carts;
@@ -232,6 +234,7 @@ Page({
       selectAllStatus: selectAllStatus,
       carts: carts
     });
+
     this.getTotalPrice();
   },
 

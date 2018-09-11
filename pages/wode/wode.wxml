@@ -61,7 +61,8 @@
             </view>
         </view>
  </view>
-  <navigator class='soujin'  url="../youhuiquan/youhuiquan">
+  <navigator class='soujin'>
+  <view class='close'>筹备中</view>
         <view class='shou1'>
             <view class='iconfont icon-youhuiquan'></view>
                 <view class='biankuang'>
