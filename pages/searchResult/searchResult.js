@@ -14,6 +14,8 @@ Page({
     case_num: 2,
     display1:'none',
     display2: 'flex',
+    display_noGoods:'none',
+    display_noCases:'none',
     goods: '',
     cases:'',
     goods_name:[],
@@ -26,13 +28,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     var that = this;
     this.setData({
       content:options.content,
       URLimg: iURL
     });
-    //获取搜索商品列表
+    this.getGoods();
+  },
+  //点击商品
+  tapName: function (e) {
+    console.log(e)
+    var goods_id = e.currentTarget.dataset.id;
+    console.log(goods_id);
+    wx.navigateTo({
+      url: '../detail/detail?goods_id='+ goods_id
+    })
+  },
+  //获取商品列表
+  getGoods:function(){
+    var that = this;
     wx.request({
       //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
       url: this.data.URL + '/Index/goods_search',
@@ -45,7 +59,7 @@ Page({
       },
       success: function (res) {
         that.setData({
-          goods:res.data
+          goods: res.data
         })
         var price = [];
         var inventory = [];
@@ -68,19 +82,22 @@ Page({
               sell_inventory[i] = sell; //已售
             }
           }
+        } else {
+          that.setData({
+            display_noGoods: 'block'
+          })
         }
         that.setData({
           goods_inventory: sell_inventory,
           kucun: kucun,
           goods_price: price
-        })
-        console.log(that.data.kucun)
-        console.log(that.data.goods_inventory)
-        console.log(that.data.goods);
-        // console.log(that.data.goods);
+        });
       }
     }) 
-    //获取案例列表
+  },
+  //获取案例列表
+  getCases:function(){
+    var that = this;
     wx.request({
       //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
       url: this.data.URL + '/Index/cases_search',
@@ -92,22 +109,19 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        that.setData({
-          cases: res.data
-        })
+        if (res.data) {
+          that.setData({
+            cases: res.data
+          })
+        } else {
+          that.setData({
+            display_noCases: 'block'
+          })
+        }
         console.log(that.data.cases);
       }
 
-    })     
-  },
-  //点击商品
-  tapName: function (e) {
-    console.log(e)
-    var goods_id = e.currentTarget.dataset.id;
-    console.log(goods_id);
-    wx.navigateTo({
-      url: '../detail/detail?goods_id='+ goods_id
-    })
+    })   
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -162,21 +176,26 @@ Page({
   search_control: function (e) {
     var that = this;
     var sortid = e.currentTarget.dataset.search;
-    if (sortid == 1) {
+    if (sortid == 1) {  
       that.setData({
         Case: true,
         Goods: false,
         display1:'flex',
-        display2:'none'
+        display2:'none',
+        display_noGoods:'none',
+        display_noCases:'none'
       })
+      this.getCases();
     } else {
-      console.log(this.data.URLimg);
       that.setData({
         Case: false,
         Goods: true,
         display1: 'none',
-        display2: 'block'
+        display2: 'block',
+        display_noGoods: 'none',
+        display_noCases: 'none'
       })
+      this.getGoods();
     }
   },
   serach_content:function(e){
