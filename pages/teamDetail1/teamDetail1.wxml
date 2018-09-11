@@ -124,7 +124,10 @@
             <image style='width:40rpx;height:40rpx;' src='/images/dianpu.png'></image>
             <view class="dbtextt">店铺</view>
           </view>
-          <view style='float:right;margin-right:50rpx;' bindtap='kefu'>
+          <view style='float:right;margin-right:50rpx;' class='kefu_btn'>
+            <view class='contact-list'>
+             <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>  
+            </view>
             <image style='width:40rpx;height:40rpx;' src='/images/wangwang.png'></image>
             <view class="dbtextt">客服</view>
           </view>

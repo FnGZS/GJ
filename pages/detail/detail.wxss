@@ -946,3 +946,11 @@ margin:10rpx 0;
   width: 400rpx;
   height: 30rpx;
 }
+/* 跳转客服会话 */
+.kefu_btn{
+  position: relative;
+}
+.contact-list{
+  position: absolute;
+  opacity: 0;
+}

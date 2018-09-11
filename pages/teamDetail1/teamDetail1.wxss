@@ -457,3 +457,11 @@ line-height: 100rpx;
   color: snow;
   text-align: center;
 }
+/* 跳转客服会话 */
+.kefu_btn{
+  position: relative;
+}
+.contact-list{
+  position: absolute;
+  opacity: 0;
+}
