@@ -215,6 +215,11 @@ Page({
       url: '../gongdifenbu/gongdifenbu'
     });
   },
+  toTehui:function(){
+    wx.switchTab({
+      url: '../mall/mall'
+    });
+  },
   toAnli:function(){
     wx.switchTab({
       url: '../zaixiangongdi/zaixiangongdi',

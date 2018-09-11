@@ -63,7 +63,7 @@
         </view>
       </view>
 
-      <view class='index-page-conten'>
+      <view class='index-page-conten' bindtap="toTehui">
         <view class='iconbox iconColor5'>
           <view class='iconfont icon-tehui'></view>
         </view>
