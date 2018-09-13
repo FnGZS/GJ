@@ -26,17 +26,11 @@
  
 
     <view class='top2' >
-    
         <image src='../../images/zuji.png'  class='top2-image' ></image>    
-        <image src='../../images/touxiang1.jpeg' class='top2-image1' ></image>
-        <image src='../../images/touxiang2.jpeg' class='top2-image1' ></image>
-        <image src='../../images/touxiang3.jpg' class='top2-image1' ></image>
-        <image src='../../images/touxiang4.jpeg' class='top2-image1' ></image>
+        <image src='{{item.avatarUrl}}' class='top2-image1' wx:for="{{foot.avat}}"></image>
         <view>
-        <text>等991位好友</text>
-        </view>
-       
-       
+        <text class='top2-text'>等{{foot.sum}}位好友</text>
+        </view> 
     </view>
 </view>
 

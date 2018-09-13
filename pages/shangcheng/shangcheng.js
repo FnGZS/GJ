@@ -46,7 +46,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res)
+        console.log(res.data)
           if(res.data == null)
           {
             that.setData({
@@ -125,7 +125,9 @@ Page({
     this.getTotalPrice();
   },
   click:function(e){
-    var goods_id = e.currentTarget.dataset.id;
+    console.log(e)
+    var goods_id = e.currentTarget.dataset.id; 
+    console.log(goods_id)
      wx.navigateTo({
        url: '../detail/detail?goods_id=' + goods_id,
      })

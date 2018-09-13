@@ -370,9 +370,14 @@ Page({
             list: arr,
             iconn: axx
           })
+          var arrorder = [];
+          var arrpay = [];
+          var arrfa = [];
+          var arrshou = [];
+          var arrping = [];
           // console.log(that.data.list)
           for (var j = 0; j < that.data.orders.length; j++) {
-            arrorder[j] = that.data.orders[j];
+            arrorder[j] = that.data.orders[j]; 
             numorder = numorder + 1;
             if (that.data.orders[j].state == "待付款") {
               arrpay[numpay] = that.data.orders[j];
@@ -469,19 +474,11 @@ Page({
             })
           }
           console.log(that.data.daifu)
-          // console.log(that.data.Anumbersss)
-          // console.log(that.data.list)
-          // console.log(that.data.Anums)
-          // console.log(that.data.daishou)
           console.log(that.data.Anummm)
-
-
           console.log(that.data.numbers)
           console.log(that.data.daifu)
           console.log(that.data.Anummm)
 
-          // console.log(that.data.numbers)
-          // console.log(that.data.daifu)
         }
 
       }

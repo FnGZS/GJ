@@ -18,7 +18,7 @@
         <view class="cart-list">
           <icon wx:if="{{item.selected}}" type="success" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
           <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" catchtap="selectList" />
-           <view catchtap='click' data-id="{{item.id}}" >
+           <view catchtap='click' data-id="{{item.tro.goodsId}}" >
             <text class="cart-del" catchtap="deleteList" data-index="{{index}}">删除</text>
             <navigator>
               <image class='cart-thumb' src='{{imgurl}}/goods/{{item.goods_img}}' wx:if="{{item.tro.isTeam == 0}}"></image>

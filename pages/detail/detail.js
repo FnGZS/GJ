@@ -200,6 +200,7 @@ gouwu:function(){
      goods_id: options.goods_id
     })
     gooid = that.data.goods_id;
+    console.log(11111111111111)
     console.log(gooid)
     console.log(options.goods_id)
   
@@ -296,16 +297,10 @@ gouwu:function(){
           console.log(res.data)
           console.log(res.data.addr)
           // 判断收货地址是否存在
-          if (res.data.addr == "[]" || res.data.name == "[]" || res.data.phone == "[]") {
-            wx.showToast({
-              title: '暂无收货地址',
-            })
-          }
-          else(
             wx.navigateTo({
               url: '../Corder/Corder?numm=' + numm + '&goods_id=' + goods_id + '&goods_color=' + goods_color + '&goods_dimension=' + goods_dimension + '&goods_price=' + goods_price + '&goods_earnest=' + goods_earnest + '&goods_name=' + goods_name + '&goods_img=' + goods_img + '&judge=' + judge + '&isTeam=' + isTeam,
             })
-          )
+
         }
       })
           
