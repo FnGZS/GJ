@@ -295,6 +295,11 @@ Page({
     var numshou = 0;
     var numpin = 0;
     var numorder = 0;
+    var arrpay = [];
+    var arrfa = [];
+    var arrshou = [];
+    var arrping = [];
+    var arrorder = [];
     that.setData({
       daifu: '',
       daifa: '',
