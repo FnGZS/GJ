@@ -5,6 +5,9 @@ var cou_id = 0 ;
 var heji =0;
 var xx = [];
 var Total = 0;// 总值
+var adphone = "";
+var adress = "";
+var adphoness = "";
 Page({
  
   /**
@@ -159,7 +162,10 @@ Page({
         })
       }
     });
-    
+    adphone = that.data.adn;
+    adress = that.data.add;
+    adphoness = that.data.adp;
+    // console.log(adphone)
     var summ = 0;
     for (var i = 0; i < that.data.cun.length; i++) {
       summ = summ + (parseInt(that.data.cun[i]) * parseInt(that.data.nums[i]) )  ;
@@ -240,52 +246,67 @@ Page({
   //立即结算
   Immediate:function(){
     var UserId = wx.getStorageSync('UserId');
+    // console.log(adphone)
+    // console.log(adress)
+    // console.log(adphoness)
     var that = this;
     var b = 0;
-    wx.showModal({
-      title: '提示',
-      content: '确定要提交吗',
-      confirmColor: "#56a4ff",
-      success(res) {
-        if (res.confirm) {
-          wx.request({
-            url: URL + '/user/query_openid',
-            data: {
-              userId: UserId
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (res) {
-              console.log(res);
-              var open_id = res.data.openId;
-              console.log(open_id);
-              let infoOpt = {
-                openId: open_id,
-                toTal: Total
-              }
-              //promise异步处理 写的头大
-              pay.Unified(infoOpt).then((res) => {
-                var data = res;
-                pay.pay(data).then((res) => {
-                  console.log(res);
-                  that.getpaymented()
-                }).catch(function (res) {
-                  that.getcancel();
+    console.log(this.data.add)
+    if (adphone == '暂无' || adress == '暂无' || adphoness == '暂无') {
+      wx.showModal({
+        title: '提示',
+        content: '您还没有收货信息',
+        confirmColor: "#56a4ff",
+      })
+    }
+    else{
+      wx.showModal({
+        title: '提示',
+        content: '确定要提交吗',
+        confirmColor: "#56a4ff",
+        success(res) {
+          if (res.confirm) {
+            wx.request({
+              url: URL + '/user/query_openid',
+              data: {
+                userId: UserId
+              },
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                console.log(res);
+                var open_id = res.data.openId;
+                console.log(open_id);
+                let infoOpt = {
+                  openId: open_id,
+                  toTal: Total
+                }
+                //promise异步处理 写的头大
+                pay.Unified(infoOpt).then((res) => {
+                  var data = res;
+                  pay.pay(data).then((res) => {
+                    console.log(res);
+                    that.getpaymented()
+                  }).catch(function (res) {
+                    that.getcancel();
+                  })
                 })
-              })
-            }
-          })
+              }
+            })
 
 
-        }
-        else {
-          //待付款
+          }
+          else {
+            //待付款
             that.getcancel();
+          }
         }
-      }
-    });
+      });
+    }
+
+   
   },
   message:function(e){
     console.log(e.detail.value)
@@ -346,6 +367,9 @@ Page({
         adp: phone
       })
     }
+    adphone = that.data.adn;
+    adress = that.data.add;
+    adphoness = that.data.adp;
     //数据
         var arr = [];
         wx.request({

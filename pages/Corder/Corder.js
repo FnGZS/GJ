@@ -2,12 +2,15 @@
 var pay = require('../../utils/pay.js');
 var cou_id = 0;
 var heji = 0;
+var adphone = "";
+var adress = "";
+var adphoness = "";
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
+  data: { 
     array: ['暂无优惠券'],
     Consignee: '',
     phone: [],
@@ -139,7 +142,7 @@ Page({
           add: ad,
           adp: ap
         })
-        console.log(an)
+        // console.log(an)
         // // 判断收货地址是否存在
         // if(an == undefined || ap == undefined || ad == undefined ){
         //       wx.showToast({
@@ -196,6 +199,10 @@ Page({
 
       }
     });
+    console.log(that.data.adn)
+    adphone = that.data.adn;
+    adress = that.data.add;
+    adphoness = that.data.adp;
   },
   getcancel:function(){
     var UserId = wx.getStorageSync('UserId');
@@ -314,94 +321,108 @@ Page({
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
-    console.log(UserId)
-    console.log(that.data.goods_id)
-    console.log(cou_id)
-    console.log(that.data.goods_price)
-    console.log(that.data.earnest)
+    // console.log(UserId)
+    // console.log(that.data.goods_id)
+    // console.log(cou_id)
+    // console.log(that.data.goods_price)
+    // console.log(that.data.earnest)
     var total = that.data.goods_price;
-    wx.showModal({
-      title: '提示',
-      content: '确定要提交吗',
-      confirmColor: "#56a4ff",
-      success(res) {
-        if (res.confirm) {
-          wx.request({
-            url: URL + '/user/query_openid',
-            data: {
-              userId: UserId
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: function (res) {
-              console.log(res);
-              var open_id = res.data.openId;
-              console.log(open_id);
-              let infoOpt = {
-                openId: open_id,
-                toTal: total
-              }
-              //promise异步处理 写的头大
-              pay.Unified(infoOpt).then((res) => {
-                var data = res;
-                pay.pay(data).then((res) => {
-                  console.log(res);
-                  that.getpaymented()
-                }).catch(function (res) {
-                  that.getcancel();
-                })
-              })
-            }
-          }) 
-       
-
-        }
-        else {
-          //待付款
-          if(that.data.isTeam == 0){
+    console.log(adphone)
+    console.log(adress)
+    console.log(adphoness)
+    if (adphone == '暂无' || adress == '暂无' || adphoness == '暂无') {
+      wx.showModal({
+        title: '提示',
+        content: '您还没有收货信息',
+        confirmColor: "#56a4ff",
+      })
+    }
+    else{
+      wx.showModal({
+        title: '提示',
+        content: '确定要提交吗',
+        confirmColor: "#56a4ff",
+        success(res) {
+          if (res.confirm) {
             wx.request({
-              url: URL + '/Mall/order_buy',
+              url: URL + '/user/query_openid',
               data: {
-                userId: UserId,  //用户id
-                goodsId: that.data.goods_id, //商品id
-                couponId: cou_id,  //优惠券的id
-                price: that.data.goods_price, //商品价格
-                color: that.data.goods_color,   //颜色
-                size: that.data.goods_dimension, //尺寸大小
-                deposit: that.data.goods_earnest,  //定金
-                num: that.data.numm,     //数量
-                pay: that.data.earnest,  //实付金额
-                b: 0,//模拟接口（未付款）
-                message: that.data.messages,//买家留言
-                name: that.data.adn, //收件人
-                phone: that.data.adp,//地址电话号码
-                address: that.data.add, //详细地址
-                isTeam:that.data.isTeam
-            },
+                userId: UserId
+              },
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded'
               },
               success: function (res) {
-                console.log(res.data)
-                //模拟支付接口
-                wx.redirectTo({
-                  url: '../Order/Order?currentTab=1'
+                console.log(res);
+                var open_id = res.data.openId;
+                console.log(open_id);
+                let infoOpt = {
+                  openId: open_id,
+                  toTal: total
+                }
+                //promise异步处理 写的头大
+                pay.Unified(infoOpt).then((res) => {
+                  var data = res;
+                  pay.pay(data).then((res) => {
+                    console.log(res);
+                    that.getpaymented()
+                  }).catch(function (res) {
+                    that.getcancel();
+                  })
                 })
-
               }
-            });
-          }else{
-              that.getcancel();
+            })
+
+
           }
-         
+          else {
+            //待付款
+            if (that.data.isTeam == 0) {
+              wx.request({
+                url: URL + '/Mall/order_buy',
+                data: {
+                  userId: UserId,  //用户id
+                  goodsId: that.data.goods_id, //商品id
+                  couponId: cou_id,  //优惠券的id
+                  price: that.data.goods_price, //商品价格
+                  color: that.data.goods_color,   //颜色
+                  size: that.data.goods_dimension, //尺寸大小
+                  deposit: that.data.goods_earnest,  //定金
+                  num: that.data.numm,     //数量
+                  pay: that.data.earnest,  //实付金额
+                  b: 0,//模拟接口（未付款）
+                  message: that.data.messages,//买家留言
+                  name: that.data.adn, //收件人
+                  phone: that.data.adp,//地址电话号码
+                  address: that.data.add, //详细地址
+                  isTeam: that.data.isTeam
+                },
+                method: 'POST',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log(res.data)
+                  //模拟支付接口
+                  wx.redirectTo({
+                    url: '../Order/Order?currentTab=1'
+                  })
+
+                }
+              });
+            } else {
+              that.getcancel();
+            }
 
 
+
+          }
         }
-      }
-    });
+      });
+    }
+
+   
 
   },
   //买家留言
@@ -435,11 +456,11 @@ Page({
     var Address_turn = '';
     var phone = '';
     var name_turn = '';
-
+    var that = this;
     //添加地址
     if (this.data.judge == '1') {
     } else {
-      var that = this;
+      
       let pages = getCurrentPages();
       let currPage = pages[pages.length - 1];
       if (currPage.data.selAddress == "") {
@@ -460,7 +481,9 @@ Page({
         adp: phone
       })
     }
-
+    adphone = that.data.adn;
+    adress = that.data.add;
+    adphoness = that.data.adp;
   },
 
   /**

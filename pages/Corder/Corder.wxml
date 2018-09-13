@@ -60,6 +60,6 @@
       </view>
       <view class='Underline'></view>
       <view class="cart-footer">
-                  <text class="cart-toatl-price">合计:￥{{earnest}}.00</text>
+                  <text class="cart-toatl-price">合计:￥{{earnest}}</text>
                   <view class='cart-footer-button' bindtap='Immediate'> 立即结算</view>
       </view>  

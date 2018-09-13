@@ -12,7 +12,7 @@
               <view class='Consignee-addresss'>
                 <view class='addres'>(单击可以选择您想要的地址或添加新的地址)</view>
               </view>
-          </view>
+          </view> 
       </view>
       
       <view class='Crosstwo'><image src='/images/hengtiaotwo.jpg'></image> </view>
@@ -67,7 +67,7 @@
       </view> 
    <view class='fu'></view>
  <view class="cart-footer">
-                      <text class="cart-toatl-price">合计:￥{{sum}}.00</text>
+                      <text class="cart-toatl-price">合计:￥{{sum}}</text>
                       <view class='cart-footer-button' bindtap='Immediate'> 立即结算</view>
           </view>  
       

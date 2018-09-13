@@ -51,7 +51,7 @@ Page({
     this.uploadKeyword();
     if (this.data.content != null && this.data.content != '') {
       wx.navigateTo({
-        url: '../searchResult/searchResult?content=' + this.data.content,
+        url: '../searchResult1/searchResult1?content=' + this.data.content,
       })
     } else {
       wx.showToast({
