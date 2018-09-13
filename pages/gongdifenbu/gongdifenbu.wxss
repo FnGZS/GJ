@@ -71,7 +71,7 @@ justify-content:center;
   width: 100%;
   background: white;
   height: 100rpx;
-  
+  position: relative;
 }
 .top2-image{
   width: 80rpx; 
@@ -90,7 +90,9 @@ justify-content:center;
   float: left;
 }
 .top2 text{
-  float: left;
+  position: absolute;
+  /* float: left; */
+  right: 5%;
   font-size: 27rpx;
   margin-top: 30rpx;
   margin-left: 30rpx;

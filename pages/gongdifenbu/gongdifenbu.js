@@ -14,6 +14,7 @@ Page({
     xx:0,
     yy:0,
     markers: [],
+    foot:null,
     // polyline: [{
     //   points: [{
     //     longitude: 113.3245211, 
@@ -69,7 +70,8 @@ Page({
    */
   
   onLoad: function (options) {
-    var txt
+    var txt;
+    this.uploadFoot(); //获取好友足迹
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
@@ -193,6 +195,28 @@ Page({
     })
   },
 
+  //获取好友足迹
+  uploadFoot:function (){
+    var that = this;
+    wx.request({
+      url: this.data.URL + '/Decorate/site_foot',
+      data: {
+        userId: wx.getStorageSync('UserId')
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          foot:res.data
+        })
+      }
+    }) 
+  },
+
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
