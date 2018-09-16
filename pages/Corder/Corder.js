@@ -1,4 +1,4 @@
-
+var util = require('../../utils/util.js');
 var pay = require('../../utils/pay.js');
 var cou_id = 0;
 var heji = 0;
@@ -186,12 +186,15 @@ Page({
                 arr.push('类型' + label + ':' + '   ' + '满' + satisfy + '元减' + price + '元');
               }
               // console.log(arr)
+              heji = util.formatnumber(heji,2);//防止出现0.01.0这种情况
+              console.log(heji);
               that.setData({
                 array: arr,
                 Coupons_conter: res.data,
                 earnest: heji
               })
               // console.log(that.data.shocse)
+             
             }
           }
         });

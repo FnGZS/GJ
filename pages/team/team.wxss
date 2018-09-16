@@ -1,7 +1,22 @@
 .page {
   font-family: SimHei;
 }
-
+.search {
+  display: block;
+  background:white;
+  height: 5%;
+  padding: 1.5% 3%;
+  border-bottom: 1px solid #F1F1F1;
+}
+.search input {
+  width: 100%;
+  border-radius: 13px;
+  background: #F1F1F1;
+  border: none;
+  font-size: 14px;
+  text-align: center;
+  margin: auto;
+}
 .overflow {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -17,7 +32,7 @@
   position: absolute;
   bottom: 0rpx;
   left: 0;
-  top: 0;
+  top: 7%;
   overflow: hidden;
 }
 
@@ -67,8 +82,8 @@
 
 .active {
   background: #fff;
-  color: #ff9000;
-  border-left: 8rpx solid #ff9000 ;
+  color: #ff6e00;
+  border-left: 8rpx solid #ff6e00 ;
 }
 .right{
   flex:80%;

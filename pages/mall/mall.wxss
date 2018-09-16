@@ -27,6 +27,9 @@
 .icon-jian:before { content: "\e619"; }
 
 
+.mall{
+  border-bottom: 1rpx solid #dfdfdf;
+}
 .section {
   position: absolute;
   width: 100%;
@@ -55,7 +58,7 @@
 }
 .left {
   height: 100%;
-  background: #f4f4f4;
+  background: #f6f6f6;
   text-align: center;
   font-size: 24rpx;
   flex: 20%;
@@ -114,60 +117,47 @@ background:#ffffff;
 font-size:26rpx;
 display:flex;
 color:#666;
-
+justify-content: space-around;
 }
 
-.flex1 {
-  width: 50%;
+.flex {
+ width: 33%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: flex;
   position: relative;
-  
+  align-items: center;
+  justify-content: center;
 }
-.flex1 text{
- padding-left:110rpx;
-margin-top:20rpx;
-font-size:25rpx;
-width:100%;
-border-right:1px solid #f4f4f4;
-height:30rpx;
-}
-.flex2 {
-  width: 50%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.flex text{
   display: flex;
-  position: relative;
-  
+  align-items: center;
+  justify-content: center;
+  font-size:25rpx;
+ 
+  border-right:1px solid #f4f4f4;
+  height:30rpx;
 }
-.flex2 text{
- padding-left:110rpx;
-margin-top:20rpx;
-font-size:25rpx;
-width:100%;
-height:30rpx;
-}
+
 .fiex_color{
   color: #ff6e00;
 }
 .fs-up{
-    display: inline-block;
-    width: 7px;
-    margin-left: 5px;
-    
+  height: 30rpx;
+  width: 7px;
+   margin-top:-15rpx;
+    margin-left: 10rpx;
 }
-.icon-triangle-top{
+.icon-triangle-bottom{
   position: absolute;
-  margin-top:13rpx;
+  margin-top:15rpx;
 
   font-size: 15rpx;
 }
-.icon-triangle-bottom{
+.icon-triangle-top{
  position:absolute;
-  bottom:15rpx;
+ 
   font-size:15rpx;
 
 }

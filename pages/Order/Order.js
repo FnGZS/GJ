@@ -65,6 +65,7 @@ Page({
     console.log(this.data.isShow)
 
   },
+ 
   // 链接的界面用商品的orderid判断
   Interface: function(e) {
     console.log(e)

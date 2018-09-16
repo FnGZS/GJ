@@ -44,6 +44,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(UserId);
         console.log(res)
         if(res.data != null)
         {
