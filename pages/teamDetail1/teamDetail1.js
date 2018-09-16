@@ -11,35 +11,156 @@ Page({
     URL: getApp().globalData.PHPURL,
     URLimg: "",
     lodingHidden: true,
+    display_noComments: 'none',
+    scrollTop: 0,
+    scrollTopA: 0,
+    scrollTopB: 0,
+    scrollTopC: 0,
+    scrollTopstart: 0,
+    isClick: 0,
     id: '',
-    detail: []
+    detail: [],
+    comment: [],
+    user: []
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options)
     this.setData({
       URLimg: iURL,
       id: options.id,
-      // id:3,
+      // id: 3,
       lodingHidden: false,
     })
-    this.getDetail();
+    this.getDetail(); //获取团队用户的详情
+    this.getComment(); //获取团队成员的评价
+
   },
-  onReady: function () {
-    
+  onReady: function() {
+
   },
-  onShow: function () {
-    
+  onShow: function() {
+
   },
-  tabGoods: function (e) {
+  tabGoods: function(e) {
     var _datasetId = e.target.dataset.id;
     var _obj = {};
     _obj.curHdIndex = _datasetId;
     _obj.curBdIndex = _datasetId;
     this.setData({
-      tabArr: _obj
+      tabArr: _obj,
+      isClick: 1,
+    })
+
+    //点击下滑到指定距离（钟佳闱）
+    var that = this;
+    var key = e.target.dataset.key;
+
+    var query = wx.createSelectorQuery()
+
+    query.select(`#view_${key}`).boundingClientRect()
+    query.selectViewport().scrollOffset()
+
+    query.exec(function(res) {
+      console.log(res)
+      that.setData({
+        scrollTop: that.data.scrollTopstart + res[0].top - 35
+      })
     })
   },
-  getDetail: function () {
+  //获取三个导航栏的内容到顶部的高度
+  getTabToTop: function() {
+    var that = this;
+    var queryA = wx.createSelectorQuery()
+    queryA.select('#view_A').boundingClientRect()
+    queryA.selectViewport().scrollOffset()
+    queryA.exec(function(res) {
+      that.setData({
+        scrollTopA: res[0].top
+      })
+    })
+    var queryB = wx.createSelectorQuery()
+    queryB.select('#view_B').boundingClientRect()
+    queryB.selectViewport().scrollOffset()
+    queryB.exec(function(res) {
+      that.setData({
+        scrollTopB: res[0].top
+      })
+    })
+    var queryC = wx.createSelectorQuery()
+    queryC.select('#view_C').boundingClientRect()
+    queryC.selectViewport().scrollOffset()
+    queryC.exec(function(res) {
+      that.setData({
+        scrollTopC: res[0].top
+      })
+    })
+    console.log(that.data.scrollTopA);
+    console.log(that.data.scrollTopB);
+    console.log(that.data.scrollTopC);
+  },
+  /**
+   * 滚动条位置
+   */
+  handleScroll: function(e) {
+    console.log(e)
+    var that = this;
+    if (this.data.isClick == 0) {
+      this.getTabToTop(); //获取三个内容到顶部的距离
+      var A = that.data.scrollTopA;
+      var B = that.data.scrollTopB;
+      var C = that.data.scrollTopC;
+      var currentScroll = e.detail.scrollTop;
+      console.log(currentScroll)
+      var _obj = {};
+      if (currentScroll < B - A) {
+        _obj.curHdIndex = 0;
+        _obj.curBdIndex = 0;
+      } else if (currentScroll >= B - A && currentScroll < C - B - A) {
+        _obj.curHdIndex = 1;
+        _obj.curBdIndex = 1;
+      } else {
+        _obj.curHdIndex = 2;
+        _obj.curBdIndex = 2;
+      }
+    } else {
+      this.setData({
+        isClick: 0
+      })
+    }
+    // console.log(this.data.isClick);
+    // if (this.data.isClick == 0){
+    //   this.getTabToTop(); //获取三个内容到顶部的距离    
+    //   var A = that.data.scrollTopA;
+    //   var B = that.data.scrollTopB;
+    //   var C = that.data.scrollTopC;
+    //   var _obj = {};
+    //   if()
+    //   // if (A - 35 <= 0 && B - 35 > 0 && C -- 35 > 0) {
+    //   //   _obj.curHdIndex = 0;
+    //   //   _obj.curBdIndex = 0;
+    //   // }
+    //   // else if (B - 35 <= 0 && C - 35 > 0) {
+    //   //   _obj.curHdIndex = 1;
+    //   //   _obj.curBdIndex = 1;
+    //   // }
+    //   // else if (C - 35 <= 0) {
+    //   //   _obj.curHdIndex = 2;
+    //   //   _obj.curBdIndex = 2;
+    //   // }
+    // }else{
+    //   this.setData({
+    //     isClick:0
+    //   })
+    // }
+
+    //滑动
+    this.setData({
+      tabArr: _obj,
+      scrollTopstart: e.detail.scrollTop
+    })
+  },
+  //获取团队成员的详情
+  getDetail: function() {
     var that = this;
     wx.request({
       url: this.data.URL + '/user/teamdetail',
@@ -50,7 +171,7 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         that.setData({
           detail: res.data,
@@ -60,8 +181,41 @@ Page({
       }
     })
   },
+  //获取团队成员的评价
+  getComment: function() {
+    var that = this;
+    var id = this.data.id;
+    //评价
+    wx.request({
+      url: that.data.URL + '/Order/comment_display',
+      data: {
+        goodsId: id,
+        isTeam: 1
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function(res) {
+        console.log(res)
+        if (res.data.comment.length != 0) {
+          that.setData({
+            comment: res.data
+          })
+          that.setData({
+            user: that.data.comment.user
+          })
+        } else {
+          that.setData({
+            display_noComments: 'block'
+          })
+        }
+
+      }
+    });
+  },
   //跳转到经典案例
-  toCase: function (e) {
+  toCase: function(e) {
     console.log(e)
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -69,19 +223,19 @@ Page({
     })
   },
   //跳转客服页面
-  kefu: function () {
+  kefu: function() {
     wx.navigateTo({
       url: '../kefuhuihua/kefuhuihua',
     })
   },
   //跳转购物车页面
-  carttt: function () {
+  carttt: function() {
     wx.navigateTo({
       url: '../shangcheng/shangcheng',
     })
   },
   //加入购物车
-  cart: function () {
+  cart: function() {
     var that = this;
     //检查是否登录了
     that.setData({
@@ -106,7 +260,7 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res.data)
           if (res.data >= 1) {
             wx.showToast({
@@ -142,8 +296,7 @@ Page({
         }
       })
 
-    }
-    else {
+    } else {
       wx.showModal({
         content: '请登录',
         showCancel: false, //不显示取消按钮
@@ -152,7 +305,7 @@ Page({
     }
   },
   // 立即购买
-  pay: function (e) {
+  pay: function(e) {
     console.log(this.data.detail)
     var goods_img = this.data.detail.goods_img;
     var UserId = wx.getStorageSync('UserId');
@@ -178,8 +331,7 @@ Page({
         url: '../Corder/Corder?numm=' + numm + '&goods_id=' + goods_id + '&goods_classify=' + goods_classify + '&goods_style=' + goods_style + '&goods_price=' + goods_price + '&goods_earnest=' + goods_earnest + '&goods_name=' + goods_name + '&goods_img=' + goods_img + '&judge=' + judge + '&isTeam=' + isTeam,
       })
 
-    }
-    else {
+    } else {
       wx.showModal({
         title: '提示',
         content: '请登录',
@@ -189,19 +341,19 @@ Page({
 
   },
 
-  onHide: function () {
-    
+  onHide: function() {
+
   },
-  onUnload: function () {
-    
+  onUnload: function() {
+
   },
-  onPullDownRefresh: function () {
-    
+  onPullDownRefresh: function() {
+
   },
-  onReachBottom: function () {
-    
+  onReachBottom: function() {
+
   },
-  onShareAppMessage: function () {
-    
+  onShareAppMessage: function() {
+
   }
 })
