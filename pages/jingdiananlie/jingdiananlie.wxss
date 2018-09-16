@@ -330,7 +330,7 @@ page{
   height: 80rpx;
   font-size: 27rpx;
   padding: 5rpx;
-  background-color: #eecfa1;
+  background-color: #FF9000;
   position: fixed;
   bottom: 200rpx;
   right: 50rpx;

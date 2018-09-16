@@ -45,9 +45,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -113,9 +113,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -143,9 +143,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -195,9 +195,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -225,9 +225,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -273,9 +273,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -303,9 +303,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -356,9 +356,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>
@@ -386,9 +386,9 @@
         </view>
       </view>
       <view class='price'>
-        <view class='position'>￥{{item.price[index]}}.0</view>
+        <view class='position'>￥{{item.price[index]}}</view>
         <view class='Deposit'>定金：
-          <font style="color:red;">{{item.deposit[index]}}.0</font>
+          <font style="color:red;">{{item.deposit[index]}}</font>
         </view>
         <view class='number'>×{{item.num[index]}}</view>
       </view>

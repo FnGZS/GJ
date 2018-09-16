@@ -1,26 +1,37 @@
 <view class='section'>
   <view class="search" bindtap='search'>
-    <input placeholder='搜索古杰商城'></input>
+    <input placeholder='搜索古杰商城' disabled='disabled'></input>
   </view>
   <view class='mall-bottom'>
     <!-- 左右侧关联 -->
      <!--左侧导航想要关联右边物品 只需要在这里加一个标识 标记当前的选项 传值这个标记到后台 -->
     <view class="left">
-      <view  bindtap="Select" data-typeid="{{item.id}}" data-id="{{index}}" class="{{currentId==item.id?'clickSel':''}}" wx:for="{{classify}}">
+      <view  bindtap="Select" data-typeid="{{item.id}}" data-id="{{index}}" class="{{currentId==item.id?'clickSel':''}} mall" wx:for="{{classify}}">
       {{item.goods_classify_name}}
       </view>
     </view>
     <view class="right">
       <view class="tabTit">
-        <view class="flex1 {{Sales?'fiex_color':''}}" data-sort="1" bindtap='sortGoods_control'>
-          <text >销量</text>
+        <view class="flex {{Sales?'fiex_color':''}}" data-sort="1" bindtap='sortGoods_control'>
+          <text >销量 </text>
+          
           <view class='fs-up'>
-           
+             <span class='iconfont icon-triangle-bottom'></span>
+           <span class='iconfont icon-triangle-top'></span>
           </view>
         </view>
-        <view class="flex2 {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
+        <view class="flex {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
           <text>价格</text>
-          <view class='fs-up'>     
+         <view class='fs-up'>
+             <span class='iconfont icon-triangle-bottom'></span>
+           <span class='iconfont icon-triangle-top'></span>
+          </view>
+        </view> 
+         <view class="flex {{evaluate?'fiex_color':''}}" data-sort="3" bindtap='sortGoods_control'>
+          <text>评价</text>
+             <view class='fs-up'>
+             <span class='iconfont icon-triangle-bottom'></span>
+           <span class='iconfont icon-triangle-top'></span>
           </view>
         </view> 
      

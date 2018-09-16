@@ -1,3 +1,6 @@
+  <view class="search" bindtap='search'>
+    <input placeholder='搜索古杰商城' disabled='disabled'></input>
+  </view>
 <view class="detail">
   <view class="content">
     <view class="menu-container">
