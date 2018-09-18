@@ -20,8 +20,7 @@ Page({
     isClick: 0,
     id: '',
     detail: [],
-    comment: [],
-    user: []
+    comment: []
   },
   onLoad: function(options) {
     console.log(options)
@@ -198,12 +197,9 @@ Page({
       },
       success: function(res) {
         console.log(res)
-        if (res.data.comment.length != 0) {
+        if (res.data.length != 0) {
           that.setData({
             comment: res.data
-          })
-          that.setData({
-            user: that.data.comment.user
           })
         } else {
           that.setData({

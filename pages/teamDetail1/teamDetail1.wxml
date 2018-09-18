@@ -110,13 +110,13 @@
           <view class='noThing_text'>暂无评价哦~</view>
         </view>
       </view>
-      <view class="goods-comment" wx:for="{{comment.comment}}" style="background:#fff;">
+      <view class="goods-comment" wx:for="{{comment}}" style="background:#fff;">
         <view class="comment-list">
           <view class="comment-lf">
-            <image class="comment-favion" data-index="{{index}}" src="{{user[index].avatarUrl}}"></image>
+            <image class="comment-favion" data-index="{{index}}" src="{{item.avatarUrl}}"></image>
           </view>
           <view class="comment-mid">
-            <view style="padding-left:8px;" data-index="{{index}}">{{user[index].name}}</view>
+            <view style="padding-left:8px;" data-index="{{index}}">{{item.name}}</view>
             <view class="star-status" style="padding-left:8px;">
             </view>
             <view style="padding-left:8px;">{{item.content}}</view>
