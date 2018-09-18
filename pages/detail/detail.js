@@ -50,7 +50,14 @@ Page({
     num_color:0,
     size_index:0,
     arr :[],
-    color_index:0
+    color_index:0,
+    display_noComments: 'none',
+    scrollTop: 0,
+    scrollTopA: 0,
+    scrollTopB: 0,
+    scrollTopC: 0,
+    scrollTopstart: 0,
+    isClick: 0,
   },
 //加入购物车跳转
   carttt:function(){
@@ -333,6 +340,7 @@ gouwu:function(){
       url: that.data.URL + '/Mall/goods_detail',
       data: {
         goodsId: gooid,
+        // goodsId:73
       },
       method: 'POST',
       header: {
@@ -699,14 +707,15 @@ gouwu:function(){
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            that.setData({
-              comment:res.data
-            })
-            console.log(res)
-            that.setData({
-              user: that.data.comment.userId
-            })
-            console.log(that.data.userId)
+            if (res.data.length != 0) {
+              that.setData({
+                comment: res.data
+              })
+            } else {
+              that.setData({
+                display_noComments: 'block'
+              })
+            }
           }
         });
 
@@ -751,15 +760,97 @@ gouwu:function(){
   },
   tabGoods: function (e) {
     var _datasetId = e.target.dataset.id;
-    //console.log("----"+_datasetId+"----");  
     var _obj = {};
     _obj.curHdIndex = _datasetId;
     _obj.curBdIndex = _datasetId;
     this.setData({
-      tabArr: _obj
+      tabArr: _obj,
+      isClick: 1,
+    })
+
+    //点击下滑到指定距离（钟佳闱）
+    var that = this;
+    var key = e.target.dataset.key;
+
+    var query = wx.createSelectorQuery()
+
+    query.select(`#view_${key}`).boundingClientRect()
+    query.selectViewport().scrollOffset()
+
+    query.exec(function (res) {
+      console.log(res)
+      that.setData({
+        scrollTop: that.data.scrollTopstart + res[0].top - 35
+      })
     })
   },
+  //获取三个导航栏的内容到顶部的高度
+  getTabToTop: function () {
+    var that = this;
+    var queryA = wx.createSelectorQuery()
+    queryA.select('#view_A').boundingClientRect()
+    queryA.selectViewport().scrollOffset()
+    queryA.exec(function (res) {
+      that.setData({
+        scrollTopA: res[0].top
+      })
+    })
+    var queryB = wx.createSelectorQuery()
+    queryB.select('#view_B').boundingClientRect()
+    queryB.selectViewport().scrollOffset()
+    queryB.exec(function (res) {
+      that.setData({
+        scrollTopB: res[0].top
+      })
+    })
+    var queryC = wx.createSelectorQuery()
+    queryC.select('#view_C').boundingClientRect()
+    queryC.selectViewport().scrollOffset()
+    queryC.exec(function (res) {
+      that.setData({
+        scrollTopC: res[0].top
+      })
+    })
+    console.log(that.data.scrollTopA);
+    console.log(that.data.scrollTopB);
+    console.log(that.data.scrollTopC);
+  },
+  /**
+   * 滚动条位置
+   */
+  handleScroll: function (e) {
+    console.log(e)
+    var that = this;
+    if (this.data.isClick == 0) {
+      this.getTabToTop(); //获取三个内容到顶部的距离
+      var A = that.data.scrollTopA;
+      var B = that.data.scrollTopB;
+      var C = that.data.scrollTopC;
+      var currentScroll = e.detail.scrollTop;
+      console.log(currentScroll)
+      var _obj = {};
+      if (currentScroll < B - A) {
+        _obj.curHdIndex = 0;
+        _obj.curBdIndex = 0;
+      } else if (currentScroll >= B - A && currentScroll < C - B - A) {
+        _obj.curHdIndex = 1;
+        _obj.curBdIndex = 1;
+      } else {
+        _obj.curHdIndex = 2;
+        _obj.curBdIndex = 2;
+      }
+    } else {
+      this.setData({
+        isClick: 0
+      })
+    }
 
+    //滑动
+    this.setData({
+      tabArr: _obj,
+      scrollTopstart: e.detail.scrollTop
+    })
+  },
   //颜色分类
   changPro: function (e) {
     console.log(e)

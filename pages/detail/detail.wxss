@@ -174,7 +174,9 @@ page {
   width: 100%;
   font-size: 24rpx;
   border-top: 1px solid #eee;
-height: 80rpx;
+  height: 100rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
   display: flex;
 }
 
@@ -185,21 +187,25 @@ height: 80rpx;
 }
 
 .zuo_a {
-  padding-top: 2%;
+  padding-top: 10rpx;
+  margin-top: 10rpx;
   flex: 2;
   text-align: center;
-  /* border-right: 1rpx solid #eee; */
-  /* border: red solid 1rpx; */
+}
+.dbtextt{
+  margin-top: 5rpx;
 }
 .icon-shoucang{
   font-size: 33rpx;
 }
 .icon-gouwuche{
-  font-size: 33rpx;
+  display: block;
+  margin-top: 10rpx;
+  font-size: 40rpx;
 }
 .zuo_b {
   flex: 1;
-  padding-top: 2%;
+  padding-top: 5%;
   text-align: center;
   /* border-right: 1rpx solid #eee; */
   /* border: red solid 1rpx; */
@@ -232,13 +238,10 @@ height: 80rpx;
   background: #f76401;
   padding: 25rpx 0;
 }
-
 /*客服*/
 
 .dbtext {
-  line-height: 13px;
-  color: #666;
-  font-size: 23rpx;
+  font-size: 24rpx;
   margin-bottom: 7rpx;
 }
 .dbtextt {
@@ -824,12 +827,15 @@ margin:10rpx 0;
 }
 
 .goods-navigator{
+  position: fixed;
+  top: 0;
   width: 750rpx;
   background: #fff;
   height: 70rpx;
   line-height: 70rpx;
   font-size: 34rpx;
   margin-bottom: 10rpx;
+  z-index:999;
 }
 .goods-nav{
   font-size: 12px;
@@ -838,19 +844,27 @@ margin:10rpx 0;
   float: left;
 
 }
-.goods-detail{
+/* .goods-detail{
   display: none;
+} */
+.goods_detail_text{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 5%;
+  font-size: 30rpx;
+  /* color: #999; */
+  border-bottom: 1px solid #ddd;
 }
 .goods-detail-lf{
   float: left;
-  width: 300rpx;
+  width: 150rpx;
 }
-.goods-detail-tr{
-  float: right;
-  width: 420rpx;
+.goods-detail-rt{
+  float: left;
+  width: 250rpx;
 }
 .goods-detail-list{
-  padding-left: 30rpx;
+  padding-left: 5%;
   margin-bottom: 30rpx;
   font-size: 30rpx;
   width: 720rpx;
@@ -858,12 +872,14 @@ margin:10rpx 0;
   line-height: 60rpx;
   background: #fff;
   margin-top: 5rpx;
-  text-align: center;
 }
-.goods-info{
+/* .goods-info{
   display: none;
+} */
+.scroll-con{
+  margin-top: 70rpx;
+  height: 1000rpx;
 }
-
 .goods-info image{
   
   width:750rpx;
@@ -895,8 +911,31 @@ margin:10rpx 0;
   width: 730rpx;
 }
 /*宝贝评价*/
-.goods-comment{
+/* .goods-comment{
   display: none;
+} */
+.goods-comment_text{
+ height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 5%;
+  font-size: 30rpx;
+  /* color: #999; */
+  border-bottom: 1px solid #ddd;
+}
+.noThing_main{
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.noThing_main image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.noThing_text{
+  margin-top: 20rpx;
+  font-size: 23rpx;
 }
 .goods-comment.active{
  display: block;
