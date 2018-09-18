@@ -701,11 +701,11 @@ gouwu:function(){
             that.setData({
               comment:res.data
             })
-            
+            console.log(res)
             that.setData({
-              user: that.data.comment.user
+              user: that.data.comment.userId
             })
-            console.log(that.data.user)
+            console.log(that.data.userId)
           }
         });
 

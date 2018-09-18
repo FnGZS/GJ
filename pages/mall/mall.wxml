@@ -12,26 +12,25 @@
     </view>
     <view class="right">
       <view class="tabTit">
-        <view class="flex {{Sales?'fiex_color':''}}" data-sort="1" bindtap='sortGoods_control'>
+        <view class="flex " data-sort="1" bindtap='sortGoods_control'>
           <text >销量 </text>
-          
           <view class='fs-up'>
-             <span class='iconfont icon-triangle-bottom'></span>
-           <span class='iconfont icon-triangle-top'></span>
+             <span class="iconfont icon-triangle-bottom {{sortid == 1 && Sales==1 ?'fiex_color':''}} " ></span>
+             <span class="iconfont icon-triangle-top    {{sortid == 1 && Sales==2 ?'fiex_color':''}} "></span>
           </view>
         </view>
-        <view class="flex {{price?'fiex_color':''}}" data-sort="2" bindtap='sortGoods_control'>
+        <view class="flex " data-sort="2" bindtap='sortGoods_control'>
           <text>价格</text>
          <view class='fs-up'>
-             <span class='iconfont icon-triangle-bottom'></span>
-           <span class='iconfont icon-triangle-top'></span>
+             <span class="iconfont icon-triangle-bottom {{sortid == 2 && price==1 ?'fiex_color':''}}"></span>
+           <span class="iconfont icon-triangle-top {{sortid == 2 && price == 2 ?'fiex_color':''}}"></span>
           </view>
         </view> 
-         <view class="flex {{evaluate?'fiex_color':''}}" data-sort="3" bindtap='sortGoods_control'>
+         <view class="flex" data-sort="3" bindtap='sortGoods_control'>
           <text>评价</text>
              <view class='fs-up'>
-             <span class='iconfont icon-triangle-bottom'></span>
-           <span class='iconfont icon-triangle-top'></span>
+             <span class="iconfont icon-triangle-bottom {{sortid == 3 && evaluate==1 ?'fiex_color':''}}"></span>
+           <span class="iconfont icon-triangle-top {{sortid == 3 && evaluate==2 ?'fiex_color':''}}"></span>
           </view>
         </view> 
      
