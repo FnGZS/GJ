@@ -2,25 +2,31 @@ var URL = getApp().globalData.PHPURL;
 var iURL = getApp().globalData.IMGURL;
 Page({
   data: {
-    backups:[],//备份的货物数据
-    classify: [],//原始的货物数据 
-    currentId:1,
-    classifyid:0,
-    classifyarr: [{name:'',begin: 0,end:0}],
-    list:['', '', '', '', '', '', "", "", "", ""],
-    goods:[],  
-    URLimg:"",
-    goods_img:[],
-    Sales:false,
-    price:false,
-    countclassify:'',
+    backups: [], //备份的货物数据
+    classify: [], //原始的货物数据 
+    currentId: 1,
+    classifyid: 0,
+    classifyarr: [{
+      name: '',
+      begin: 0,
+      end: 0
+    }],
+    list: ['', '', '', '', '', '', "", "", "", ""],
+    goods: [],
+    URLimg: "",
+    goods_img: [],
+    Sales: 1,
+    price: 1,
+    evaluate: 1,
+    countclassify: '',
     countgoods: '',
-    goodsid:0
+    goodsid: 0,
+    sortid: 0//控制销量价格评价 哪一个选项
   },
- 
- //整体下拉刷新
+
+  //整体下拉刷新
   onPullDownRefresh: function () {
-    var that=this;
+    var that = this;
     that.setData({
       Sales: false,
       price: false,
@@ -30,12 +36,12 @@ Page({
   },
 
   //列表上拉加载
-  bindDownLoad:function(){
-    var that=this;
-    var countgoods=0;
-    var goodsarr = that.data.goods; 
+  bindDownLoad: function () {
+    var that = this;
+    var countgoods = 0;
+    var goodsarr = that.data.goods;
     console.log(that.data.classifyarr);
-    var currentId = that.data.currentId-1
+    var currentId = that.data.currentId - 1
     var classify_name = that.data.classifyarr[currentId].name
     var classify_begin = 'classifyarr[' + currentId + '].begin'
     var classify_end = 'classifyarr[' + currentId + '].end'
@@ -47,136 +53,205 @@ Page({
       [classify_begin]: classify_begin_sum,
       [classify_end]: classify_end_sum,
     })
-        wx.request({
-          //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
-          url: URL + '/Mall/goods_query_refresh',
-          data: {
-            classify_data: that.data.classifyarr[currentId].name,
-            begin_data: that.data.classifyarr[currentId].begin,
-            end_data: that.data.classifyarr[currentId].end,
-          },
-          method: 'GET',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function (res) { 
-              that.setData({
-                countgoods: 0,
-              })
-             
-              for (var j in res.data) {
-                goodsarr.push(res.data[that.data.countgoods])
-                that.setData({
-                  countgoods: that.data.countgoods + 1
-                })
-              } 
-                  that.setData({
-                    goods: goodsarr,
-                  });
-                  //获取到后存起来方便后面调用 
-                  wx.setStorage({
-                    key: "GOODS",
-                    data: that.data.goods
-                  })
-                  //将货物添加到分类列表
-                  for (var i in that.data.classify) {
-                    var f = 0
-                    for (var j in that.data.goods) {
-                      var num = 'classify[' + i + '].goods_classify_list[' + f + ']'
-                      if (that.data.classify[i].goods_classify_name == that.data.goods[j].goods_classify) {
-                        f = f + 1;
-                        that.setData({
-                          [num]: that.data.goods[j]
-                        })
-                      }
-                    }
-                  }
-                  //备份原始数据
-                  that.setData({
-                    backups: that.data.classify
-                  });
-              if(res.data.length==0)
-              {
-                  wx.showToast({
-                    title: '没有了',              
-                     image: '/images/W.png'
-                  })
-              }else{
-                wx.showToast({
-                  title: '加载中',
-                  icon: 'loading'
-                                  })
-              }
-          }
+    wx.request({
+      //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
+      url: URL + '/Mall/goods_query_refresh',
+      data: {
+        classify_data: that.data.classifyarr[currentId].name,
+        begin_data: that.data.classifyarr[currentId].begin,
+        end_data: that.data.classifyarr[currentId].end,
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        that.setData({
+          countgoods: 0,
         })
-  
- //   console.log('circle 下一页');
+
+        for (var j in res.data) {
+          goodsarr.push(res.data[that.data.countgoods])
+          that.setData({
+            countgoods: that.data.countgoods + 1
+          })
+        }
+        that.setData({
+          goods: goodsarr,
+        });
+        //获取到后存起来方便后面调用 
+        wx.setStorage({
+          key: "GOODS",
+          data: that.data.goods
+        })
+        //将货物添加到分类列表
+        for (var i in that.data.classify) {
+          var f = 0
+          for (var j in that.data.goods) {
+            var num = 'classify[' + i + '].goods_classify_list[' + f + ']'
+            if (that.data.classify[i].goods_classify_name == that.data.goods[j].goods_classify) {
+              f = f + 1;
+              that.setData({
+                [num]: that.data.goods[j]
+              })
+            }
+          }
+        }
+        //备份原始数据
+        that.setData({
+          backups: that.data.classify
+        });
+        if (res.data.length == 0) {
+          wx.showToast({
+            title: '没有了',
+            image: '/images/W.png'
+          })
+        } else {
+          wx.showToast({
+            title: '加载中',
+            icon: 'loading'
+          })
+        }
+      }
+    })
+
+    //   console.log('circle 下一页');
   },
 
   //商品排序控制器
-  sortGoods_control:function(e){
-    var that=this;
-    var sortid = e.currentTarget.dataset.sort;
-    if (sortid==1){
-      var Sales = !that.data.Sales
+  sortGoods_control: function (e) {
+    var that = this;
+
+    that.setData({
+      sortid: e.currentTarget.dataset.sort,
+    })
+    if (that.data.sortid == 1) {
       that.setData({
-        Sales: Sales,
-        price:false
+        evaluate: 1,
+        price: 1
       })
-    }else{
-      var price = !that.data.price
+      if (that.data.Sales % 2) {
+        that.setData({
+          Sales: 2,
+        })
+      } else {
+        that.setData({
+          Sales: 1,
+        })
+      }
+    } else if (that.data.sortid == 2) {//看的我头都大了  价格
       that.setData({
-        Sales: false,
-        price: price
+        evaluate: 1,
+        Sales: 1
       })
+      if (that.data.price % 2) {
+        that.setData({
+          price: 2,
+        })
+      } else {
+        that.setData({
+          price: 1,
+        })
+      }
+    }else if (that.data.evaluate == 3) {//看的我头都大了  价格
+      that.setData({
+        price: 1,
+        Sales: 1
+      })
+      if (that.data.price % 2) {
+        that.setData({
+          evaluate: 2,
+        })
+      } else {
+        that.setData({
+          evaluate: 1,
+        })
+      }
     }
-   
     that.onShow();
   },
 
-  //商品排序
-  sortGoods:function(){
+  //商品排序强行最基础排序
+  sortGoods: function () {
     var that = this;
     var classiyLT = that.data.classify
     console.log(that.data.classify);
-    if (that.data.Sales){
-    var classiyLT = that.data.classify
-    for (var i = 0; i < classiyLT.length; i++) {
-      for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
-        for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1-j ; k++)// j开始等于0，  
-        { 
-          if (parseInt(classiyLT[i].goods_classify_list[k].goods_out) < parseInt(classiyLT[i].goods_classify_list[k + 1].goods_out)) {
-            var arrt = classiyLT[i].goods_classify_list[k];
-            classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
-            classiyLT[i].goods_classify_list[k + 1] = arrt;
+    //销量
+    if (that.data.sortid == 1) {
+      if (that.data.Sales == 1) {
+        var classiyLT = that.data.classify
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].goods_classify_list[k].goods_out) < parseInt(classiyLT[i].goods_classify_list[k + 1].goods_out)) {
+                var arrt = classiyLT[i].goods_classify_list[k];
+                classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
+                classiyLT[i].goods_classify_list[k + 1] = arrt;
+              }
+            }
           }
-        }  
-      }
-     }
-    }
-    else if (that.data.price){
-      var classiyLT = that.data.classify
-      for (var i = 0; i < classiyLT.length; i++) {
-        for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
-          for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++)// j开始等于0，  
-          {
-            if (parseInt(classiyLT[i].goods_classify_list[k].goods_price) > parseInt(classiyLT[i].goods_classify_list[k + 1].goods_price)) {
-              var arrt = classiyLT[i].goods_classify_list[k];
-              classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
-              classiyLT[i].goods_classify_list[k + 1] = arrt;
+        }
+      } else if (that.data.Sales == 2) {
+        var classiyLT = that.data.classify
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].goods_classify_list[k].goods_out) > parseInt(classiyLT[i].goods_classify_list[k + 1].goods_out)) {
+                var arrt = classiyLT[i].goods_classify_list[k];
+                classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
+                classiyLT[i].goods_classify_list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      }//价格
+    } else if (that.data.sortid == 2) {   
+      if(that.data.price==1)
+      {
+        var classiyLT = that.data.classify
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].goods_classify_list[k].goods_price) > parseInt(classiyLT[i].goods_classify_list[k + 1].goods_price)) {
+                var arrt = classiyLT[i].goods_classify_list[k];
+                classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
+                classiyLT[i].goods_classify_list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      } else if (that.data.price==2){
+        var classiyLT = that.data.classify
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].goods_classify_list[k].goods_price) < parseInt(classiyLT[i].goods_classify_list[k + 1].goods_price)) {
+                var arrt = classiyLT[i].goods_classify_list[k];
+                classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
+                classiyLT[i].goods_classify_list[k + 1] = arrt;
+              }
             }
           }
         }
       }
-    }else{
-      classiyLT = that.data.backups;
-    }
+    }  
+  
+
+    //  else if (that.data.price) {
+    
+    // } else {
+    //   classiyLT = that.data.backups;
+    // }
     return classiyLT;
   },
 
   //列表刷新初始化 
-  Refreshinitial: function (classify){
-    var that=this;
+  Refreshinitial: function (classify) {
+    var that = this;
     for (var i = 0; i < classify.length; i++) {
       var classify_name = 'classifyarr[' + i + '].name'
       var classify_begin = 'classifyarr[' + i + '].begin'
@@ -187,21 +262,20 @@ Page({
         [classify_end]: 10,
       })
     }
-  
+
   },
 
   //页面刷新
-  onLoad_d:function(){
+  onLoad_d: function () {
     var that = this;
-    var goodsarr=[]; 
-       that.setData({
-       URLimg: iURL
+    var goodsarr = [];
+    that.setData({
+      URLimg: iURL
     });
     wx.request({
       //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
       url: URL + '/Mall/goods_classify',
-      data: {
-      },
+      data: {},
       method: 'GET',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -212,81 +286,80 @@ Page({
         });
         that.Refreshinitial(res.data);
         that.setData({
-          countclassify:0
+          countclassify: 0
         })
-        for (var i = 0; i < that.data.classifyarr.length;i++)
-        {
-       
-                wx.request({
-                  //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
-                  url: URL + '/Mall/goods_query_refresh',
-                  data: {
-                    classify_data: that.data.classifyarr[that.data.countclassify].name,
-                    begin_data: that.data.classifyarr[that.data.countclassify].begin,
-                    end_data: that.data.classifyarr[that.data.countclassify].end,
+        for (var i = 0; i < that.data.classifyarr.length; i++) {
 
-                  },
-                  method: 'GET', 
-                  header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                  },
-                  success: function (res) {  
-                  console.log(res)
+          wx.request({
+            //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
+            url: URL + '/Mall/goods_query_refresh',
+            data: {
+              classify_data: that.data.classifyarr[that.data.countclassify].name,
+              begin_data: that.data.classifyarr[that.data.countclassify].begin,
+              end_data: that.data.classifyarr[that.data.countclassify].end,
+
+            },
+            method: 'GET',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log(res)
 
 
-        //  goods_img: JSON.parse(res.data[6].goods_img)//json字符串转数组
-                  that.setData({
-                    countgoods: 0,
-                  })
-                  for(var j in res.data){
-                    goodsarr.push(res.data[that.data.countgoods])
+              //  goods_img: JSON.parse(res.data[6].goods_img)//json字符串转数组
+              that.setData({
+                countgoods: 0,
+              })
+              for (var j in res.data) {
+                goodsarr.push(res.data[that.data.countgoods])
+                that.setData({
+                  countgoods: that.data.countgoods + 1
+                })
+              }
+
+              if (that.data.countclassify === that.data.classifyarr.length) {
+
+                that.setData({
+                  goods: goodsarr,
+                });
+                //获取到后存起来方便后面调用 
+                wx.setStorage({
+                  key: "GOODS",
+                  data: that.data.goods
+                })
+
+              }
+              //将货物添加到分类列表
+              for (var i in that.data.classify) {
+                var f = 0
+                for (var j in that.data.goods) {
+                  var num = 'classify[' + i + '].goods_classify_list[' + f + ']'
+                  if (that.data.classify[i].goods_classify_name == that.data.goods[j].goods_classify) {
+                    f = f + 1;
                     that.setData({
-                      countgoods: that.data.countgoods+1
+                      [num]: that.data.goods[j]
                     })
                   }
-              
-                 if (that.data.countclassify === that.data.classifyarr.length){
-                
-                      that.setData({
-                        goods: goodsarr,
-                      });
-                        //获取到后存起来方便后面调用 
-                        wx.setStorage({
-                          key: "GOODS",
-                          data: that.data.goods 
-                        })
-                      
-                      }
-                        //将货物添加到分类列表
-                        for (var i in that.data.classify) {
-                          var f = 0
-                          for (var j in that.data.goods) {
-                            var num = 'classify[' + i + '].goods_classify_list[' + f + ']'
-                            if (that.data.classify[i].goods_classify_name == that.data.goods[j].goods_classify) {
-                              f = f + 1;
-                              that.setData({
-                                [num]: that.data.goods[j]
-                              })
-                            }
-                          }
-                        }
-                        //备份原始数据
-                        that.setData({
-                          backups: that.data.classify
-                        });
-                       
-                 },
-                  
-              })
-                //计数
-                that.setData({
-                  countclassify: that.data.countclassify+1
-                })
-            }              
+                }
+              }
+              //备份原始数据
+              that.setData({
+                backups: that.data.classify
+              });
+
+            },
+
+          })
+          //计数
+          that.setData({
+            countclassify: that.data.countclassify + 1
+          })
+        }
       },
 
     })
-      wx.stopPullDownRefresh()
+    wx.stopPullDownRefresh()
   },
   onLoad: function (options) {
     this.onLoad_d();
@@ -295,13 +368,13 @@ Page({
 
   },
   onShow: function () {
-   var that=this;
+    var that = this;
     var arrt = that.sortGoods()
     that.setData({
       classify: arrt,
       //  goods_img: JSON.parse(res.data[6].goods_img)//json字符串转数组
     });
-   console.log(arrt);
+    console.log(arrt);
   },
   onHide: function () {
 
@@ -309,7 +382,7 @@ Page({
   onUnload: function () {
 
   },
- 
+
 
   onReachBottom: function () {
 
@@ -318,7 +391,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goods_add:function (e) {
+  goods_add: function (e) {
     const index = e.currentTarget.dataset.index;
     let goods = this.data.goods;
     let num = goods[index].num;
@@ -328,7 +401,7 @@ Page({
       goods: goods
     });
   },
-  goods_sub:function (e) {
+  goods_sub: function (e) {
     const index = e.currentTarget.dataset.index;
     let goods = this.data.goods;
     let num = goods[index].num;
@@ -342,41 +415,69 @@ Page({
     });
   },
   //选项卡
-  Select:function (e) {
+  Select: function (e) {
     var cid = e.target.dataset.id;
     var id = e.target.dataset.typeid;
     this.setData({
       currentId: id,
-      classifyid:cid
+      classifyid: cid
     })
   },
 
-  sort_num_click:function(){
+  sort_num_click: function () {
     var num = this.data.sort_num;
-    if(num == 0){
-      this.setData({ sort_num_bottomcolor:'red'});
-      this.setData({sort_num:1});
-    }else if(num == 1){
-      this.setData({ sort_num_topcolor: 'red' });
-      this.setData({ sort_num_bottomcolor: 'black' });
-      this.setData({ sort_num: 2});
-    }else if(num == 2){
-      this.setData({ sort_num_topcolor: 'black' });
-      this.setData({ sort_num: 0 });
+    if (num == 0) {
+      this.setData({
+        sort_num_bottomcolor: 'red'
+      });
+      this.setData({
+        sort_num: 1
+      });
+    } else if (num == 1) {
+      this.setData({
+        sort_num_topcolor: 'red'
+      });
+      this.setData({
+        sort_num_bottomcolor: 'black'
+      });
+      this.setData({
+        sort_num: 2
+      });
+    } else if (num == 2) {
+      this.setData({
+        sort_num_topcolor: 'black'
+      });
+      this.setData({
+        sort_num: 0
+      });
     }
   },
   sort_price_click: function () {
     var num = this.data.sort_price;
     if (num == 0) {
-      this.setData({ sort_price_bottomcolor: 'red' });
-      this.setData({ sort_price: 1 });
+      this.setData({
+        sort_price_bottomcolor: 'red'
+      });
+      this.setData({
+        sort_price: 1
+      });
     } else if (num == 1) {
-      this.setData({ sort_price_topcolor: 'red' });
-      this.setData({ sort_price_bottomcolor: 'black' });
-      this.setData({ sort_price: 2 });
+      this.setData({
+        sort_price_topcolor: 'red'
+      });
+      this.setData({
+        sort_price_bottomcolor: 'black'
+      });
+      this.setData({
+        sort_price: 2
+      });
     } else if (num == 2) {
-      this.setData({ sort_price_topcolor: 'black' });
-      this.setData({ sort_price: 0 });
+      this.setData({
+        sort_price_topcolor: 'black'
+      });
+      this.setData({
+        sort_price: 0
+      });
     }
   },
 
@@ -398,8 +499,7 @@ Page({
       wx.navigateTo({
         url: '../shangcheng/shangcheng'
       })
-    }
-    else {
+    } else {
       wx.showModal({
         title: '提示',
         content: '请登录',
