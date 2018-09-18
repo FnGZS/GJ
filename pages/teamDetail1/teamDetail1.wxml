@@ -1,120 +1,132 @@
 <view class='teamDetail'>
   <view class="goods-navigator" bindtap="tabGoods">
-    <navigator class="goods-nav {{tabArr.curHdIndex=='0'? 'active' : ''}}" data-id="0">图文详情</navigator>
-    <navigator class="goods-nav {{tabArr.curHdIndex=='1'? 'active' : ''}}" data-id="1">产品信息</navigator>
-    <navigator class="goods-nav {{tabArr.curHdIndex=='2'? 'active' : ''}}" data-id="2">宝贝评价</navigator>
+    <view class="goods-nav {{tabArr.curHdIndex=='0'? 'active' : ''}}" data-id="0" data-key="A">图文详情</view>
+    <view class="goods-nav {{tabArr.curHdIndex=='1'? 'active' : ''}}" data-id="1" data-key="B">产品信息</view>
+    <view class="goods-nav {{tabArr.curHdIndex=='2'? 'active' : ''}}" data-id="2" data-key="C">宝贝评价</view>
   </view>
-  <view class="goods-info {{tabArr.curBdIndex=='0'? 'active' : ''}}">
-    <!-- 轮播图 -->
-    <view>
-      <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color="#FE7700" class='lunbotu'>
-        <block wx:for="{{detail.case}}" wx:key="index">
-          <swiper-item>
-            <view class='img-title'>{{item.caseName}}</view>
-            <image src="{{URLimg}}/dynamic/{{item.caseImg}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-
-
-    <view class="title">{{detail.goods_name}}</view>
-    <view class="gmxx">
+  <scroll-view class="scroll-con" scroll-y scroll-top="{{scrollTop}}" bindscroll="handleScroll">
+    <view class="goods-info" id='view_A'>
+      <!-- 轮播图 -->
       <view>
-        <view style="margin-top:4px;">
+        <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color="#FE7700" class='lunbotu'>
+          <block wx:for="{{detail.case}}" wx:key="index">
+            <swiper-item>
+              <view class='img-title'>{{item.caseName}}</view>
+              <image src="{{URLimg}}/dynamic/{{item.caseImg}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
 
-          <span class="jiage">
-            ￥{{detail.goods_price}}
-          </span>
-          <span class="c6 fl_r font_14" style="color:#ccc"> 库存:{{detail.goods_inventory}} </span>
+
+      <view class="title">{{detail.goods_name}}</view>
+      <view class="gmxx">
+        <view>
+          <view style="margin-top:4px;">
+
+            <span class="jiage">
+              ￥{{detail.goods_price}}
+            </span>
+            <span class="c6 fl_r font_14" style="color:#ccc"> 库存:{{detail.goods_inventory}} </span>
+          </view>
+        </view>
+        <view class="xian">
+        </view>
+        <view class="xian">
+        </view>
+        <view class="cu">
+          <text class="cu_one" style='margin-left:10rpx;'>促销 </text>
+          <view class="cu_a">送</view>
+          <text class="song">包装修</text>
+          <view class="cu_a">限</view>
+          <text class="song">限时折扣活动</text>
+          <view class="wu">
+          </view>
+        </view>
+        <view class="xian">
+        </view>
+        <view class="cu">
+          <text class="cu_one">服务</text>
+          <image class="fu_a" src="../../images/gou.png">
+          </image>
+          <text class="songa">站内注册</text>
+          <image class="fu_a" src="../../images/gou.png">
+          </image>
+          <text class="songs">意外保险</text>
+          <image class="fu_a" src="../../images/gou.png">
+          </image>
+          <text class="songs">技能证书</text>
         </view>
       </view>
-      <view class="xian">
+      <view class="fenge"></view>
+      <view class="classify">
+        <text class="classify_text">从事</text>
+        <text class="classify_main">{{detail.goods_classify}}</text>
       </view>
-      <view class="xian">
-      </view>
-      <view class="cu">
-        <text class="cu_one" style='margin-left:10rpx;'>促销 </text>
-        <view class="cu_a">送</view>
-        <text class="song">包装修</text>
-        <view class="cu_a">限</view>
-        <text class="song">限时折扣活动</text>
-        <view class="wu">
-        </view>
-      </view>
-      <view class="xian">
-      </view>
-      <view class="cu">
-        <text class="cu_one">服务</text>
-        <image class="fu_a" src="../../images/gou.png">
-        </image>
-        <text class="songa">官方唯一商城</text>
-        <image class="fu_a" src="../../images/gou.png">
-        </image>
-        <text class="songs">全国联保</text>
-        <image class="fu_a" src="../../images/gou.png">
-        </image>
-        <text class="songs">全场包邮</text>
+      <view class="goodat">
+        <text class="goodat_text">擅长</text>
+        <text class="goodat_main">{{detail.style}}</text>
       </view>
     </view>
     <view class="fenge"></view>
-    <view class="classify">
-      <text class="classify_text">从事</text>
-      <text class="classify_main">{{detail.goods_classify}}</text>
-    </view>
-    <view class="goodat">
-      <text class="goodat_text">擅长</text>
-      <text class="goodat_main">{{detail.style}}</text>
-    </view>
-  </view>
-  <view class="goods-detail {{tabArr.curBdIndex=='1'? 'active' : ''}}">
-    <view class='headimg'>
-      <image src='{{URLimg}}/team/{{detail.goods_img}}'></image>
-    </view>
-    <view class='intro'>
-      <view class='name'>
-        <view class='name-title mes-title'>成员姓名：</view>
-        <view class='name-text mes-text'>{{detail.goods_name}}</view>
+    <view class="goods-detail" id='view_B'>
+      <view class='goods_detail_text'>产品信息</view>
+      <view class='headimg'>
+        <image src='{{URLimg}}/team/{{detail.goods_img}}'></image>
       </view>
-      <view class='intro_classify'>
-        <view class='intro_classifye-title mes-title'>从事行业：</view>
-        <view class='intro_classify-text mes-text'>{{detail.goods_classify}}</view>
-      </view>
-      <view class='time'>
-        <view class='time-title mes-title'>从业时间：</view>
-        <view class='time-text mes-text'>{{detail.year}}年</view>
-      </view>
-      <view class='graduation'>
-        <view class='graduation-title mes-title'>毕业院校：</view>
-        <view class='graduation-text mes-text'>{{detail.from}}</view>
-      </view>
-      <view class='intro_goodat'>
-      <view class='intro_goodat-title mes-title'>擅长风格：</view>
-      <view class='intro_goodat-text mes-text'>{{detail.style}}</view>
-    </view>
-      <view class='idea'>
-        <view class='idea-title mes-title'>设计理念：</view>
-        <view class='idea-text mes-text'>{{detail.idea}}</view>
+      <view class='intro'>
+        <view class='name'>
+          <view class='name-title mes-title'>成员姓名：</view>
+          <view class='name-text mes-text'>{{detail.goods_name}}</view>
+        </view>
+        <view class='intro_classify'>
+          <view class='intro_classifye-title mes-title'>从事行业：</view>
+          <view class='intro_classify-text mes-text'>{{detail.goods_classify}}</view>
+        </view>
+        <view class='time'>
+          <view class='time-title mes-title'>从业时间：</view>
+          <view class='time-text mes-text'>{{detail.year}}年</view>
+        </view>
+        <view class='graduation'>
+          <view class='graduation-title mes-title'>毕业院校：</view>
+          <view class='graduation-text mes-text'>{{detail.from}}</view>
+        </view>
+        <view class='intro_goodat'>
+          <view class='intro_goodat-title mes-title'>擅长风格：</view>
+          <view class='intro_goodat-text mes-text'>{{detail.style}}</view>
+        </view>
+        <view class='idea'>
+          <view class='idea-title mes-title'>设计理念：</view>
+          <view class='idea-text mes-text'>{{detail.idea}}</view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class="goods-comment  {{tabArr.curBdIndex=='2'? 'active' : ''}}" wx:for="{{comment}}" style="background:#fff;">
-  <view class="comment-list">
-    <view class="comment-lf">
-      <image class="comment-favion" data-index="{{index}}" src="{{user[index].avatarUrl}}"></image>
-    </view> 
-    <view class="comment-mid">
-      <view style="padding-left:8px;" data-index="{{index}}">{{user[index].name}}</view>
-      <view class="star-status" style="padding-left:8px;"> 
+    <view class="fenge"></view>
+    <view id='view_C'>
+      <view class='goods-comment_text'>宝贝评价</view>
+      <view class='noThing' style='display:{{display_noComments}}'>
+        <view class='noThing_main'>
+          <image src='../../images/sad.png'></image>
+          <view class='noThing_text'>暂无评价哦~</view>
+        </view>
       </view>
-      <view style="padding-left:8px;">{{item.content}}</view>
+      <view class="goods-comment" wx:for="{{comment.comment}}" style="background:#fff;">
+        <view class="comment-list">
+          <view class="comment-lf">
+            <image class="comment-favion" data-index="{{index}}" src="{{user[index].avatarUrl}}"></image>
+          </view>
+          <view class="comment-mid">
+            <view style="padding-left:8px;" data-index="{{index}}">{{user[index].name}}</view>
+            <view class="star-status" style="padding-left:8px;">
+            </view>
+            <view style="padding-left:8px;">{{item.content}}</view>
+          </view>
+          <view class="comment-rt">{{item.ctime}}</view>
+          <view style="clear:both"></view>
+        </view>
+      </view>
     </view>
-    <view class="comment-rt">{{item.ctime}}</view>
-    <view style="clear:both"></view>
-
-  </view>
-
-</view>
+  </scroll-view>
   <view class="footfixed">
     <view class="footfixed">
       <view class="zuo">
@@ -126,7 +138,7 @@
           </view>
           <view style='float:right;margin-right:50rpx;' class='kefu_btn'>
             <view class='contact-list'>
-             <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>  
+              <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
             </view>
             <image style='width:40rpx;height:40rpx;' src='/images/wangwang.png'></image>
             <view class="dbtextt">客服</view>

@@ -18,12 +18,15 @@
 .icon-gouwuche:before { content: "\e605"; }
 
 .goods-navigator{
+  position: fixed;
+  top: 0;
   width: 750rpx;
   background: #fff;
   height: 70rpx;
   line-height: 70rpx;
   font-size: 34rpx;
   margin-bottom: 10rpx;
+  z-index:999;
 }
 .goods-nav{
   font-size: 12px;
@@ -33,10 +36,15 @@
 
 }
 .goods-nav.active{
-  font-size: 13px;
+  font-size: 12px;
   border-bottom: 1rpx solid #f65d89;
 }
-.goods-info{
+.scroll-con{
+  margin-top: 70rpx;
+  margin-bottom: 130rpx;
+  height: 1000rpx;
+}
+/* .goods-info{
   display: none;
 }
 .goods-detail{
@@ -47,8 +55,9 @@
 }
 .goods-info.active{
   display: block;
-}
+} */
 .lunbotu {
+  position: relative;
   height: 500rpx;
   width: 100%;
 }
@@ -205,10 +214,8 @@ line-height: 100rpx;
 
 .goodat{
   height: 100rpx;
-  border-bottom: 1rpx solid #ddd;
    margin-left: 2%;
    margin-right: 2%;
-   margin-bottom: 130rpx;
 }
 .goodat_text{
  margin-left: 3%;
@@ -225,6 +232,22 @@ line-height: 100rpx;
 text-align:center;
 font-size:30rpx;
 line-height: 100rpx;
+}
+.goods_detail_text{
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 5%;
+  font-size: 30rpx;
+  /* color: #999; */
+  border-bottom: 1px solid #ddd;
+}
+.goods-comment_text{
+ height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 5%;
+  font-size: 30rpx;
+  /* color: #999; */
+  border-bottom: 1px solid #ddd;
 }
 .headimg {
   width: 100%;
@@ -297,8 +320,20 @@ line-height: 100rpx;
   font-size: 28rpx;
 }
 /*宝贝评价*/
-.goods-comment{
-  display: none;
+.noThing_main{
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.noThing_main image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.noThing_text{
+  margin-top: 20rpx;
+  font-size: 23rpx;
 }
 .goods-comment.active{
  display: block;
@@ -464,4 +499,12 @@ line-height: 100rpx;
 .contact-list{
   position: absolute;
   opacity: 0;
+}
+
+/* 三个导航内容 */
+#view_B{
+  margin-bottom: 50rpx;
+}
+#view_C{
+  margin-bottom: 30rpx;
 }

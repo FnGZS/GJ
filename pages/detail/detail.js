@@ -691,7 +691,8 @@ gouwu:function(){
         wx.request({
           url: that.data.URL + '/Order/comment_display',
           data: {
-            goodsId: gooid
+            goodsId: gooid,
+            isTeam:0
           },
           method: 'POST',
           header: {
