@@ -34,11 +34,12 @@ Page({
     this.fetchFilterData();
     this.fetchCaseData();
     wx.getLocation({
+      type: 'gcj02',
       success: function (res) {
         var latitude = res.latitude
         var longitude = res.longitude
-        // console.log(latitude)
-        // console.log(longitude)
+         console.log(latitude)
+         console.log(longitude)
         that.setData({
           xx: latitude,
           yy: longitude,
@@ -51,8 +52,8 @@ Page({
     this.mapCtx = wx.createMapContext('myMap')  //地图
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        // console.log(res.longitude)
-        // console.log(res.latitude)
+         console.log(res.longitude)
+         console.log(res.latitude)
       }
     }),
       this.mapCtx.moveToLocation() 

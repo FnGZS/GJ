@@ -153,12 +153,12 @@ Page({
           price: 1,
         })
       }
-    }else if (that.data.evaluate == 3) {//看的我头都大了  价格
+    } else if (that.data.sortid == 3) {
       that.setData({
         price: 1,
         Sales: 1
       })
-      if (that.data.price % 2) {
+      if (that.data.evaluate % 2) {
         that.setData({
           evaluate: 2,
         })
@@ -230,6 +230,36 @@ Page({
             for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
             {
               if (parseInt(classiyLT[i].goods_classify_list[k].goods_price) < parseInt(classiyLT[i].goods_classify_list[k + 1].goods_price)) {
+                var arrt = classiyLT[i].goods_classify_list[k];
+                classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
+                classiyLT[i].goods_classify_list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      }
+    }else if(that.data.sortid == 3){
+      if (that.data.evaluate == 1) {
+        var classiyLT = that.data.classify
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].goods_classify_list[k].evaluate) > parseInt(classiyLT[i].goods_classify_list[k + 1].evaluate)) {
+                var arrt = classiyLT[i].goods_classify_list[k];
+                classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
+                classiyLT[i].goods_classify_list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      } else if (that.data.evaluate == 2) {
+        var classiyLT = that.data.classify
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].goods_classify_list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].goods_classify_list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].goods_classify_list[k].evaluate) < parseInt(classiyLT[i].goods_classify_list[k + 1].evaluate)) {
                 var arrt = classiyLT[i].goods_classify_list[k];
                 classiyLT[i].goods_classify_list[k] = classiyLT[i].goods_classify_list[k + 1];
                 classiyLT[i].goods_classify_list[k + 1] = arrt;

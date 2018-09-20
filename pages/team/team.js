@@ -19,11 +19,18 @@ Page({
     duration: 1, //可以控制动画
     list: '',
     yuyueid:0,
-    Sales: false,
-    price: false
+    Sales: 1,
+    price: 1,
+    evaluate: 1,
+    sortid: 0//控制销量价格评价 哪一个选项
     
   },
-  
+  //搜索
+  search: function () {
+    wx.navigateTo({
+      url: '../search1/search1'
+    });
+  },
   change(e) {
     console.log(e);
     this.setData({
@@ -112,65 +119,168 @@ Page({
 
     })  
   },
-  //团队排序控制器
+ 
+  //商品排序控制器
   sortGoods_control: function (e) {
     var that = this;
-    var sortid = e.currentTarget.dataset.sort;
-    if (sortid == 1) {
-      var Sales = !that.data.Sales
+
+    that.setData({
+      sortid: e.currentTarget.dataset.sort,
+    })
+    if (that.data.sortid == 1) {
       that.setData({
-        Sales: Sales,
-        price: false
+        evaluate: 1,
+        price: 1
       })
-    } else {
-      var price = !that.data.price
+      if (that.data.Sales % 2) {
+        that.setData({
+          Sales: 2,
+        })
+      } else {
+        that.setData({
+          Sales: 1,
+        })
+      }
+    } else if (that.data.sortid == 2) {//看的我头都大了  价格
       that.setData({
-        Sales: false,
-        price: price
+        evaluate: 1,
+        Sales: 1
       })
+      if (that.data.price % 2) {
+        that.setData({
+          price: 2,
+        })
+      } else {
+        that.setData({
+          price: 1,
+        })
+      }
+    } else if (that.data.sortid == 3) {
+      that.setData({
+        price: 1,
+        Sales: 1
+      })
+      if (that.data.evaluate % 2) {
+        that.setData({
+          evaluate: 2,
+        })
+      } else {
+        that.setData({
+          evaluate: 1,
+        })
+      }
     }
     that.onShow();
-    console.log(that.data.arr_occupation);
   },
+
+  //商品排序强行最基础排序
   sortGoods: function () {
     var that = this;
+    console.log(that.data.teamMes);
     var classiyLT = that.data.teamMes
-    console.log(classiyLT);
-  
-    if (that.data.Sales) {
-      var classiyLT = that.data.teamMes
-      for (var i = 0; i < classiyLT.length; i++) {
-        for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
-          for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++)// j开始等于0，  
-          {
-            if (parseInt(classiyLT[i].list[k].goods_out) < parseInt(classiyLT[i].list[k + 1].goods_out)) {
-              var arrt = classiyLT[i].list[k];
-              classiyLT[i].list[k] = classiyLT[i].list[k + 1];
-              classiyLT[i].list[k + 1] = arrt;
+    //销量
+    if (that.data.sortid == 1) {
+      console.log(11221313)
+      if (that.data.Sales == 1) {
+        console.log(1113)
+        var classiyLT = that.data.teamMes
+        console.log(classiyLT.length);
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].list[k].goods_out) < parseInt(classiyLT[i].list[k + 1].goods_out)) {
+                var arrt = classiyLT[i].list[k];
+                classiyLT[i].list[k] = classiyLT[i].list[k + 1];
+                classiyLT[i].list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      } else if (that.data.Sales == 2) {
+           console.log(1113)
+        var classiyLT = that.data.teamMes
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].list[k].goods_out) >= parseInt(classiyLT[i].list[k + 1].goods_out)) {
+                var arrt = classiyLT[i].list[k];
+                classiyLT[i].list[k] = classiyLT[i].list[k + 1];
+                classiyLT[i].list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      }//价格
+    } else if (that.data.sortid == 2) {
+      if (that.data.price == 1) {
+        var classiyLT = that.data.teamMes
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].list[k].goods_price) >= parseInt(classiyLT[i].list[k + 1].goods_price)) {
+                var arrt = classiyLT[i].list[k];
+                classiyLT[i].list[k] = classiyLT[i].list[k + 1];
+                classiyLT[i].list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      } else if (that.data.price == 2) {
+        var classiyLT = that.data.teamMes
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].list[k].goods_price) < parseInt(classiyLT[i].list[k + 1].goods_price)) {
+                var arrt = classiyLT[i].list[k];
+                classiyLT[i].list[k] = classiyLT[i].list[k + 1];
+                classiyLT[i].list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      }
+    } else if (that.data.sortid == 3) {
+      if (that.data.evaluate == 1) {
+        var classiyLT = that.data.teamMes
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].list[k].evaluate) >= parseInt(classiyLT[i].list[k + 1].evaluate)) {
+                var arrt = classiyLT[i].list[k];
+                classiyLT[i].list[k] = classiyLT[i].list[k + 1];
+                classiyLT[i].list[k + 1] = arrt;
+              }
+            }
+          }
+        }
+      } else if (that.data.evaluate == 2) {
+        var classiyLT = that.data.teamMes
+        for (var i = 0; i < classiyLT.length; i++) {
+          for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
+            for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++) // j开始等于0，  
+            {
+              if (parseInt(classiyLT[i].list[k].evaluate) < parseInt(classiyLT[i].list[k + 1].evaluate)) {
+                var arrt = classiyLT[i].list[k];
+                classiyLT[i].list[k] = classiyLT[i].list[k + 1];
+                classiyLT[i].list[k + 1] = arrt;
+              }
             }
           }
         }
       }
     }
-    else if (that.data.price) {
 
-      var classiyLT = that.data.teamMes
-      for (var i = 0; i < classiyLT.length; i++) {
- 
-        for (var j = 0; j < classiyLT[i].list.length - 1; j++) {
-          for (var k = 0; k < classiyLT[i].list.length - 1 - j; k++)// j开始等于0，  
-          {
-            if (parseInt(classiyLT[i].list[k].goods_price) > parseInt(classiyLT[i].list[k + 1].goods_price)) {
-              var arrt = classiyLT[i].list[k];
-              classiyLT[i].list[k] = classiyLT[i].list[k + 1];
-              classiyLT[i].list[k + 1] = arrt;
-            }
-          }
-        }
-      }
-    } else {
-      classiyLT = that.data.teamMes_backups;
-    }
+
+    //  else if (that.data.price) {
+
+    // } else {
+    //   classiyLT = that.data.backups;
+    // }
     return classiyLT;
   },
 

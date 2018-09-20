@@ -58,12 +58,13 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res.data);  
         that.setData({
           // list: res.data,
           //res代表success函数的事件对，data是固定的，list是数组
           imgUrls: JSON.parse(res.data.img)
         })
-        // console.log(JSON.parse(res.data.img));   
+        console.log(that.data.imgUrls);   
         // console.log(that.data.imgUrls);      
         for (var i = 0; i < that.data.imgUrls.length; i++) {
           arr[i] = URP + '/' + 'sowing_map' + '/' + that.data.imgUrls[i];
@@ -72,6 +73,7 @@ Page({
         that.setData({
           list: arr,
         })
+        console.log(that.data.list);
         //  console.log(that.data.list);
         // 九宫格
         wx.request({

@@ -88,7 +88,7 @@ Page({
    
     if (this.data.haoping == ''){
       wx.showToast({
-        title: '必须评价',
+        title: '未写看法',
         icon: 'succes',
         duration: 1000,
         mask: true
@@ -117,12 +117,18 @@ Page({
         success: function (res) {
           console.log(res)
           if (res.data >= 0) {
-            // wx.showToast({
-            //   title: '评论成功',
-            //   icon: 'succes',
-            //   duration: 1000,
-            //   mask: true
-            // })
+            wx.request({
+              url: URL + '/Mall/goods_addevaluate', //仅为示例，并非真实的接口地址
+              data: {
+                goodsId: goods_id,
+              },
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              success: function (res) {
+                console.log(666666666666666)
+              }
+            })
             wx.navigateBack({
               delta: 1,
             })
