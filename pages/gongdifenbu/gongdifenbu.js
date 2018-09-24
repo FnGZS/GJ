@@ -141,13 +141,13 @@ Page({
             obj['id'] = res.data[i].id;
             obj['latitude'] = res.data[i].latitude;
             obj['longitude'] = res.data[i].longitude;
-            obj['width'] = 40;
-            obj['height'] = 40;
+            obj['width'] = 20;
+            obj['height'] = 30;
             var objin={};
             objin['content'] = res.data[i].caseName;
             objin['color'] = "#ffffff";
             objin['fontSize'] = '15';
-            objin['borderRadius'] = '10';
+            objin['borderRadius'] = '20';
             objin['bgColor'] = '#ECC743';
             objin['padding'] = '5';
             objin['display'] = 'ALWAYS';

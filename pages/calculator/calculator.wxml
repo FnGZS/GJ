@@ -1,6 +1,6 @@
 <view class="content">
   <view class='head'>
-    <image src='../../images/calculator.jpg'></image>
+    <image src='../../images/calculator.png'></image>
   </view>
 
   <view class="form-item">

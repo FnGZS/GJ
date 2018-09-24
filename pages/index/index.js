@@ -218,22 +218,22 @@ Page({
     });
   },
   toTehui:function(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../mall/mall'
     });
   },
   toAnli:function(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../zaixiangongdi/zaixiangongdi',
     })
   },
   toShangcheng:function(){
-    wx.switchTab({
+    wx.navigateTo({
       url: '../mall/mall',
     })
   },
   team: function () {
-    wx.switchTab({
+    wx.navigateTo({
       url: '../team/team'
     });
   },

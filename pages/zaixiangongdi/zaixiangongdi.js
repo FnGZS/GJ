@@ -23,8 +23,30 @@ Page({
     abcc:1,
     second_height: 0,
     scorll_height:0,
-    xx:'',
-    yy:''
+    xx:0,
+    yy:0,
+    price:"装修价格",
+    Area:"装修面积",
+    Style:"装修风格",
+    Nearby:"附近",
+  },
+  onReady:function(){
+    let that=this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        console.log(latitude)
+        console.log(longitude)
+        that.setData({
+          xx: latitude,
+          yy: longitude,
+          //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
+        })
+
+      }
+    })
   },
   onLoad: function () { //加载数据渲染页面
     this.setData({
@@ -33,23 +55,7 @@ Page({
     this.fetchTestData();
     this.fetchFilterData();
     this.fetchCaseData();
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-         console.log(latitude)
-         console.log(longitude)
-        that.setData({
-          xx: latitude,
-          yy: longitude,
-          //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
-        })  
-       
-      }
-    })
-    
-    this.mapCtx = wx.createMapContext('myMap')  //地图
+        this.mapCtx = wx.createMapContext('myMap')  //地图
     this.mapCtx.getCenterLocation({
       success: function (res) {
          console.log(res.longitude)
@@ -251,10 +257,21 @@ Page({
     console.log(e);
     const d = this.data; 
     const dataset = e.currentTarget.dataset;
+    var dataname = e.currentTarget.dataset.price;
     this.setData({
       priceindex: dataset.priceindex,
-      cases:null
+      cases:null,
     })
+    if(this.data.priceindex)
+    {
+      this.setData({
+        price: dataname,
+      })
+    }else{
+      this.setData({
+        price: "装修价格",
+      })
+    }
     this.fetchCaseData();
     this.hideFilter();
     console.log(this.data.priceindex);
@@ -264,10 +281,21 @@ Page({
     console.log(e);
     const d = this.data;
     const dataset = e.currentTarget.dataset;
+    var dataname = e.currentTarget.dataset.area;
+    console.log(dataname)
     this.setData({
       areaindex: dataset.areaindex,
       cases: null
     })
+    if (this.data.areaindex) {
+      this.setData({
+        Area: dataname,
+      })
+    } else {
+      this.setData({
+        Area: "装修面积",
+      })
+    }
     this.fetchCaseData();
     this.hideFilter();
     console.log(this.data.areaindex);
@@ -277,10 +305,21 @@ Page({
     console.log(e);
     const d = this.data;
     const dataset = e.currentTarget.dataset;
+    var dataname = e.currentTarget.dataset.style;
+    console.log(dataname);
     this.setData({
       styleindex: dataset.styleindex,
       cases: null
     })
+    if (this.data.styleindex) {
+      this.setData({
+        Style: dataname,
+      })
+    } else {
+      this.setData({
+        Style: "装修风格",
+      })
+    }
     this.hideFilter();
     this.fetchCaseData();
       console.log(this.data.styleindex);
@@ -290,10 +329,20 @@ Page({
     console.log(e);
     const d = this.data;
     const dataset = e.currentTarget.dataset;
+    var dataname = e.currentTarget.dataset.nearby;
     this.setData({
       nearbyindex: dataset.nearbyindex,
       cases: null
     })
+    if (this.data.nearbyindex) {
+      this.setData({
+        Nearby: dataname,
+      })
+    } else {
+      this.setData({
+        Nearby: "装修风格",
+      })
+    }
     this.hideFilter();
     this.fetchCaseData();
       console.log(this.data.nearbyindex);
