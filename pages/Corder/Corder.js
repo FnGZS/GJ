@@ -206,6 +206,7 @@ Page({
     adphone = that.data.adn;
     adress = that.data.add;
     adphoness = that.data.adp;
+    console.log(adphone)
   },
   getcancel:function(){
     var UserId = wx.getStorageSync('UserId');
@@ -324,16 +325,9 @@ Page({
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
-    // console.log(UserId)
-    // console.log(that.data.goods_id)
-    // console.log(cou_id)
-    // console.log(that.data.goods_price)
-    // console.log(that.data.earnest)
     var total = that.data.goods_price;
-    console.log(adphone)
-    console.log(adress)
-    console.log(adphoness)
-    if (adphone == '暂无' || adress == '暂无' || adphoness == '暂无') {
+
+    if (that.data.adphone == '暂无' || that.data.adress == '暂无' || that.data.adphoness == '暂无') {
       wx.showModal({
         title: '提示',
         content: '您还没有收货信息',
