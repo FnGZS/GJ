@@ -1,3 +1,4 @@
+var URL = getApp().globalData.PHPURL;
 Page({
 
   /**
@@ -21,13 +22,36 @@ Page({
     }
 
   },
+  getlogistics:function(order_id){
+    var that=this;
+    wx.request({
+      url: URL +'Mall/goods_order_quiry',
+      data: {
+        orderId: order_id,
+      
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
 
+      }
+    })
+  },
+  //   wx.request({
+  //     url: URL +'/autoComNum.php'
+
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var order_id=options.order_id;
     console.log(order_id);
+    this.getlogistics(options);
   },
 
   /**

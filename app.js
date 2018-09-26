@@ -19,5 +19,6 @@ App({
     userInfo: null,
     PHPURL:"https://www.sxscott.com/gujie/index.php",
     IMGURL:"https://www.sxscott.com/gujie/public",
+    LogisticsURL:"https://www.sxscott.com/gujie/WEB/Lib/Action",
   }
 })
