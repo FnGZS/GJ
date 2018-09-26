@@ -40,11 +40,12 @@ Page({
         console.log(latitude)
         console.log(longitude)
         that.setData({
-          xx: latitude,
-          yy: longitude,
+          xx: 30.0699950000,
+          yy: 120.5411110000,
           //res代表success函数的事件对，data是固定的，stories是是上面json数据中stories
         })
-
+        console.log(that.data.latitude)
+        console.log(that.data.longitude)
       }
     })
   },
