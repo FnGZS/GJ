@@ -67,9 +67,9 @@
           <view class='pay' bindtap='Collect'>待收货</view>
           <view class='cha' bindtap='logistics'>查看物流</view>
         </view>
-        <view class="{{item.state=='待评价' ? 'disll' : 'disl'}}">
-          <view class='evaluate' bindtap='evaluate' data-id="{{item.orderId}}" data-id="{{item.goodsId}}">评价</view>
-          <view class='cha' bindtap='logistics'>查看物流</view>
+        <view class="{{item.state=='待评价' ? 'disll' : 'disl'}}" >
+          <view class='evaluate' bindtap='evaluate' data-orderid="{{item.orderId}}" data-id="{{item.goodsId}}">评价</view>
+          <view class='cha' bindtap='logistics' >查看物流</view>
         </view>
       </view>
   </view>
@@ -315,7 +315,7 @@
     <view class='Benefits1'>
       <!-- <view class='gu'> -->
       <view class='pay' bindtap='Collect' data-id="{{item.orderId}}">待收货</view>
-      <view class='cha' bindtap='logistics'>查看物流</view>
+      <view class='cha' bindtap='logistics' data-orderid="{{item.orderId}}">查看物流</view>
       <!-- </view> -->
     </view>
   </view>
@@ -399,7 +399,7 @@
 
     <view class='Benefits1'>
       <view class='evaluate' bindtap='evaluate' data-orderId="{{item.orderId}}" data-id="{{item.goodsId}}">评价</view>
-      <view class='cha' bindtap='logistics'>查看物流</view>
+      <view class='cha' bindtap='logistics' data-orderid="{{item.orderId}}">查看物流</view>
     </view>
   </view>
 </view>

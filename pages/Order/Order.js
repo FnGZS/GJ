@@ -275,10 +275,12 @@ Page({
     }) 
     this.onShow(); //重加载
   },
-  logistics:function(){
-    console.log(12312312);
+  logistics:function(e){
+    console.log(e)
+    var ord_id = e.currentTarget.dataset.orderid;
+    console.log(ord_id);
     wx.navigateTo({
-      url: '../logistics/logistics'
+      url: '../logistics/logistics?order_id='+ord_id,
     }) 
   },
 
