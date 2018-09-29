@@ -203,11 +203,11 @@ Page({
 
       }
     });
-    console.log(that.data.adn)
+  //  console.log(that.data.adn)
     adphone = that.data.adn;
     adress = that.data.add;
     adphoness = that.data.adp;
-    console.log(adphone)
+   // console.log(adphone)
   },
   //发票
   chooseInvoiceTitle() {
