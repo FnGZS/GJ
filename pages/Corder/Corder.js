@@ -42,7 +42,8 @@ Page({
     earnest: 0,
     shocse: [],//暂时存放优惠券
     messages: '',
-    shopName: ''
+    shopName: '',
+    invoice:[],
   },
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -207,6 +208,22 @@ Page({
     adress = that.data.add;
     adphoness = that.data.adp;
     console.log(adphone)
+  },
+  //发票
+  chooseInvoiceTitle() {
+    var that=this;
+    wx.chooseInvoiceTitle({
+      success: (res) => {
+        console.log(res)
+        that.setData({
+           invoice:res
+        })
+        console.log(that.data.invoice);
+      },
+      fail: (err) => {
+        console.error(err)
+      }
+    })
   },
   getcancel:function(){
     var UserId = wx.getStorageSync('UserId');
@@ -461,7 +478,6 @@ Page({
       let pages = getCurrentPages();
       let currPage = pages[pages.length - 1];
       if (currPage.data.selAddress == "") {
-        that.getUserAddress(that.data.userId);
       } else {
         that.setData({//将携带的参数赋值 
           addresss: currPage.data.good_address,

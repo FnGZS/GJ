@@ -6,7 +6,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     wx.setStorageSync('URL', 'https://www.sxscott.com/gujie/')
-   
     wx.setStorageSync('UserId', 'gujer')//用户ID
     wx.setStorageSync('login', 0)//登录状态
     wx.setStorageSync('carts',0)//购物车货物

@@ -154,7 +154,7 @@
   position: absolute;
   right: 0;
   padding-top: 3%;
-  font-size: 32rpx;
+  font-size: 25rpx;
   padding-right: 10px;
 }
 .Underline{

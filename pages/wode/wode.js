@@ -200,6 +200,11 @@ Page({
       url: '../Order/Order?currentTab=3'
     })
   },
+  invoice:function(){
+    wx.navigateTo({
+      url: '../invoice/invoice'
+    })
+  },
   toast4: function() {
     //等待微信接口
   },
@@ -269,4 +274,5 @@ Page({
       })
     }
   }
+  
 })

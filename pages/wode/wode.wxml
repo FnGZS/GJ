@@ -80,6 +80,15 @@
              </view>
         </view>
  </view>
+  <view class='soujin' bindtap='chooseInvoiceTitle' >
+        <view class='shou1'>
+            <view class='iconfont icon-wodeshoucang'></view>
+                <view class='biankuang'>
+            <view class='shou1-dingdan'>发票中心</view>
+            <view style='float: right;' class='iconfont icon-jiantou' ></view>
+             </view>
+        </view>
+ </view>
  <navigator class='soujin'  url="../youhuiquan/youhuiquan">
         <view class='shou1'>
             <view class='iconfont icon-youhuiquan'></view>

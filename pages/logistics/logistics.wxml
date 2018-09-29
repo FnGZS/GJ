@@ -15,13 +15,13 @@
 <scroll-view class='info' scroll-y="true">
   <block wx:for="{{wuliu.mes}}" wx:key="index">
     <view class='day_time'>
-      <view class='{{0==index?"day0":"day"}}'>{{item.day}}</view>
-      <view class='{{0==index?"time0":"time"}}'>{{item.time}}</view>
+      <view class='{{0==index?"day0":"day"}}'>{{item.time}}</view>
+     
     </view>
     <view class='mesinfo'>
       <view class='icon {{0==index?"in":"no_in"}}'></view>
       <view class='{{0==index?"logistics_centent0":"logistics_centent"}}'>
-        {{item.mes}}
+        {{item.context}}
       </view>
       <view class='on'></view>
     </view>

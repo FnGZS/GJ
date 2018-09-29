@@ -44,7 +44,8 @@
       "pages/searchResult/searchResult",
       "pages/searchResult1/searchResult1",
       "pages/calculator/calculator",
-      "pages/calculatorResult/calculatorResult"
+      "pages/calculatorResult/calculatorResult",
+      "pages/invoice/invoice"
   ],
   "window":{
     
