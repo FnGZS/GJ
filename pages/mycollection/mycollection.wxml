@@ -1,29 +1,30 @@
-
-   <!-- 收藏 -->
-   <view class="tabTit">
-    <view class="flex1 {{Case?'fiex_color':''}}" data-search="1" bindtap='search_control'>
-      <text>商品</text>
-    </view>
-    <view class="flex2 {{Goods?'fiex_color':''}}" data-search="2" bindtap='search_control'>
-      <text>案例</text>
-    </view>
+<!-- 收藏 -->
+<view class="tabTit">
+  <view class="flex1 {{Goods?'fiex_color':''}}" data-search="1" bindtap='search_control'>
+    <text>商品</text>
   </view>
-    <!-- 暂无收藏 -->
-   <view class='nerver' style='display:{{display}}'>暂无收藏</view> 
- <view  class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
-      <view class="content" data-id="{{item.goods_id}}" bindtap='goods'>
-              <view class='Collection'>
-                <view class='Collection-img'><image src='{{item.goods_img}}'></image></view>
-                  <view class='contents'>
-                    <view class='goodsname'>{{item.goods_name}}</view>
-                    <view class='Collection-num'><text space="ensp">{{item.collectNum}}人收藏    销量：{{item.goods_out}}</text></view>
-                    <view class='price'>￥{{item.goods_price}}</view>
-                  </view>
-              </view>
+  <view class="flex2 {{Case?'fiex_color':''}}" data-search="2" bindtap='search_control'>
+    <text>案例</text>
+  </view>
+</view>
+<!-- 暂无收藏 -->
+<view class='bloak' wx:if="{{Goods}}">
+  <view class='nerver' style='display:{{display}}'>暂无收藏</view>
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+    <view class="content" data-id="{{item.goods_id}}" bindtap='goods'>
+      <view class='Collection'>
+        <view class='Collection-img'>
+          <image src='{{item.goods_img}}'></image>
+        </view>
+        <view class='contents'>
+          <view class='goodsname'>{{item.goods_name}}</view>
+          <view class='Collection-num'>
+            <text space="ensp">{{item.collectNum}}人收藏    销量：{{item.goods_out}}</text>
+          </view>
+          <view class='price'>￥{{item.goods_price}}</view>
+        </view>
       </view>
-      <view class="del" bindtap="del" data-goodsid="{{item.goods_id}}">删除</view>
- </view>
-
-
-  
-  
+    </view>
+    <view class="del" bindtap="del" data-goodsid="{{item.goods_id}}">删除</view>
+  </view>
+</view>

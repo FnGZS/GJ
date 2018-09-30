@@ -5,6 +5,8 @@ Page({
     startX: 0, //开始坐标
     startY: 0,
     coller:[],
+    Goods: true,
+    Case: false,
     display:'none',
     // price:[]
   },
@@ -13,18 +15,15 @@ Page({
     var sortid = e.currentTarget.dataset.search;
     if (sortid == 1) {
       that.setData({
-        Case: true,
-        Goods: false,
-        display1: 'flex',
-        display2: 'none'
+        Case: false,
+        Goods: true,
+
       })
     } else {
       console.log(this.data.URLimg);
       that.setData({
-        Case: false,
-        Goods: true,
-        display1: 'none',
-        display2: 'block'
+        Case: true,
+        Goods: false,
       })
     }
   },

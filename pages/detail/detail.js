@@ -69,10 +69,16 @@ Page({
         })
     } else {
       wx.showModal({
+        title: '提示',
         content: '请登录',
         showCancel: false, //不显示取消按钮
-        confirmText: '确定'
-      })
+        confirmColor: "#56a4ff",
+        success(res) {
+            wx.switchTab({
+              url: '../wode/wode?a=' + 1,
+            })
+        }
+      });
     }
   },
 gouwu:function(){
@@ -188,7 +194,13 @@ gouwu:function(){
       wx.showModal({
         content: '请登录',
         showCancel: false, //不显示取消按钮
-        confirmText: '确定'
+        confirmText: '确定',
+        confirmColor: "#56a4ff",
+        success(res) {
+          wx.switchTab({
+            url: '../wode/wode?a=' + 1,
+          })
+        }
       })
     }
   },
@@ -267,7 +279,13 @@ gouwu:function(){
       wx.showModal({
         title: '提示',
         content: '请登录',
+        showCancel: false, //不显示取消按钮
         confirmColor: "#56a4ff",
+        success(res) {
+          wx.switchTab({
+            url: '../wode/wode?a=' + 1,
+          })
+        }
       });
     }
   },
@@ -317,7 +335,13 @@ gouwu:function(){
       wx.showModal({
         title: '提示',
         content: '请登录',
+        showCancel: false, //不显示取消按钮
         confirmColor: "#56a4ff",
+        success(res) {
+          wx.switchTab({
+            url: '../wode/wode?a=' + 1,
+          })
+        }
       });
     }
 
@@ -325,9 +349,9 @@ gouwu:function(){
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  // onReady: function () {
     
-  },
+  // },
 
   /**
    * 生命周期函数--监听页面显示
@@ -455,6 +479,7 @@ gouwu:function(){
         })
         // /库存
         var dateList = JSON.parse(that.data.goods_index.goods_inventory);
+        console.log(dateList);
         var sum = 0;
         for (var i = 0; i < dateList.length; i++) {
           sum = sum + parseInt(dateList[i]);
@@ -468,14 +493,16 @@ gouwu:function(){
 
         //尺寸和颜色 定金 价格拆分
         var dateList = JSON.parse(that.data.goods_index.goods_size);
-        console.log(that.data.goods_size[0].size)
-        console.log(that.data.goods_size[0].id)
+
+        // console.log(that.data.goods_size[0].size)
+        // console.log(that.data.goods_size[0].id)
         var li= [];
         var azz=[];
         var acc=[];
         var z = 0;
         var str = '';
         var strary  = [];
+
         for (var i = 0; i < dateList.length;i++){
             var hasRead = false;
             for (var k = 0; k < strary.length;k++)
@@ -707,7 +734,8 @@ gouwu:function(){
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            if (res.data.length != 0) {
+            // console.log(res);
+            if (res.data != null && res.data != 0) {
               that.setData({
                 comment: res.data
               })

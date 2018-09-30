@@ -136,6 +136,7 @@ Page({
           Shopping_name: res.data.shopName,
         })
         an = that.data.Consignee[0];
+        console.log(that.data.Consignee);
         ap = that.data.phone[0];
         ad = that.data.address[0];
         that.setData({
@@ -209,7 +210,8 @@ Page({
     adphoness = that.data.adp;
    // console.log(adphone)
   },
-  //发票
+
+  //发票选择
   chooseInvoiceTitle() {
     var that=this;
     wx.chooseInvoiceTitle({
@@ -219,6 +221,7 @@ Page({
            invoice:res
         })
         console.log(that.data.invoice);
+    
       },
       fail: (err) => {
         console.error(err)
@@ -229,6 +232,9 @@ Page({
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
+    console.log(1111111111111111111111111111111111111);
+    var invoicemes = JSON.stringify(that.data.invoice);
+
     wx.request({
       url: URL + '/Mall/order_buy',
       data: {
@@ -246,7 +252,8 @@ Page({
         name: that.data.adn, //收件人
         phone: that.data.adp,//地址电话号码
         address: that.data.add, //详细地址
-        isTeam: that.data.isTeam
+        isTeam: that.data.isTeam,
+        invoice:invoicemes
       },
       method: 'POST',
       header: {
@@ -264,6 +271,7 @@ Page({
   },
   getpaymented:function(){
     //付款成功
+    var invoicemes = JSON.stringify(that.data.invoice);
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
@@ -285,7 +293,8 @@ Page({
           name: that.data.adn, //收件人
           phone: that.data.adp,//地址电话号码
           address: that.data.add, //详细地址
-          isTeam: that.data.isTeam
+          isTeam: that.data.isTeam,
+          invoice: invoicemes
         },
         method: 'POST',
         header: {
@@ -318,7 +327,8 @@ Page({
           name: that.data.adn, //收件人
           phone: that.data.adp,//地址电话号码
           address: that.data.add, //详细地址
-          isTeam: that.data.isTeam
+          isTeam: that.data.isTeam,
+          invoice: invoicemes
         },
         method: 'POST',
         header: {
@@ -392,6 +402,7 @@ Page({
           }
           else {
             //待付款
+            var invoicemes = JSON.stringify(that.data.invoice);
             if (that.data.isTeam == 0) {
               wx.request({
                 url: URL + '/Mall/order_buy',
@@ -410,7 +421,8 @@ Page({
                   name: that.data.adn, //收件人
                   phone: that.data.adp,//地址电话号码
                   address: that.data.add, //详细地址
-                  isTeam: that.data.isTeam
+                  isTeam: that.data.isTeam,
+                  invoice: invoicemes
                 },
                 method: 'POST',
                 header: {
