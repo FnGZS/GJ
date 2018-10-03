@@ -10,10 +10,11 @@ Page({
       company: '韵达快递',
       nu: '4326665981311546542',
       phone: '95533',
+      img:'/images/sad.png',
       mes: [{
-        day: '2018-03-21',
-        time: '13:37',
-        mes: '[浙江绍兴公司]快件已被 已签收 签收'
+        time: '2018-03-21',
+        context: '',
+      
       },]
     }
 
@@ -32,57 +33,21 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function(resorder) {
-        console.log(resorder.data[0].order_num); //单号
-        var data="wuliu.nu";
+        console.log(resorder.data[0].data)
+        var arr = JSON.parse(resorder.data[0].data);
+        console.log(arr);
+        var data = "wuliu.mes";
+        var datacop = "wuliu.company";
+        var dataimg="wuliu.img"
+        var datanum= "wuliu.nu"
         that.setData({
-          [data]: resorder.data[0].order_num
-        })
-        wx.request({ //查该订单号可能存在的公司
-          url: LogisticsURL + '/autoComNum.php',
-          data: {
-            text: resorder.data[0].order_num,
+          [data]: arr,
+          [datanum]: resorder.data[0].order_num,
+          [datacop]: resorder.data[0].expTextName,
+          [dataimg]: 'https://www.sxscott.com/gujie/public/express/'+resorder.data[0].expSpellName+'.png',
 
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success: function(res) {
-           
-            res.data.auto.push({
-              comCode: 'zhimakaimen'
-            })
-            for (var i = 0; i < res.data.auto.length; i++) { // 遍历有可能性的快递公司
-              var comCode = res.data.auto[i].comCode; // 获取当前快递公司名称
-              (function(comCode) { // 这个是匿名函数自执行，comCode的参数就是下面comCode传入的参数，也就是上面定义的参数，解决ajax与for参数异步的问题
-                wx.request({ // 根据可能性的公司名称与单号进行详细查询
-                  url: LogisticsURL + "/query.php",
-                  data: {
-                    type: comCode, // 传公司名称
-                    postid: resorder.data[0].order_num // 传单号
-                  },
-                  header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                  },
-                  success: function(resdata) { // 那这边得出的结果，跟http://www.kuaidi100.com/?from=openv这个网址得出的结果是一样的
-                    //这里就直接赋值了
-                    if(resdata.data.data!='')
-                    {
-                      var data = "wuliu.mes";
-                      var datacop ="wuliu.company"
-                      that.setData({
-                        [data]: resdata.data.data,
-                        [datacop]: comCode
-                      })
-                  
-                      console.log(that.data.wuliu.mes);
-                    }
-                 
-                  }
-                })
-              })(comCode);
-            }
-          }
         })
+        console.log(that.data.wuliu.mes);
       }
     })
   },

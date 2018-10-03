@@ -61,7 +61,7 @@
             </view>
         </view>
  </view>
-  <navigator class='soujin'>
+  <!-- <navigator class='soujin'>
   <view class='close'>筹备中</view>
         <view class='shou1'>
             <view class='iconfont icon-youhuiquan'></view>
@@ -70,7 +70,7 @@
             <view style='float: right;' class='iconfont icon-jiantou' ></view>
              </view>
         </view>
- </navigator>
+ </navigator> -->
  <view class='soujin' bindtap='collection' >
         <view class='shou1'>
             <view class='iconfont icon-wodeshoucang'></view>

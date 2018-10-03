@@ -52,7 +52,25 @@
 <view class='Underline'></view>
 <view class='Distribution'>
   <image src='/images/dianhua.png'></image>
-  <view class='store-n'>联系客服</view>
+  <view class='store-n'>联系客服
+  <view class='contact-list'>
+         <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+          <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+           <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+            <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+             <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+              <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+               <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+                <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+                 <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+                 <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+              <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+               <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+                <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+                 <contact-button type="default-dark" size="30" session-from="weapp"></contact-button>
+              
+                 </view>
+                   </view>
 </view>
 <view class='Underline'></view>
 <view class="cart-footer">
