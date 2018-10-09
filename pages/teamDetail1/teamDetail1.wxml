@@ -12,7 +12,7 @@
           <block wx:for="{{detail.case}}" wx:key="index">
             <swiper-item>
               <view class='img-title'>{{item.caseName}}</view>
-              <image src="{{URLimg}}/dynamic/{{item.caseImg}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+              <image src="{{URLimg}}/team/{{item.goods_imgs}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
             </swiper-item>
           </block>
         </swiper>
