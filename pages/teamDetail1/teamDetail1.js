@@ -172,11 +172,13 @@ Page({
       },
       success: function(res) {
         console.log(res)
+        if (res.data.goods_imgs=='无'){
+          res.data.goods_imgs = res.data.goods_img
+        }
         that.setData({
           detail: res.data,
           lodingHidden: true,
         })
-        console.log(that.data.detail)
       }
     })
   },
@@ -198,6 +200,7 @@ Page({
       success: function(res) {
         console.log(res)
         if (res.data == null || res.data.length == 0) {
+
           that.setData({
             display_noComments: 'block'
           })
