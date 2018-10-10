@@ -12,9 +12,15 @@
           <block wx:for="{{detail.case}}" wx:key="index">
             <swiper-item>
               <view class='img-title'>{{item.caseName}}</view>
-              <image src="{{URLimg}}/dynamic/{{item.caseImg}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+              <image src="{{URLimg}}/cases/{{item.caseImg}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
             </swiper-item>
           </block>
+          <block wx:if="{{detail.case.length < 1}}">
+            <swiper-item>
+              <image src="{{URLimg}}/team/{{detail.goods_img}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+            </swiper-item>
+          </block>
+
         </swiper>
       </view>
 
@@ -110,7 +116,7 @@
           <view class='noThing_text'>暂无评价哦~</view>
         </view>
       </view>
-      <view class="goods-comment" wx:for="{{comment}}" style="background:#fff;">
+      <view class="goods-comment" wx:for="{{comment}}" wx:key="key" style="background:#fff;">
         <view class="comment-list">
           <view class="comment-lf">
             <image class="comment-favion" data-index="{{index}}" src="{{item.avatarUrl}}"></image>

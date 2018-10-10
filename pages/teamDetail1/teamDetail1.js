@@ -197,14 +197,15 @@ Page({
       },
       success: function(res) {
         console.log(res)
-        if (res.data.length != 0) {
-          that.setData({
-            comment: res.data
-          })
-        } else {
+        if (res.data == null || res.data.length == 0) {
           that.setData({
             display_noComments: 'block'
           })
+        } else {
+          that.setData({
+            comment: res.data
+          })
+          
         }
 
       }
