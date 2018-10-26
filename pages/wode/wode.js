@@ -105,7 +105,7 @@ Page({
                 'content-type': 'application/json'
               }, // 设置请求的 header
               success: function(res) {
-                console.log(res.data.openId);
+                console.log(res);
                 wx.request({
                   url: that.data.URL + '/User/userquest',
                   data: {
