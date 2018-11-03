@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    phoneHeight:0,
     bannerItem:[],
     image:[],
     tabArr: {
@@ -58,6 +59,11 @@ Page({
     scrollTopC: 0,
     scrollTopstart: 0,
     isClick: 0,
+  },
+  getPhoneInfo: function () {
+    this.setData({
+      phoneHeight: 750 / wx.getSystemInfoSync().windowWidth * wx.getSystemInfoSync().windowHeight
+    })
   },
 //加入购物车跳转
   carttt:function(){
@@ -209,6 +215,7 @@ gouwu:function(){
    */
   onLoad: function (options) {
     console.log(options)
+    this.getPhoneInfo();
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.IMGURL;
     var that=this;

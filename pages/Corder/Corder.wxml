@@ -41,7 +41,7 @@
         <text space="ensp">从事：{{goods_classify}}，擅长：{{goods_style}}</text>
       </view>
       <view class='price'>
-        <text space="ensp">￥{{goods_price}}.00  定金：{{goods_earnest}}   <text style='color:#000'>x{{numm}}</text></text>
+        <text space="ensp">￥{{goods_price}}  定金：{{goods_earnest}}   <text style='color:#000'>x{{numm}}</text></text>
       </view>
     </view>
   </view>
