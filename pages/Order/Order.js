@@ -182,7 +182,7 @@ Page({
             },
             success: function(res) {
               console.log(res)
-          
+             
               that.data.daifu = [];
               that.data.daifa = [];
               that.data.daishou = [];
@@ -455,7 +455,7 @@ Page({
             Anummmm: arrpay.length,
             Anums: arrshou.length
           })
- console.log(that.data.daifu)
+          console.log(that.data.daiping)
           if (that.data.daifu.length > 0) {
             that.setData({
               Anumbers: that.data.daifu[arrpay.length - 1].img.length,
