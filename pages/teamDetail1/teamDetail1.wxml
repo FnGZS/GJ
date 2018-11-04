@@ -4,7 +4,7 @@
     <view class="goods-nav {{tabArr.curHdIndex=='1'? 'active' : ''}}" data-id="1" data-key="B">产品信息</view>
     <view class="goods-nav {{tabArr.curHdIndex=='2'? 'active' : ''}}" data-id="2" data-key="C">宝贝评价</view>
   </view>
-  <scroll-view class="scroll-con" scroll-y scroll-top="{{scrollTop}}" bindscroll="handleScroll">
+  <scroll-view class="scroll-con" scroll-y scroll-top="{{scrollTop}}" bindscroll="handleScroll" style='height:{{phoneHeight}}rpx'>
     <view class="goods-info" id='view_A'>
       <!-- 轮播图 -->
       <view>
@@ -12,9 +12,15 @@
           <block wx:for="{{detail.case?detail.case:detail}}" wx:key="index">
             <swiper-item>
               <view class='img-title'>{{item.caseName}}</view>
-              <image src="{{URLimg}}/team/{{item.goods_imgs}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+              <image src="{{URLimg}}/cases/{{item.caseImg}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
             </swiper-item>
           </block>
+          <block wx:if="{{detail.case.length < 1}}">
+            <swiper-item>
+              <image src="{{URLimg}}/team/{{detail.goods_img}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />
+            </swiper-item>
+          </block>
+
         </swiper>
       </view>
 
@@ -110,7 +116,7 @@
           <view class='noThing_text'>暂无评价哦~</view>
         </view>
       </view>
-      <view class="goods-comment" wx:for="{{comment}}" style="background:#fff;">
+      <view class="goods-comment" wx:for="{{comment}}" wx:key="key" style="background:#fff;">
         <view class="comment-list">
           <view class="comment-lf">
             <image class="comment-favion" data-index="{{index}}" src="{{item.avatarUrl}}"></image>
@@ -130,11 +136,11 @@
   <view class="footfixed">
     <view class="footfixed">
       <view class="zuo">
-        <view class="zuo_a">
+        <view class="zuo_a" bindtap='toTeam'>
           <view style='float:left; margin-left:20rpx;'>
             <!-- <span class="iconfont .icon-shoucang" > </span> -->
             <image style='width:40rpx;height:40rpx;' src='/images/dianpu.png'></image>
-            <view class="dbtextt">店铺</view>
+            <view class="dbtextt">团队</view>
           </view>
           <view style='float:right;margin-right:50rpx;' class='kefu_btn'>
             <view class='contact-list'>

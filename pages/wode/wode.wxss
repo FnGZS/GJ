@@ -166,7 +166,6 @@ width:96%;
     width: 25%;
     padding-top: 40rpx;
     text-align: center;
-    
 }
 .main-dai1 .iconfont{
     width: 70rpx;
@@ -199,17 +198,26 @@ width:96%;
     text-align: center;
 } 
 /* 提示订单信息 */
+.icon-daifukuan{
+  position: relative;
+}
+.icon-icon2{
+  position: relative;
+}
+.icon-daishouhuo{
+  position: relative;
+}
 .sign{
   width: 30rpx;
   height: 30rpx;
   border-radius: 50%;
-  position: fixed;
-  /* right: 0; */
-  margin-left: 15%;
   background: red;
   color: #fff;
   text-align: center;
   font-size: 20rpx;
+  position: absolute;
+  top: -5rpx;
+  right: -5rpx;
 }
 .contact-list{
   position: absolute;

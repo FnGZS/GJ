@@ -41,7 +41,7 @@
 
        <!--将左侧导航传到后台的值 再取出来 从数据中提取出相应的信息  -->
       <scroll-view class="mall-list" bindscrolltolower="bindDownLoad"	 scroll-y="true" >
-          <view class="ping" data-pro_id="0"   wx:for="{{teamMes[indexSize].list}}" item="item" data-id="{{item.id}}" bindtap='toDetail'> 
+          <view class="ping" data-pro_id="0"   wx:for="{{teamMes[indexSize].list}}" item="item" data-id="{{item.id}}" bindtap='toDetail' wx:key="key"> 
             <view class="ping_b" >
               <image src='{{URLimg}}/team/{{item.goods_img}}'>
               </image>

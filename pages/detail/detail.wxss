@@ -878,7 +878,6 @@ margin:10rpx 0;
 } */
 .scroll-con{
   margin-top: 70rpx;
-  height: 1000rpx;
 }
 .goods-info image{
   
