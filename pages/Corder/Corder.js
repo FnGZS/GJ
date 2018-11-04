@@ -234,7 +234,7 @@ Page({
     var that = this;
     console.log(1111111111111111111111111111111111111);
     var invoicemes = JSON.stringify(that.data.invoice);
-
+      
     wx.request({
       url: URL + '/Mall/order_buy',
       data: {
@@ -253,7 +253,8 @@ Page({
         phone: that.data.adp,//地址电话号码
         address: that.data.add, //详细地址
         isTeam: that.data.isTeam,
-        invoice:invoicemes
+        invoice:invoicemes,
+        Total: that.data.goods_earnest
       },
       method: 'POST',
       header: {
@@ -294,7 +295,8 @@ Page({
           phone: that.data.adp,//地址电话号码
           address: that.data.add, //详细地址
           isTeam: that.data.isTeam,
-          invoice: invoicemes
+          invoice: invoicemes,
+          Total: that.data.goods_earnest
         },
         method: 'POST',
         header: {
@@ -328,7 +330,8 @@ Page({
           phone: that.data.adp,//地址电话号码
           address: that.data.add, //详细地址
           isTeam: that.data.isTeam,
-          invoice: invoicemes
+          invoice: invoicemes,
+          Total: that.data.goods_earnest
         },
         method: 'POST',
         header: {
@@ -422,7 +425,8 @@ Page({
                   phone: that.data.adp,//地址电话号码
                   address: that.data.add, //详细地址
                   isTeam: that.data.isTeam,
-                  invoice: invoicemes
+                  invoice: invoicemes,
+                  Total: that.data.goods_earnest
                 },
                 method: 'POST',
                 header: {

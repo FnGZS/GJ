@@ -9,7 +9,7 @@
       <!-- 轮播图 -->
       <view>
         <swiper indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-active-color="#FE7700" class='lunbotu'>
-          <block wx:for="{{detail.case}}" wx:key="index">
+          <block wx:for="{{detail.case?detail.case:detail}}" wx:key="index">
             <swiper-item>
               <view class='img-title'>{{item.caseName}}</view>
               <image src="{{URLimg}}/team/{{item.goods_imgs}}" bindtap='toCase' data-id='{{item.id}}' class="slide-image" />

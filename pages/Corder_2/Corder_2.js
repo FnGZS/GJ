@@ -193,7 +193,8 @@ Page({
         message: that.data.messages,
         b: 0,
         couponId: that.data.Coupon_id,
-        isTeam: that.data.isTeam
+        isTeam: that.data.isTeam,
+        Total: that.data.sum
       },
       method: 'POST',
       header: {
@@ -214,7 +215,7 @@ Page({
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
-   
+   console.log(123456);
       wx.request({
         url: URL + '/Mall/trolley_buy',
         data: {
@@ -227,7 +228,8 @@ Page({
             message: that.data.messages,
             b: b,
             couponId: that.data.Coupon_id,
-            isTeam: that.data.isTeam
+            isTeam: that.data.isTeam,
+          Total: that.data.sum
         },
         method: 'POST',
         header: {

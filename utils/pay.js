@@ -25,6 +25,7 @@ function createTimeStamp () {
 }
 /* 支付   */
 function pay(param) {
+  console.log(param)
   let promise = new Promise(function (resolve, reject) {
       //传进统一付款需要的param 和付款的订单号 后者可查询订单是否成功
     wx.requestPayment({
@@ -60,7 +61,8 @@ function pay(param) {
   });
   return promise;
 }
-  function Unified(info) {
+  function Unified(info) { 
+    
     let promise = new Promise(function (resolve, reject) {
   var that=this;
   wx.request({
@@ -109,6 +111,7 @@ function pay(param) {
         success: function (res) {
           console.log(res);
           var result_code = getXMLNodeValue('result_code', res.data.toString("utf-8"))
+          console.log(result_code);
           var resultCode = result_code.split('[')[2].split(']')[0]
           if (resultCode == 'FAIL') {
             var err_code_des = getXMLNodeValue('err_code_des', res.data.toString("utf-8"))
