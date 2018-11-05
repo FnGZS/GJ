@@ -268,7 +268,7 @@ Page({
   },
   getpaymented:function(){
     //付款成功
-    var invoicemes = JSON.stringify(that.data.invoice);
+    var invoicemes = JSON.stringify(this.data.invoice);
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
