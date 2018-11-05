@@ -17,6 +17,7 @@ Page({
       that.setData({
         Case: false,
         Goods: true,
+        items:[]
       })
       that.searchMall();
     } else {
@@ -24,6 +25,7 @@ Page({
       that.setData({
         Case: true,
         Goods: false,
+        items: []
       })
     }
   },
