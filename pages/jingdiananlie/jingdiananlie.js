@@ -242,12 +242,12 @@ Page({
         
         for (var i = 0; i < array[scheId].length; i ++){
           var img = JSON.parse(array[scheId][i].dynContent.contentImg);    
-          array[scheId][i].dynContent.contentImg = img
+          array[scheId][i].dynContent.contentImg = img;
         }
         that.setData({
           Dynamic: array
         })      
-        // console.log(that.data.Dynamic);
+        console.log(that.data.Dynamic);
 
         //调用评论数据
         for (var i = 0; i < that.data.Dynamic.length; i++) {
