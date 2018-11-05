@@ -97,71 +97,58 @@
         我的团队
       </view>
     </view>
-
-
-
-
-  </view>
-  <view class='line'></view>
-  <view class='index-goods'>
-    <view class='index-goods-title'>
-      为你选优
-    </view>
-    <view class='index-goods-conten'>
-      <view wx:for="{{sorting}}" wx:key="key">
-        <view class='index-goods-shop' bindtap='latex' data-id="{{item.id}}" data-num="{{item.goods_num}}">
-          <view class='goods-shop-top'>
-            {{item.goods_classify}}
-          </view>
-          <view class='goods-shop-title'>
-            "下单立减"
-          </view>
-          <view class='goods-shop-body' data-item="index">
-            <image src='{{goods[index]}}'></image>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-
-  <view class='line'></view>
-  <!-- 案例搜索列表 -->
-  <view class='case-title'>
-    <view class='case-title-left'></view>
-    <view class='case-title-right'>经典案例</view>
-
-
-  </view>
-
-  <view wx:for="{{cases}}" class='scroll-view-main' bindtap="anli" data-id='{{item.id}}' style='display:{{display1}}' wx:key="key">
-    <view class='scroll-view-main-left'>
-      <image src='{{URLimg}}/cases/{{item.caseImg}}'></image>
-    </view>
-    <view class='scroll-view-main-right'>
-      <view class='scroll-view-main-right-top'>
-        <view class='scroll-view-main-right-1'>{{item.caseName}}</view>
-        <view class='scroll-view-main-right-2'>{{item.caseCont}}</view>
-      </view>
-
-      <view class='scroll-view-main-right-bottom'>
-        <view class='scroll-view-main-right-bottom1'>
-          <view class='iconfont icon-liulan'> </view>
-          <view>{{item.browseNum}}</view>
-        </view>
-        <view class='scroll-view-main-right-bottom1'>
-          <view class='iconfont icon-pinglun1'></view>
-          <view>{{item.comment}}</view>
-        </view>
-        <view class='scroll-view-main-right-bottom1'>
-          <view class='iconfont icon-shoucang'></view>
-          <view>{{item.collection}}</view>
-        </view>
-      </view>
-    </view>
   </view>
 
 </view>
+<view class='line'></view>
+<view class='index-goods'>
+  <view class='index-goods-title'>
+    为你选优
+  </view>
+    <view wx:for="{{sorting}}" class='index-goods-shop' bindtap='latex' data-id="{{item.id}}" data-num="{{item.goods_num}}">
+      <view class='goods-shop-top'>
+        {{item.goods_classify}}
+      </view>
+      <view class='goods-shop-title'>
+        "下单立减"
+      </view>
+      <view class='goods-shop-body' data-item="index">
+        <image src='{{goods[index]}}'></image>
+      </view>
+    </view>
+</view>
+<view class='line'></view>
+<!-- 案例搜索列表 -->
+<view class='case-title'>
+  <view class='case-title-left'></view>
+  <view class='case-title-right'>经典案例</view>
+</view>
+<view wx:for="{{cases}}" class='scroll-view-main' bindtap="anli" data-id='{{item.id}}' style='display:{{display1}}' wx:key="key">
+  <view class='scroll-view-main-left'>
+    <image src='{{URLimg}}/cases/{{item.caseImg}}'></image>
+  </view>
+  <view class='scroll-view-main-right'>
+    <view class='scroll-view-main-right-top'>
+      <view class='scroll-view-main-right-1'>{{item.caseName}}</view>
+      <view class='scroll-view-main-right-2'>{{item.caseCont}}</view>
+    </view>
 
+    <view class='scroll-view-main-right-bottom'>
+      <view class='scroll-view-main-right-bottom1'>
+        <view class='iconfont icon-liulan'> </view>
+        <view>{{item.browseNum}}</view>
+      </view>
+      <view class='scroll-view-main-right-bottom1'>
+        <view class='iconfont icon-pinglun1'></view>
+        <view>{{item.comment}}</view>
+      </view>
+      <view class='scroll-view-main-right-bottom1'>
+        <view class='iconfont icon-shoucang'></view>
+        <view>{{item.collection}}</view>
+      </view>
+    </view>
+  </view>
+</view>
 
 <view>
   <loading hidden="{{lodingHidden}}">
