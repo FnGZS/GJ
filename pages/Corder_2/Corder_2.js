@@ -168,9 +168,10 @@ Page({
     // console.log(adphone)
     var summ = 0;
     for (var i = 0; i < that.data.cun.length; i++) {
-      summ = summ + (parseInt(that.data.cun[i]) * parseInt(that.data.nums[i]) )  ;
+      summ = summ + (that.data.cun[i]) * parseInt(that.data.nums[i])  ;
     }
     Total = summ;
+    console.log(Total)
     this.setData({
       sum: summ
     })
@@ -254,7 +255,7 @@ Page({
     var that = this;
     var b = 0;
     console.log(this.data.add)
-    if (adphone == '暂无' || adress == '暂无' || adphoness == '暂无') {
+    if (that.data.adp == '暂无' || that.data.adp == undefined || that.data.adp == null) {
       wx.showModal({
         title: '提示',
         content: '您还没有收货信息',

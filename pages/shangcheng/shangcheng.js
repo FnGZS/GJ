@@ -295,7 +295,7 @@ Page({
     let numbered = [''];
     let goodsid = [''];
     let isTeam = [''];
-    // console.log(carts.length)
+    console.log(carts)
     for (let i = 0; i < carts.length; i++) {         // 循环列表得到每个数据
       if (carts[i].selected) {    // 判断选中才会计算价格  
         if (carts[i].tro.isTeam == 0){
@@ -304,7 +304,7 @@ Page({
           total += carts[i].tro.num * carts[i].tro.price;   // 所有价格加起来          
         }              
         // pro[i] = carts[i].
-        // console.log(carts[i].tro.goodsId)
+        console.log(total)
         pro[i] = carts[i].tro.id;
         if (carts[i].tro.isTeam == 0){
           mon[i] = carts[i].tro.deposit;
