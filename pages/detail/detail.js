@@ -741,7 +741,7 @@ gouwu:function(){
             'content-type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            // console.log(res);
+            console.log(res);
             if (res.data != null && res.data != 0) {
               that.setData({
                 comment: res.data

@@ -1,5 +1,6 @@
 var goods_id =0;
 var orderids = 0;
+var isTeam = 0;
 var num = 0;
 Page({
 
@@ -66,6 +67,7 @@ Page({
     console.log(options)
     goods_id = options.goods_id;
     orderids = options.orderids;
+    isTeam = options.isTeam;
     console.log(orderids)
   },
   comment:function(e){
@@ -106,6 +108,7 @@ Page({
         data: {
           userId: UserId,
           goodsId: goods_id,
+          isTeam: isTeam,
           grade: this.data.haoping,
           content: this.data.text,
           orderId: orderids

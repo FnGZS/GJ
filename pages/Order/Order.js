@@ -267,9 +267,10 @@ Page({
     console.log(e)
     var ord_id = e.currentTarget.dataset.orderid;
     var goods_id = e.currentTarget.dataset.id;
-    console.log(ord_id)
+    var isTeam = e.currentTarget.dataset.isteam;
+    console.log(isTeam)
     wx.navigateTo({
-      url: '../pinglun/pinglun?goods_id=' + goods_id + '&orderids=' + ord_id,
+      url: '../pinglun/pinglun?goods_id=' + goods_id + '&orderids=' + ord_id + '&isTeam=' + isTeam,
     }) 
     this.onShow(); //重加载
   },
