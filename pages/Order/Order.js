@@ -52,8 +52,6 @@ Page({
     this.onShow();
   },
   swichNav: function(e) {
-    console.log(this.data.arrorder)
-
     for (var i = 0; i < 5; i++) {
       if (i == e.currentTarget.dataset.current) {
         this.setData({

@@ -218,6 +218,7 @@ width:96%;
   position: absolute;
   top: -5rpx;
   right: -5rpx;
+  line-height: 30rpx;
 }
 .contact-list{
   position: absolute;

@@ -23,8 +23,13 @@ Page({
   //     url: '../logs/logs'
   //   })
   // },
-
+  test:function(){
+    console.log(this.data.hasUserInfo);
+    console.log(this.data.canIUse);
+    console.log(this.data.userInfo);
+  },
   onLoad: function(options) {
+    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -33,7 +38,17 @@ Page({
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
       app.userInfoReadyCallback = res => {
+        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true

@@ -9,7 +9,7 @@
 </view>
 <!-- 暂无收藏 -->
 <view class='bloak' wx:if="{{Goods}}">
-  <view class='nerver' style='display:{{display}}'>暂无收藏</view>
+  <view class='nerver' style='display:{{display[0]}}'>暂无收藏</view>
   <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
     <view class="content" data-id="{{item.goods_id}}" bindtap='goods'>
       <view class='Collection'>
@@ -25,6 +25,27 @@
         </view>
       </view>
     </view>
-    <view class="del" bindtap="del" data-goodsid="{{item.goods_id}}">删除</view>
+    <view class="del" bindtap="delMall" data-goodsid="{{item.goods_id}}">删除</view>
+  </view>
+</view>
+
+<view class='bloak' wx:if="{{Case}}">
+  <view class='nerver' style='display:{{display[1]}}'>暂无收藏</view>
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+    <view class="content" data-id="{{item.cases_id}}" bindtap='cases'>
+      <view class='Collection'>
+        <view class='Collection-img'>
+          <image src='{{item.caseImg}}'></image>
+        </view>
+        <view class='contents'>
+          <view class='goodsname'>{{item.caseName}}</view>
+          <view class='Collection-num'>
+            <text space="ensp">{{item.collection}}人收藏    风格：{{item.caseStyle}}</text>
+          </view>
+          <view class='price'>￥{{item.casePrice}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="del" bindtap="delCase" data-casesid="{{item.cases_id}}">删除</view>
   </view>
 </view>

@@ -1,7 +1,7 @@
 <view class='bg'>
 
-<view class="container" >
-  <view class="userinfo">
+  <view class="container" bindtap='test'>
+    <view class="userinfo">
       <view class="userinfo" style="opacity:1.0">
         <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
         <block wx:else>
@@ -9,8 +9,8 @@
           <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         </block>
       </view>
- </view>
-</view>
+    </view>
+  </view>
 
 
 

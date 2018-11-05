@@ -168,7 +168,7 @@
   text-align: center;
   border: #DCDCDC solid 1px;
   float: right;
-  width: 15%;
+  width: 20%;
   height: 50rpx;
   border-radius: 22px;
 }
@@ -183,7 +183,7 @@
   text-align: center;
   border: #DCDCDC solid 1px;
   float: right;
-  width: 18%;
+  width: 20%;
   height: 50rpx;
   border-radius: 22px;
 }
