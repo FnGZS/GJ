@@ -119,6 +119,7 @@ Page({
     this.setAreaData('province', p)
 
   },
+  //获取装修风格和装修档次
   getMes:function(){
     var that = this;
     wx.request({
@@ -255,7 +256,7 @@ Page({
     // var phone = '17857058385';
     // var area = 100;
 
-    var price = area * 500 + shi * 2000 + ting * 3000 + chu * 4000 + wei * 5000 + 1000 + 1000;
+    // var price = area * 500 + shi * 2000 + ting * 3000 + chu * 4000 + wei * 5000 + 1000 + 1000;
 
     if(province == null ){
       wx.showToast({ title: '请选择省份', icon: 'none',duration:1000});
@@ -305,7 +306,7 @@ Page({
                 [mes_style]: style,
                 [mes_grade]: grade,
                 [mes_phone]: phone,
-                [mes_price]: price
+                // [mes_price]: price
               });
 
               var UserId = wx.getStorageSync('UserId');
@@ -337,11 +338,17 @@ Page({
                   },
                   success: function (res) {
                     console.log(res);
+                    var mes_price = "mes[" + 0 + "].price";
+
+                    that.setData({
+                      [mes_price]: res.data.price
+                    });
+                    wx.navigateTo({
+                      url: '../calculatorResult/calculatorResult?mes=' + JSON.stringify(that.data.mes)
+                    })
                   }
                 })
-                wx.navigateTo({
-                  url: '../calculatorResult/calculatorResult?mes=' + JSON.stringify(this.data.mes)
-                })
+                
               }
               else {
                 wx.showModal({

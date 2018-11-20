@@ -35,9 +35,9 @@
         <view class="cu">
           <text class="cu_one" style='margin-left:10rpx;'>促销 </text>
           <view class="cu_a">送</view>
-          <text class="song">包装修</text>
+          <text class="song">{{goods.goods_promotion[0]}}</text>
           <view class="cu_a">限</view>
-          <text class="song">限时折扣活动</text>
+          <text class="song">{{goods.goods_promotion[1]}}</text>
           <view class="wu">
           </view>
         </view>
@@ -45,15 +45,14 @@
         </view>
         <view class="cu">
           <text class="cu_one">服务</text>
-          <image class="fu_a" src="../../images/gou.png">
-          </image>
-          <text class="songa">官方唯一商城</text>
-          <image class="fu_a" src="../../images/gou.png">
-          </image>
-          <text class="songs">全国联保</text>
-          <image class="fu_a" src="../../images/gou.png">
-          </image>
-          <text class="songs">全场包邮</text>
+          <view style='flex:87%;display:flex;'>
+            <view wx:for="{{goods.goods_service}}" style='display:flex;flex:33%;'>
+              <image class="fu_a" src="../../images/gou.png">
+              </image>
+              <text class="songs">{{item}}</text>
+            </view>
+          </view>
+
         </view>
         <view class="fenge">
         </view>
@@ -98,7 +97,7 @@
 
   </view>
   <view class="goods-detail" id='view_B'>
-  <view class='goods_detail_text'>产品信息</view>
+    <view class='goods_detail_text'>产品信息</view>
     <view class="row goods-detail-list">
       <view class="goods-detail-lf">类型</view>
       <view class="goods-detail-rt">{{product_classify}}</view>
@@ -109,13 +108,13 @@
     </view>
   </view>
   <view id='view_C'>
-  <view class='goods-comment_text'>宝贝评价</view>
-  <view class='noThing' style='display:{{display_noComments}}'>
-        <view class='noThing_main'>
-          <image src='../../images/sad.png'></image>
-          <view class='noThing_text'>暂无评价哦~</view>
-        </view>
+    <view class='goods-comment_text'>宝贝评价</view>
+    <view class='noThing' style='display:{{display_noComments}}'>
+      <view class='noThing_main'>
+        <image src='../../images/sad.png'></image>
+        <view class='noThing_text'>暂无评价哦~</view>
       </view>
+    </view>
     <view class="goods-comment  {{tabArr.curBdIndex=='2'? 'active' : ''}}" wx:for="{{comment}}" style="background:#fff;">
       <view class="comment-list">
         <view class="comment-lf">

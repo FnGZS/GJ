@@ -53,15 +53,13 @@
         </view>
         <view class="cu">
           <text class="cu_one">服务</text>
-          <image class="fu_a" src="../../images/gou.png">
-          </image>
-          <text class="songa">站内注册</text>
-          <image class="fu_a" src="../../images/gou.png">
-          </image>
-          <text class="songs">意外保险</text>
-          <image class="fu_a" src="../../images/gou.png">
-          </image>
-          <text class="songs">技能证书</text>
+          <view style='flex:87%;display:flex;'>
+            <view wx:for="{{detail.goods_service}}" style='display:flex;  margin-right: 20rpx;'>
+              <image class="fu_a" src="../../images/gou.png">
+              </image>
+              <text class="songs">{{item}}</text>
+            </view>
+          </view>
         </view>
       </view>
       <view class="fenge"></view>
