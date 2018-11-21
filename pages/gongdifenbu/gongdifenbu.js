@@ -58,7 +58,7 @@ Page({
   callouttap(e) {
     // console.log(e);
     wx.navigateTo({
-      url: '../jingdiananlie/jingdiananlie',
+      url: '../jingdiananlie/jingdiananlie?caseid=' + e.markerId,
     })
   },
   controltap(e) {

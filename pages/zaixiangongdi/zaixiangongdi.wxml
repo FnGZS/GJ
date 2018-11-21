@@ -87,8 +87,8 @@
 
     </view>
     <view class='map'>
-      <map id="myMap" show-location/>
-
+      <!-- <map id="myMap" show-location/> -->
+      <map id="myMap" longitude="{{yy}}" latitude="{{xx}}" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" bindcallouttap="callouttap"  scale="14" show-location></map> 
     </view>
   </view>
 </view>
