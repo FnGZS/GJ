@@ -90,6 +90,54 @@ Page({
     console.log(e);
 
     app.globalData.userInfo = e.detail.userInfo
+    wx.getUserInfo({
+      success: res => {
+        // 可以将 res 发送给后台解码出 unionId              
+        console.log(res);
+        wx.request({
+          url: 'https://www.sxscott.com/gujie/index.php' + '/Login',
+          data: {
+            'encryptedData': res.encryptedData,
+            'iv': res.iv,
+            'code': wx.getStorageSync('code')
+          },
+          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            'content-type': 'application/json'
+          }, // 设置请求的 header
+          success: function (res) {
+            console.log(res.data.openId);
+            wx.request({
+              url: 'https://www.sxscott.com/gujie/index.php' + '/User/userquest',
+              data: {
+                'openId_data': res.data.openId,
+                'avatarUrl_data': res.data.avatarUrl,
+                'nickName_data': res.data.nickName,
+                // 'time_data':time,
+              },
+              method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+              header: {
+                'content-type': 'application/json'
+              }, // 设置请求的 header
+              success: function (resx) {
+                console.log(resx)
+                wx.setStorageSync('UserId', resx.data.userId);
+                wx.setStorageSync('login', 1);
+                wx.setStorageSync('avatarUrl', resx.data.avatarUrl);
+              },
+            })
+          },
+          fail: function (err) {
+            console.log(err);
+          }
+        })
+        // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+        // 所以此处加入 callback 以防止这种情况
+        if (this.userInfoReadyCallback) {
+          this.userInfoReadyCallback(res)
+        }
+      }
+    })
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
