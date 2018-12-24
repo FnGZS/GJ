@@ -59,6 +59,7 @@ Page({
     scrollTopC: 0,
     scrollTopstart: 0,
     isClick: 0,
+    goods_company:'',
   },
   getPhoneInfo: function () {
     this.setData({
@@ -382,7 +383,8 @@ gouwu:function(){
         that.setData({
           goods: res.data,
           goods_index: res.data,
-          goods_img: res.data.goods_img
+          goods_img: res.data.goods_img,
+          goods_company:JSON.parse(res.data.goods_company)
         })
         console.log(that.data.goods)
         var num = JSON.parse(that.data.goods.goods_imgs);
@@ -548,6 +550,7 @@ gouwu:function(){
             var pric = JSON.parse(that.data.goods.goods_earnest); //定金
             var price = JSON.parse(that.data.goods.goods_price); //价格
             var inventory = JSON.parse(that.data.goods.goods_inventory); //库存
+          
             for (var a = 0; a < azz.length; a++) {
               c = azz[a];
               d = acc[a];

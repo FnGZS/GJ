@@ -651,7 +651,7 @@ z-index:-1;
 .cu {
   display: flex;
   font-size: 26rpx;
-  height: 100rpx;
+  /* height: 100rpx; */
   align-items: center;
 }
 
@@ -688,7 +688,7 @@ z-index:-1;
 /*服务*/
 
 .fu_a {
-  height: 50%;
+  height: 30%;
   width: 30rpx;
   display: flex;
   align-items: center;
@@ -705,6 +705,10 @@ z-index:-1;
 .songs {
   flex: 20%;
   color: #999;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .fenge {
