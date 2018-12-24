@@ -3,7 +3,7 @@
   <view class="goods-nav {{tabArr.curHdIndex=='1'? 'active' : ''}}" data-id="1" data-key="B">产品信息</view>
   <view class="goods-nav {{tabArr.curHdIndex=='2'? 'active' : ''}}" data-id="2" data-key="C">宝贝评价</view>
 </view>
-<scroll-view class="scroll-con" scroll-y scroll-top="{{scrollTop}}" bindscroll="handleScroll">
+<scroll-view class="scroll-con" scroll-y scroll-top="{{scrollTop}}" bindscroll="handleScroll" style='height:{{phoneHeight}}rpx'>
   <view class="goods-info" id='view_A'>
     <view class="cont">
       <swiper autoplay="true" duration="1000" indicator-dots="true" interval="3000" style="height:285px" current="0" current-item-id="">

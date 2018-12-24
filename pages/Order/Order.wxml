@@ -12,11 +12,9 @@
     <image class='max' src='/images/gouwuche.png'></image>
     <view>暂无订单</view>
   </view>
-
   <view class='gu' wx:key="" wx:for="{{arrorder}}">
     <!-- 全部订单 -->
     <view class='line'></view>
-
     <view class='Store'>
       <view class='icon' data-index="{{item.id}}">
         <image src='{{iconn[index]}}'></image>
@@ -53,35 +51,31 @@
       </view>
       <view class='baitiao'></view>
     </view>
-
-      <view class='Benefits'>
-        <view class="{{item.state=='待付款' ? 'disll' : 'disl'}}">
-          <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.price[index]}}">付款</view>
-          <view class='cha' bindtap='Cancellation' data-id="{{item.orderId}}">取消订单</view>
-        </view>
-        <view class="{{item.state=='待发货' ? 'disll' : 'disl'}}">
-          <view class='pay' bindtap='Deliver' data-id="{{item.orderId}}">待发货</view>
-
-        </view>
-        <view class="{{item.state=='待收货' ? 'disll' : 'disl'}}">
-          <view class='pay' bindtap='Collect'>待收货</view>
-          <view class='cha' bindtap='logistics'>查看物流</view>
-        </view>
-        <view class="{{item.state=='待评价' ? 'disll' : 'disl'}}" >
-          <view class='evaluate' bindtap='evaluate' data-orderid="{{item.orderId}}" data-id="{{item.goodsId}}">评价</view>
-          <view class='cha' bindtap='logistics' >查看物流</view>
-        </view>
+    <view class='Benefits'>
+      <view class="{{item.state=='待付款' ? 'disll' : 'disl'}}">
+        <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.totaldeposit}}">付款</view>
+        <view class='cha' bindtap='Cancellation' data-id="{{item.orderId}}">取消订单</view>
       </view>
+      <view class="{{item.state=='待发货' ? 'disll' : 'disl'}}">
+        <view class='pay' bindtap='Deliver' data-id="{{item.orderId}}">待发货</view>
+      </view>
+      <view class="{{item.state=='待收货' ? 'disll' : 'disl'}}">
+        <view class='pay' bindtap='Collect'>确认收货</view>
+        <view class='cha' bindtap='logistics'>查看物流</view>
+      </view>
+      <view class="{{item.state=='待评价' ? 'disll' : 'disl'}}">
+        <view class='evaluate' bindtap='evaluate' data-orderid="{{item.orderId}}" data-id="{{item.goodsId}}" data-isTeam='{{item.isTeam[index]}}'>评价</view>
+        <view class='cha' bindtap='logistics'>查看物流</view>
+      </view>
+    </view>
   </view>
 </view>
 
-<view class="weui-cells__title {{isShow==1?'dis':''}}" >
-          <view class='nerver' style='display:{{displaypay}}'  >
-           <image class='max' src='/images/gouwuche.png'></image>
-            <view>暂无订单</view>    
-        </view>
-    
-        
+<view class="weui-cells__title {{isShow==1?'dis':''}}">
+  <view class='nerver' style='display:{{displaypay}}'>
+    <image class='max' src='/images/gouwuche.png'></image>
+    <view>暂无订单</view>
+  </view>
   <view hlass='gu' wx:key="" wx:for="{{daifu}}">
     <!-- 待付款 -->
     <view class='line'></view>
@@ -96,18 +90,18 @@
       <view class='pic' data-index="{{item.id}}" style='heigh:500rpx' wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-       <view class='pic' data-index="{{item.id}}" style='heigh:500rpx' wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" style='heigh:500rpx' wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
         <view class='content-introduce'>
           {{item.name[index]}}
         </view>
-        <view class='content-type' wx:if="{{item.isTeam[index] == 0}}" >
+        <view class='content-type' wx:if="{{item.isTeam[index] == 0}}">
           <font style="color:#000;">尺寸：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">颜色：</font>{{item.goodsCol[index]}}
         </view>
-        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}" >
+        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
           <font style="color:#000;">从事：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">擅长：</font>{{item.goodsCol[index]}}
         </view>
@@ -126,7 +120,7 @@
       <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-       <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
@@ -153,7 +147,12 @@
     </view>
 
     <view class='Benefits1'>
-      <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.price[index]}}">付款</view>
+
+      <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.totaldeposit}}">付款</view>
+
+      <!-- <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.price[index]}}" wx:if="{{item.isTeam[0] == 1}}">付款</view>
+      <view class='pay' bindtap='payment' data-id="{{item.orderId}}" data-total="{{item.deposit[index]}}" wx:if="{{item.isTeam[0] == 0}}">付款</view> -->
+
       <view class='cha' bindtap='Cancellation' data-id="{{item.orderId}}">取消订单</view>
     </view>
   </view>
@@ -175,10 +174,10 @@
       <view class='Unpaid'>{{item.state}}</view>
     </view>
     <view class='pictore' data-index="{{index}}" wx:if="{{Anummm > 1}}" wx:for="{{item.img.length}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 0}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
@@ -189,7 +188,7 @@
           <font style="color:#000;">尺寸：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">颜色：</font>{{item.goodsCol[index]}}
         </view>
-         <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
           <font style="color:#000;">从事：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">擅长：</font>{{item.goodsCol[index]}}
         </view>
@@ -204,22 +203,22 @@
       <view class='baitiao'></view>
     </view>
 
-    <view class='pictore' data-index="{{index}}" wx:if="{{Anummm == 1}}" wx:for="{{Anumberss}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 0}}">
+    <view class='pictore' data-index="{{index}}" wx:if="{{Anummm == 1}}" wx:for="{{Anumberss}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface' wx:key="key">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-       <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
         <view class='content-introduce'>
           {{item.name[index]}}
         </view>
-        <view class='content-type'  wx:if="{{item.isTeam[index] == 0}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 0}}">
           <font style="color:#000;">尺寸：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">颜色：</font>{{item.goodsCol[index]}}
         </view>
-        <view class='content-type'  wx:if="{{item.isTeam[index] == 1}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
           <font style="color:#000;">从事：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">擅长：</font>{{item.goodsCol[index]}}
         </view>
@@ -233,8 +232,6 @@
       </view>
       <view class='baitiao'></view>
     </view>
-
-
   </view>
 </view>
 <view class="weui-cells__title {{isShow==3?'dis':''}}">
@@ -253,21 +250,21 @@
       <view class='Unpaid'>{{item.state}}</view>
     </view>
     <view class='pictore' data-index="{{index}}" wx:if="{{Anums > 1}}" wx:for="{{item.img.length}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 0}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
         <view class='content-introduce'>
           {{item.name[index]}}
         </view>
-        <view class='content-type'  wx:if="{{item.isTeam[index] == 0}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 0}}">
           <font style="color:#000;">尺寸：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">颜色：</font>{{item.goodsCol[index]}}
         </view>
-        <view class='content-type'  wx:if="{{item.isTeam[index] == 1}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
           <font style="color:#000;">从事：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">擅长：</font>{{item.goodsCol[index]}}
         </view>
@@ -283,10 +280,10 @@
     </view>
 
     <view class='pictore' data-index="{{index}}" wx:if="{{Anums == 1}}" wx:for="{{Anumbersss}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 0}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
@@ -314,7 +311,7 @@
 
     <view class='Benefits1'>
       <!-- <view class='gu'> -->
-      <view class='pay' bindtap='Collect' data-id="{{item.orderId}}">待收货</view>
+      <view class='pay' bindtap='Collect' data-id="{{item.orderId}}">确认收货</view>
       <view class='cha' bindtap='logistics' data-orderid="{{item.orderId}}">查看物流</view>
       <!-- </view> -->
     </view>
@@ -336,10 +333,10 @@
       <view class='Unpaid'>{{item.state}}</view>
     </view>
     <view class='pictore' data-index="{{index}}" wx:if="{{Anum > 1}}" wx:for="{{item.img.length}}" wx:for-item="items" data-id="{{item.orderId}}" data-state="{{item.state}}" bindtap='Interface'>
-      <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 0}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 0}}">
         <image src='https://www.sxscott.com/gujie/public/goods/{{item.img[index]}}'></image>
       </view>
-       <view class='pic' data-index="{{item.id}}"  wx:if="{{item.isTeam[index] == 1}}">
+      <view class='pic' data-index="{{item.id}}" wx:if="{{item.isTeam[index] == 1}}">
         <image src='https://www.sxscott.com/gujie/public/team/{{item.img[index]}}'></image>
       </view>
       <view class='content'>
@@ -350,7 +347,7 @@
           <font style="color:#000;">尺寸：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">颜色：</font>{{item.goodsCol[index]}}
         </view>
-         <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
           <font style="color:#000;">从事：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">擅长：</font>{{item.goodsCol[index]}}
         </view>
@@ -380,7 +377,7 @@
           <font style="color:#000;">尺寸：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">颜色：</font>{{item.goodsCol[index]}}
         </view>
-         <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
+        <view class='content-type' wx:if="{{item.isTeam[index] == 1}}">
           <font style="color:#000;">从事：</font>{{item.goodsSize[index]}}
           <font style="color:#000;">擅长：</font>{{item.goodsCol[index]}}
         </view>
@@ -394,26 +391,9 @@
       </view>
       <view class='baitiao'></view>
     </view>
-
-
-
     <view class='Benefits1'>
-      <view class='evaluate' bindtap='evaluate' data-orderId="{{item.orderId}}" data-id="{{item.goodsId}}">评价</view>
+      <view class='evaluate' bindtap='evaluate' data-orderId="{{item.orderId}}" data-id="{{item.goodsId}}" data-isTeam='{{item.isTeam[index]}}'>评价</view>
       <view class='cha' bindtap='logistics' data-orderid="{{item.orderId}}">查看物流</view>
     </view>
   </view>
 </view>
-
-<!-- <view class="comment-list">
-          <view class="comment-lf">
-            <image class="comment-favion" src="../../images/pinfen.png"></image>
-          </view>
-        <view class="comment-mid">
-            <view style="padding-left:8px;">古杰商城</view>
-            <view class="star-status" style="padding-left:8px;">
-            </view>
-            <view style="padding-left:8px;">好好</view>
-        </view>
-        <view class="comment-rt">2018-03-17 10:47:20</view>
-        <view style="clear:both"></view>
-   </view> -->

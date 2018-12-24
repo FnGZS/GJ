@@ -4,6 +4,7 @@ var iURL = getApp().globalData.IMGURL;
 Page({
 
   data: {
+    phoneHeight:0,
     tabArr: {
       curHdIndex: 0,
       curBdIndex: 0
@@ -23,6 +24,7 @@ Page({
     comment: []
   },
   onLoad: function(options) {
+    this.getPhoneInfo();
     console.log(options)
     this.setData({
       URLimg: iURL,
@@ -39,6 +41,11 @@ Page({
   },
   onShow: function() {
 
+  },
+  getPhoneInfo: function () {
+    this.setData({
+      phoneHeight: 750 / wx.getSystemInfoSync().windowWidth * wx.getSystemInfoSync().windowHeight
+    })
   },
   tabGoods: function(e) {
     var _datasetId = e.target.dataset.id;
@@ -340,6 +347,13 @@ Page({
     }
 
   },
+  //跳转回我的团队
+  toTeam: function () {
+    wx.switchTab({
+      url: '../team/team',
+    })
+  },
+
 
   onHide: function() {
 

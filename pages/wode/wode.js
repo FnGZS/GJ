@@ -18,22 +18,18 @@ Page({
     numpin: 0
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  // bindViewTap: function() {
+  //   wx.navigateTo({
+  //     url: '../logs/logs'
+  //   })
+  // },
+  test:function(){
+    console.log(this.data.hasUserInfo);
+    console.log(this.data.canIUse);
+    console.log(this.data.userInfo);
   },
-
   onLoad: function(options) {
-
-    //返回界面的有些问题
-    // console.log(11111)
-    // this.setData({
-    //   a: options.a ,
-    // });
-    // console.log(this.data.a);
-    // console.log(11111)
-
+    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -42,12 +38,33 @@ Page({
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
       app.userInfoReadyCallback = res => {
+        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
       }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
     }
 
   },
@@ -68,33 +85,11 @@ Page({
 
   },
 
-  getUserInfo: function(e) {
-    var time = util.formatTime(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据
-    console.log(time);
+  getUserInfo: function (e) {
     var that = this;
     console.log(e);
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.setStorageSync('code', res.code)
-        console.log(res.code);
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: response => {
-        console.log(response);
-        //   if (!response.authSetting['scope.userInfo']) {
-        // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框 
-        wx.getUserInfo({
-          success: res => {
-            // 可以将 res 发送给后台解码出 unionId              
-            console.log(res);
-            wx.request({
-              url: that.data.URL + '/Login',
 
+<<<<<<< HEAD
               data: {
                 'encryptedData': res.encryptedData,
                 'iv': res.iv,
@@ -144,16 +139,15 @@ Page({
         //    }
       }
     })
+=======
+>>>>>>> 90f10c2b0079c447f9cb4c2622bf6cc190118847
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    console.log(this.data.get_id)
-    if (this.data.get_id == 1) {
-      wx.navigateBack();
-    }
   },
+  
   // 地址管理
   address: function() {
     var login = wx.getStorageSync('login');

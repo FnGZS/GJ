@@ -72,11 +72,11 @@
 <view class="footfixed">
   <view class="footfixed">
     <view class="zuo">
-      <view class="zuo_a">
+      <view class="zuo_a" bindtap='toTeam'>
          <view  style='float:left; margin-left:20rpx;'>
             <!-- <span class="iconfont .icon-shoucang" > </span> -->
             <image style='width:40rpx;height:40rpx;' src='/images/dianpu.png'></image>
-            <view class="dbtextt">店铺</view>
+            <view class="dbtextt">团队</view>
          </view>
           <view style='float:right;margin-right:50rpx;' >
             <view class='contact-list'>

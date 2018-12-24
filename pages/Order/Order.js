@@ -52,8 +52,6 @@ Page({
     this.onShow();
   },
   swichNav: function(e) {
-    console.log(e)
-
     for (var i = 0; i < 5; i++) {
       if (i == e.currentTarget.dataset.current) {
         this.setData({
@@ -118,13 +116,13 @@ Page({
     console.log(e);
     var orderids = e.currentTarget.dataset.id;
     var total = e.currentTarget.dataset.total;
+    console.log(total);
     let that = this;
     wx.showModal({
       title: '提示',
       content: '确定要付款',
       confirmColor: "#56a4ff",
       success(res) {
-
         if (res.confirm) {
           wx.request({
             url: URL + '/user/query_openid',
@@ -182,7 +180,7 @@ Page({
             },
             success: function(res) {
               console.log(res)
-          
+             
               that.data.daifu = [];
               that.data.daifa = [];
               that.data.daishou = [];
@@ -269,9 +267,10 @@ Page({
     console.log(e)
     var ord_id = e.currentTarget.dataset.orderid;
     var goods_id = e.currentTarget.dataset.id;
-    console.log(ord_id)
+    var isTeam = e.currentTarget.dataset.isteam;
+    console.log(isTeam)
     wx.navigateTo({
-      url: '../pinglun/pinglun?goods_id=' + goods_id + '&orderids=' + ord_id,
+      url: '../pinglun/pinglun?goods_id=' + goods_id + '&orderids=' + ord_id + '&isTeam=' + isTeam,
     }) 
     this.onShow(); //重加载
   },
@@ -455,7 +454,7 @@ Page({
             Anummmm: arrpay.length,
             Anums: arrshou.length
           })
-
+          console.log(that.data.daiping)
           if (that.data.daifu.length > 0) {
             that.setData({
               Anumbers: that.data.daifu[arrpay.length - 1].img.length,
@@ -476,11 +475,8 @@ Page({
               Anumbersss: that.data.daishou[arrshou.length - 1].img.length,
             })
           }
-          console.log(that.data.daifu)
-          console.log(that.data.Anummm)
-          console.log(that.data.numbers)
-          console.log(that.data.daifu)
-          console.log(that.data.Anummm)
+   
+          console.log(that.data.Anumbers)
 
         }
 

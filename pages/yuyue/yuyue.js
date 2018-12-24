@@ -94,6 +94,7 @@ Page({
            if (that.data.list == -1) {
              wx.showToast({
                title: '您已经预约一次',
+               icon:'none'
              })
            }else{
              wx.showToast({
@@ -132,7 +133,9 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     if (name == '') {
       wx.showToast({
-        title: '手机号码错误',
+        title: '请输入你的姓名',
+        icon:'none',
+        duration:1500
       })
       return false;
     }
@@ -146,14 +149,14 @@ Page({
     } else if (num.length < 11) {
       wx.showToast({
         title: '手机号长度有误！',
-        icon: 'success',
+        icon: 'none',
         duration: 1500
       })
       return false;
     } else if (!myreg.test(num)) {
       wx.showToast({
         title: '手机号有误！',
-        icon: 'success',
+        icon: 'none',
         duration: 1500
       })
       return false;

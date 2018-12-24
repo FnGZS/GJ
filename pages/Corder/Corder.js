@@ -6,10 +6,6 @@ var adphone = "";
 var adress = "";
 var adphoness = "";
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: { 
     array: ['暂无优惠券'],
     Consignee: '',
@@ -234,7 +230,7 @@ Page({
     var that = this;
     console.log(1111111111111111111111111111111111111);
     var invoicemes = JSON.stringify(that.data.invoice);
-
+      
     wx.request({
       url: URL + '/Mall/order_buy',
       data: {
@@ -253,7 +249,8 @@ Page({
         phone: that.data.adp,//地址电话号码
         address: that.data.add, //详细地址
         isTeam: that.data.isTeam,
-        invoice:invoicemes
+        invoice:invoicemes,
+        Total: that.data.goods_earnest
       },
       method: 'POST',
       header: {
@@ -271,11 +268,12 @@ Page({
   },
   getpaymented:function(){
     //付款成功
-    var invoicemes = JSON.stringify(that.data.invoice);
+    var invoicemes = JSON.stringify(this.data.invoice);
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
     if (that.data.isTeam == 0) {
+      console.log(that.data.earnest);
       wx.request({
         url: URL + '/Mall/order_buy',
         data: {
@@ -294,7 +292,8 @@ Page({
           phone: that.data.adp,//地址电话号码
           address: that.data.add, //详细地址
           isTeam: that.data.isTeam,
-          invoice: invoicemes
+          invoice: invoicemes,
+          Total: that.data.goods_earnest
         },
         method: 'POST',
         header: {
@@ -328,7 +327,8 @@ Page({
           phone: that.data.adp,//地址电话号码
           address: that.data.add, //详细地址
           isTeam: that.data.isTeam,
-          invoice: invoicemes
+          invoice: invoicemes,
+          Total: that.data.goods_earnest
         },
         method: 'POST',
         header: {
@@ -344,17 +344,14 @@ Page({
         }
       });
     }
-
-
   },
   //立即结算
   Immediate: function () {
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
-    var total = that.data.goods_price;
-
-    if (that.data.adphone == '暂无' || that.data.adress == '暂无' || that.data.adphoness == '暂无') {
+    var total = that.data.earnest;
+    if (that.data.adp == '暂无' || that.data.adp == undefined || that.data.adp == null) {
       wx.showModal({
         title: '提示',
         content: '您还没有收货信息',
@@ -422,7 +419,8 @@ Page({
                   phone: that.data.adp,//地址电话号码
                   address: that.data.add, //详细地址
                   isTeam: that.data.isTeam,
-                  invoice: invoicemes
+                  invoice: invoicemes,
+                  Total: that.data.goods_earnest
                 },
                 method: 'POST',
                 header: {

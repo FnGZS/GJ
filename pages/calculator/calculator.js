@@ -1,4 +1,7 @@
 var area = require('../../data/area')
+var app = getApp();
+var URL = getApp().globalData.PHPURL;
+var iURL = getApp().globalData.IMGURL;
 var p = 0, c = 0, d = 0
 Page({
 
@@ -6,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    URL: getApp().globalData.PHPURL,
     array1: ['1室', '2室', '3室', '4室'],
     index1: 0,
 
@@ -18,10 +22,10 @@ Page({
     array4: ['1卫', '2卫', '3卫', '4卫'],
     index4: 0,
 
-    decorarray: ['简约', '欧式', '中式'],
+    decorarray: [],
     decorindex: 0,
 
-    decoratearry: ['经济型', '中档型', '高档型', '豪华型'],
+    decoratearry: [],
     decorateindex: 0,
 
     provinceName: "",
@@ -83,54 +87,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setAreaData()
+    this.getMes();
+    this.setAreaData();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
 
   },
@@ -141,6 +119,27 @@ Page({
     this.setAreaData('province', p)
 
   },
+  getMes:function(){
+    var that = this;
+    wx.request({
+      url: that.data.URL + '/Quotation/quo_display',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var decorarray = res.data.quotation_style;
+        var decoratearry = res.data.quotation_grade;
+        that.setData({
+          decorarray: decorarray,
+          decoratearry: decoratearry
+        })
+      }
+    })
+  },
+  //选择城市
   changeCity: function (e) {
     this.resetAreaData()
     c = e.detail.value
@@ -330,7 +329,7 @@ Page({
                     style: style,
                     grade: grade,
                     phone: phone,
-                    price: price
+                    // price: price
                   },
                   method: 'POST',
                   header: {

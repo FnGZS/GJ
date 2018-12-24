@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 43,
 			"list": [
 				{
 					"id": -1,
@@ -283,7 +283,19 @@
 				{
 					"id": -1,
 					"name": "团队详情（商城界面一样）",
-					"pathName": "pages/teamDetail1/teamDetail1"
+					"pathName": "pages/teamDetail1/teamDetail1",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/mycollection/mycollection",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "一件报价",
+					"pathName": "pages/calculator/calculator"
 				}
 			]
 		}

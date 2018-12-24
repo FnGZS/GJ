@@ -168,9 +168,10 @@ Page({
     // console.log(adphone)
     var summ = 0;
     for (var i = 0; i < that.data.cun.length; i++) {
-      summ = summ + (parseInt(that.data.cun[i]) * parseInt(that.data.nums[i]) )  ;
+      summ = summ + (that.data.cun[i]) * parseInt(that.data.nums[i])  ;
     }
     Total = summ;
+    console.log(Total)
     this.setData({
       sum: summ
     })
@@ -193,7 +194,8 @@ Page({
         message: that.data.messages,
         b: 0,
         couponId: that.data.Coupon_id,
-        isTeam: that.data.isTeam
+        isTeam: that.data.isTeam,
+        Total: that.data.sum
       },
       method: 'POST',
       header: {
@@ -214,7 +216,7 @@ Page({
     var UserId = wx.getStorageSync('UserId');
     var URL = getApp().globalData.PHPURL;
     var that = this;
-   
+   console.log(123456);
       wx.request({
         url: URL + '/Mall/trolley_buy',
         data: {
@@ -227,7 +229,8 @@ Page({
             message: that.data.messages,
             b: b,
             couponId: that.data.Coupon_id,
-            isTeam: that.data.isTeam
+            isTeam: that.data.isTeam,
+          Total: that.data.sum
         },
         method: 'POST',
         header: {
@@ -252,7 +255,7 @@ Page({
     var that = this;
     var b = 0;
     console.log(this.data.add)
-    if (adphone == '暂无' || adress == '暂无' || adphoness == '暂无') {
+    if (that.data.adp == '暂无' || that.data.adp == undefined || that.data.adp == null) {
       wx.showModal({
         title: '提示',
         content: '您还没有收货信息',

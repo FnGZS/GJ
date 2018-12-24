@@ -56,7 +56,7 @@
       </image>
       <view wx:for="{{Dynamic[item.scheId]}}" data-index="{{index}}">
         <view class='progress-top'>
-          <image src='{{item.avatarUrl}}' class='progress-touxiang'></image>
+          <image src='{{URLimg}}/admin/{{item.avatarUrl}}' class='progress-touxiang'></image>
           <view class='prgress-name'>{{item.dynContent.nickName}}</view>
         </view>
         <view class='progress-content'>

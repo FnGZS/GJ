@@ -42,7 +42,6 @@
 .scroll-con{
   margin-top: 70rpx;
   margin-bottom: 130rpx;
-  height: 1000rpx;
 }
 /* .goods-info{
   display: none;
