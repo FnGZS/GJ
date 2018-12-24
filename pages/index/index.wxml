@@ -109,9 +109,9 @@
       <view class='goods-shop-top'>
         {{item.goods_classify}}
       </view>
-      <view class='goods-shop-title'>
+      <!-- <view class='goods-shop-title'>
         "下单立减"
-      </view>
+      </view> -->
       <view class='goods-shop-body' data-item="index">
         <image src='{{goods[index]}}'></image>
       </view>
