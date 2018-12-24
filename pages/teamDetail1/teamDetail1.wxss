@@ -175,13 +175,13 @@ flex:18%;
 
 }
 .fu_a {
-height:30rpx;
-display:flex;
-align-items:center;
-margin:0 5rpx;
-font-size:24rpx;
-flex:3%;
-
+  height: 50%;
+  width: 30rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  margin-top:8%;
+  /* flex: 3%; */
 }
 .fenge {
   height:10rpx;

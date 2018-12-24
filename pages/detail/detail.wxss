@@ -688,12 +688,13 @@ z-index:-1;
 /*服务*/
 
 .fu_a {
-  height: 30rpx;
+  height: 50%;
+  width: 30rpx;
   display: flex;
   align-items: center;
-  margin: 0 5rpx;
   font-size: 24rpx;
-  flex: 3%;
+  margin-top:8%;
+  /* flex: 3%; */
 }
 
 .songa {
@@ -879,10 +880,10 @@ margin:10rpx 0;
 .scroll-con{
   margin-top: 70rpx;
 }
-.goods-info image{
+/* .goods-info image{
   
   width:750rpx;
-}
+} */
 .goods-nav.active{
   font-size: 13px;
   border-bottom: 1rpx solid #f65d89;

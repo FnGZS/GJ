@@ -29,6 +29,7 @@ Page({
     Area:"装修面积",
     Style:"装修风格",
     Nearby:"附近",
+    markers: [],
   },
   onReady:function(){
     let that=this;
@@ -64,7 +65,7 @@ Page({
       }
     }),
       this.mapCtx.moveToLocation() 
-
+    this.getMarkers();
 
     console.log('onLoad')              //页面高度
   
@@ -87,8 +88,69 @@ Page({
 
 
    },
+   getMarkers:function(){
+     var that = this;
+     //获取工地分布经纬度
+     wx.request({
+       //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
+       url: this.data.URL + '/Decorate/location_global',
+       data: {
+         content: this.data.content,
+       },
+       method: 'POST',
+       header: {
+         'content-type': 'application/x-www-form-urlencoded'
+       },
+       success: function (res) {
+         console.log(res);
 
+         var array = [];
+         for (var i = 0; i < res.data.length; i++) {
+           var obj = {};
+           obj['iconPath'] = "../../images/zuobiao.png";
+           obj['id'] = res.data[i].id;
+           obj['latitude'] = res.data[i].latitude;
+           obj['longitude'] = res.data[i].longitude;
+           obj['width'] = 20;
+           obj['height'] = 30;
+           var objin = {};
+           objin['content'] = res.data[i].caseName;
+           objin['color'] = "#ffffff";
+           objin['fontSize'] = '15';
+           objin['borderRadius'] = '20';
+           objin['bgColor'] = '#ECC743';
+           objin['padding'] = '5';
+           objin['display'] = 'ALWAYS';
+           obj['callout'] = objin;
+           array.push(obj);
+         }
+         // console.log(array);
+         that.setData({
+           markers: array
+         })
+         console.log(that.data.markers);
+       }
+     }) 
+   },
+  regionchange(e) {
+    // console.log(e.type)
+  },
+  markertap(e) {
+    // console.log(e.markerId)
+    // wx.navigateTo({
+    //   url: '../jingdiananlie/jingdiananlie'
+    // })
 
+  },
+  callouttap(e) {
+    // console.log(e);
+    wx.navigateTo({
+      url: '../jingdiananlie/jingdiananlie?caseid=' + e.markerId,
+    })
+  },
+  controltap(e) {
+    // console.log(e.controlId)
+  },
 
   moveToLocation: function () {      //地图
     this.mapCtx.moveToLocation()

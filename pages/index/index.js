@@ -116,8 +116,9 @@ Page({
   },
   //上拉刷新
   onReachBottom:function(){
-   console.log(123123);
     var that = this;
+    console.log(that.data.casetop + that.data.casesF);
+    
     //经典案例
     wx.request({
       //上线接口地址要是https测试可以使用http接口方式 获取左侧列表中包含着获取货物列表
@@ -182,7 +183,8 @@ Page({
       },
       success: function (res) {
         that.setData({
-          cases: res.data
+          cases: res.data,
+          casesF: that.data.casesF + 5
         })
         console.log(res);
      
