@@ -224,12 +224,10 @@ gouwu:function(){
     console.log(options)
     that.setData({
     //  goods_num:options.goods_num,
-     goods_id: options.goods_id
+    //  goods_id: options.goods_id
+      goods_id: 1
     })
     gooid = that.data.goods_id;
-    console.log(11111111111111)
-    console.log(gooid)
-    console.log(options.goods_id)
   
   },
   // 商品收藏
@@ -384,7 +382,7 @@ gouwu:function(){
           goods: res.data,
           goods_index: res.data,
           goods_img: res.data.goods_img,
-          goods_company:JSON.parse(res.data.goods_company)
+          goods_company:JSON.parse(res.data.goods_company)[0]
         })
         console.log(that.data.goods)
         var num = JSON.parse(that.data.goods.goods_imgs);
@@ -961,10 +959,10 @@ gouwu:function(){
       size_index:index
     })
     var color_index = this.data.color_index;
-    console.log(color_index)
-    console.log(this.data.goods_size[index])
-    console.log(this.data.colorfenlei[index])
-    console.log(this.data.goods_pric[index])
+    console.log(this.data.goods_company)
+    // console.log(this.data.goods_size[index])
+    // console.log(this.data.colorfenlei[index])
+    // console.log(this.data.goods_pric[index])
     //拆分数组
     var num = this.data.arr.length;  //有无重复值
     console.log(num)
@@ -981,6 +979,11 @@ gouwu:function(){
       var price = [];
       var aqq = this.data.goods_price[index].price; //拿出默认的第一条
       price = aqq.split(","); //组合起来
+    //商品单位
+      var goods_company = [];
+      var aqq = this.data.goods_company[index];
+      goods_company = aqq.split(",");
+      console.log(goods_company)
     //每个尺寸下默认的颜色的库存
       var invento = [];
       var aqq = this.data.goods_kucun[index].kucunn; //拿出默认的第一条
@@ -991,7 +994,8 @@ gouwu:function(){
         price: price[0],  //显示价格
         invento: invento[0],  //显示库存
         colortext: colorr[color_index],
-        sizetext: this.data.goods_size[index].size
+        sizetext: this.data.goods_size[index].size,
+        goods_company: goods_company[0]
       })
     }
     // console.log(colorr)
@@ -1002,7 +1006,8 @@ gouwu:function(){
       var goods_earnest = JSON.parse(this.data.goods_index.goods_earnest);
       var goods_price = JSON.parse(this.data.goods_index.goods_price);
       var goods_inventory = JSON.parse(this.data.goods_index.goods_inventory);
-      // console.log(goods_color[0])
+      var goods_company = JSON.parse(this.data.goods_index.goods_company);
+      console.log(goods_company)
       this.setData({ // 默认初始状态
         num_color: 1,
         y_color: goods_color[index],  //显示颜色
@@ -1010,7 +1015,8 @@ gouwu:function(){
         price: goods_price[index], //显示价格
         invento: goods_inventory[index], //显示库存
         colortext: goods_color[index],
-        sizetext: goods_size[index]
+        sizetext: goods_size[index],
+        goods_company: goods_company[index]
       })
     }
  

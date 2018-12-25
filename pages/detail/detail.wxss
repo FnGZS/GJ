@@ -652,9 +652,54 @@ z-index:-1;
   display: flex;
   font-size: 26rpx;
   /* height: 100rpx; */
-  align-items: center;
+  /* align-items: center; */
 }
-
+.cuxiao{
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+}
+.cuxiao_song{
+  display: flex;
+}
+.cuxiao_song_text{
+  background: #ff663e;
+  color: #fff;
+  height: 30rpx;
+  line-height: 30rpx;
+  align-items: center;
+  margin: 15rpx 15rpx;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+}
+.cuxiao_xian{
+  display: flex;
+}
+.cuxiao_xian_text{
+  background: #ff663e;
+  color: #fff;
+  height: 30rpx;
+  line-height: 30rpx;
+  align-items: center;
+  margin: 15rpx 15rpx;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+}
+.fuwu{
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+}
+.fuwu_img{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 15rpx;
+  margin-right: 5rpx;
+}
+.fuwu_main{
+  display: flex;
+  margin-right: 20rpx;
+}
 .cu_one {
   flex: 13%;
   color: #999;
@@ -667,16 +712,13 @@ z-index:-1;
   color: #fff;
   height: 30rpx;
   line-height: 30rpx;
-  display: flex;
   align-items: center;
   margin: 0 20rpx;
   font-size: 24rpx;
   padding: 0 10rpx;
-  flex: 3%;
 }
 
 .song {
-  flex: 30%;
   color: #999;
   font-size: 24rpx;
 }

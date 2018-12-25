@@ -26,7 +26,7 @@
               <text class="yuan">定金：</text>
               <text class='dingjin'> ￥{{money}}</text>
             </span>
-            <span class="c6 fl_r font_14" style="color:#ccc"> 库存:{{kucun}} </span>
+            <!-- <span class="c6 fl_r font_14" style="color:#ccc"> 库存:{{kucun}} </span> -->
           </view>
         </view>
         <view class="xian">
@@ -35,17 +35,41 @@
         </view>
         <view class="cu">
           <text class="cu_one" style='margin-left:10rpx;'>促销 </text>
-          <view class="cu_a">送</view>
-          <text class="song">{{goods.goods_promotion[0]}}</text>
-          <view class="cu_a">限</view>
-          <text class="song">{{goods.goods_promotion[1]}}</text>
+          <view class='cuxiao'>
+            <view class='cuxiao_song'>
+              <view class='cuxiao_song_text'>促</view>
+              <view class='cuxiao_song_content'>{{goods.goods_promotion[0]}}</view>
+            </view>
+            <view class='cuxiao_xian'>
+              <view class='cuxiao_xian_text'>促</view>
+              <view class='cuxiao_xian_content'>{{goods.goods_promotion[1]}}</view>
+            </view>
+          </view>
           <view class="wu">
           </view>
         </view>
         <view class="xian">
         </view>
         <view class="cu">
-          <text class="cu_one">服务</text>
+          <text class="cu_one" style='margin-left:10rpx;'>服务</text>
+          <view class='fuwu'>
+            <view class='fuwu_main' wx:for="{{goods.goods_service}}">
+              <image class="fuwu_img"  src="../../images/gou.png"></image>
+              <view class='fuwu_song_content'>{{item}}</view>
+            </view>
+            
+          </view>
+          <view class="wu">
+          </view>
+        </view>
+        <!-- <view class="cu">
+          <text class="cu_one" >服务</text>
+          <view class='fuwu'>
+            <view class='fuwu_main'>
+              <image class="fuwu_img"  src="../../images/gou.png"></image>
+              <view class='fuwu_song_content'>飞飞飞</view>
+            </view>
+          </view>
           <view style='flex:87%;display:flex;'>
             <view wx:for="{{goods.goods_service}}" style='display:flex;flex:33%;'>
               <image class="fu_a" src="../../images/gou.png">
@@ -54,7 +78,7 @@
             </view>
           </view>
 
-        </view>
+        </view> -->
         <view class="fenge">
         </view>
         <view class="xian">
