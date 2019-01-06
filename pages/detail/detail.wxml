@@ -21,7 +21,7 @@
           <view style="margin-top:4px;">
 
             <span class="jiage">
-              ￥{{price}}/{{goods_company}}
+              ￥{{price}} {{goods_company}}
 
               <text class="yuan">定金：</text>
               <text class='dingjin'> ￥{{money}}</text>

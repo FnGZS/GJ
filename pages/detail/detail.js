@@ -224,8 +224,8 @@ gouwu:function(){
     console.log(options)
     that.setData({
     //  goods_num:options.goods_num,
-    //  goods_id: options.goods_id
-      goods_id: 1
+     goods_id: options.goods_id
+      // goods_id: 1
     })
     gooid = that.data.goods_id;
   

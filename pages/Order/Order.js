@@ -1,6 +1,4 @@
 var pay = require('../../utils/pay.js');
-
-
 var app = getApp()
 var URL = getApp().globalData.PHPURL;
 

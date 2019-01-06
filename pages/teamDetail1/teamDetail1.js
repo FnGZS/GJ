@@ -29,7 +29,7 @@ Page({
     this.setData({
       URLimg: iURL,
       id: options.id,
-      // id: 3,
+      // id: 1,
       lodingHidden: false,
     })
     this.getDetail(); //获取团队用户的详情
@@ -182,12 +182,31 @@ Page({
         if (res.data.goods_imgs=='无'){
           res.data.goods_imgs = res.data.goods_img
         }
+        var detail = res.data;
+        detail['goods_imgs'] = JSON.parse(detail.goods_imgs);
         that.setData({
-          detail: res.data,
+          detail:detail,
           lodingHidden: true,
         })
       }
     })
+  },
+  goodsImgsYu:function(e){
+      console.log(e)
+      var pic = e.currentTarget.dataset.img;
+      var pics = this.data.detail.goods_imgs;
+    console.log(pic)
+    for(var i = 0 ; i < pics.length ; i ++){
+      pics[i] = this.data.URLimg + '/team/' + pics[i];
+    }
+    console.log(pics)
+      wx.previewImage({
+        current: pic,     //当前图片地址
+        urls: pics,               //所有要预览的图片的地址集合 数组形式
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
   },
   //获取团队成员的评价
   getComment: function() {

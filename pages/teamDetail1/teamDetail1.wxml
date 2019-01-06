@@ -69,7 +69,7 @@
       </view>
       <view class="goodat">
         <text class="goodat_text">擅长</text>
-        <text class="goodat_main">{{detail.style}}</text>
+        <view class="goodat_main">{{detail.style}}</view>
       </view>
     </view>
     <view class="fenge"></view>
@@ -102,6 +102,15 @@
         <view class='idea'>
           <view class='idea-title mes-title'>设计理念：</view>
           <view class='idea-text mes-text'>{{detail.idea}}</view>
+        </view>
+        <view class='goodsImgs' wx:if="{{detail.goods_imgs.length > 0}}">
+          <view class='goodsImgs-title '>设计作品：</view>
+          <!-- <view class='idea-text mes-text'>{{detail.idea}}</view> -->
+          <view class='goodsImgs-main'>
+           <image class='goodsImgs-img' src='{{URLimg}}/team/{{item}}'  wx:for="{{detail.goods_imgs}}" bindtap='goodsImgsYu' data-img='{{URLimg}}/team/{{item}}'></image>
+          </view>
+         
+
         </view>
       </view>
     </view>

@@ -14,7 +14,7 @@
       <view class="yuyue-name-yanzheng">
         <view class="yuyue-text">手机验证码</view>
           <input  type="text" bindinput="voteT"  ></input>
-          <view class='tiaozheng' class="yuyue-anniu" bindtap='yancode' name="code">获取验证码</view>
+          <view class='tiaozheng' class="yuyue-anniu" bindtap='{{isClick}}' name="code">{{time}}</view>
       </view>
 
       <button class="yuyue-tijiao" formType="submit">提交</button>

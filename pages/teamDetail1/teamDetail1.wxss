@@ -212,11 +212,15 @@ line-height: 100rpx;
 }
 
 .goodat{
-  height: 100rpx;
+  /* height: 100rpx; */
    margin-left: 2%;
    margin-right: 2%;
+   display: flex;
+   padding-top: 20rpx;
+   padding-bottom: 20rpx;
 }
 .goodat_text{
+  width: 65rpx;
  margin-left: 3%;
   margin-right: 20rpx;
 color:#999;
@@ -226,13 +230,13 @@ line-height: 100rpx;
 }
 .goodat_main{
   color:#fff;
-  background:#ff663e;
+  background: #ff663e;
   padding: 5rpx 10rpx;
-text-align:center;
+/* text-align:center; */
 font-size:30rpx;
-line-height: 100rpx;
 }
 .goods_detail_text{
+  
   height: 80rpx;
   line-height: 80rpx;
   margin-left: 5%;
@@ -310,6 +314,28 @@ line-height: 100rpx;
   font-size: 32rpx;
   margin-top: 5rpx;
   line-height: 50rpx;
+}
+.goodsImgs{
+  display: flex;
+  margin-left: 5%;
+  color: #5c5c5c;
+  font-size: 32rpx;
+  margin-top: 5rpx;
+  line-height: 50rpx;
+}
+.goodsImgs-title{
+  width: 190rpx;
+}
+.goodsImgs-main{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.goodsImgs-img{
+  width: 30%;
+  margin-right: 2%;
+  margin-bottom: 10rpx;
+  height: 150rpx;
 }
 .mes-title{
   width: 165rpx;

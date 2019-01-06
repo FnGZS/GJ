@@ -37,7 +37,7 @@
  <view class='map1' >  
       <view class='map' >
            {{res.longitude}}
-           <map id="map" longitude="{{yy}}" latitude="{{xx}}" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" bindcallouttap="callouttap" show-location style="width: 100%; height:{{second_height}}px;color:red" scale="14" data-id='{{item.id}}'></map> 
+           <map id="map" longitude="{{yy}}" latitude="{{xx}}" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" bindcallouttap="callouttap" show-location style="width: 100%; height:{{second_height}}px;color:red" scale="12" data-id='{{item.id}}'></map> 
       </view>
 </view>
 </view>  

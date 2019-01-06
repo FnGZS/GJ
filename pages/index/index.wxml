@@ -1,10 +1,10 @@
 <view>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height:200px;'>
-    <block wx:for="{{list}}" wx:key="key">
+    <block wx:for="{{list}}" wx:key="key"  >
       <swiper-item>
         <!-- url="{{item.link}}" -->
         <navigator hover-class="navigator-hover">
-          <image src="{{item}}" class="slide-image" />
+          <image src="{{item}}" class="slide-image" bindtap="lunboToYuYue" />
         </navigator>
       </swiper-item>
     </block>
@@ -107,7 +107,7 @@
   </view>
     <view wx:for="{{sorting}}" class='index-goods-shop' bindtap='latex' data-id="{{item.id}}" data-num="{{item.goods_num}}">
       <view class='goods-shop-top'>
-        {{item.goods_classify}}
+        {{item.goods_name}}
       </view>
       <!-- <view class='goods-shop-title'>
         "下单立减"

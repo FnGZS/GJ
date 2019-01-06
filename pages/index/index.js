@@ -213,7 +213,11 @@ Page({
       url: '../yuyue/yuyue'
     });
   },
-
+  lunboToYuYue:function(){
+    wx.navigateTo({
+      url: '../yuyue/yuyue'
+    });
+  },
   toZaixiangongdi: function () {
     wx.navigateTo({
       url: '../gongdifenbu/gongdifenbu'
@@ -254,6 +258,7 @@ Page({
   // 整体刷新
   onPullDownRefresh: function () {
     this.setData({
+      cases:'',
       casesF:0,
       casetop:0,
       casebase:5
